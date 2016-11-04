@@ -99,8 +99,8 @@
     <!-- /CHI SIAMO -->
     
     <!-- SERVIZI -->
-    <section class="content section-parallax parallax-bg-2" style="background-image: url(<?php echo base_url(); ?>assets/img/slider/shutterstock_196849961.jpg);">
-    	<div class="layer layer-default"></div>
+    <section class="content section-parallax parallax-bg-1" style="background-image: url(<?php echo base_url(); ?>assets/img/slider/shutterstock_196849961.jpg);">
+    	<div class="layer layer-white"></div>
     	<div class="container">
 			
 			<h2 class="margin-bottom-70">Servizi</h2>
@@ -258,7 +258,7 @@
     <!-- /IN EVIDENZA-->
     
     <!-- NOTIZIE -->
-    <section class="content section-grey">
+    <section class="content section-colored">
     	<div class="container">
 			
 			<h2 class="margin-bottom-25">Notizie</h2>
@@ -269,12 +269,12 @@
                         <div class="item">
                             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
                             Suspendisse sed mauris felis. Proin et mollis erat. Vestibulum lacus libero, hendrerit id pharetra sit amet, mattis et diam.<br /><br />
-                            <a href="#" class="btn btn-sm ju-btn-default btn-filled dark">Leggi tutto</a>
+                            <a href="#" class="btn btn-sm ju-btn-default dark">Leggi tutto</a>
                         </div>
                         <div class="item">
 							<p class="lead">Suspendisse ut nibh aliquam, egestas lectus eget, tincidunt libero</p>
                             Sed interdum sem magna, quis laoreet massa rhoncus id. Duis semper justo arcu, id ornare quam pretium sed.<br /><br />
-                            <a href="#" class="btn btn-sm ju-btn-default btn-filled dark">Leggi tutto</a>
+                            <a href="#" class="btn btn-sm ju-btn-default dark">Leggi tutto</a>
                         </div>
                     </div>
                 </div><!-- end col -->

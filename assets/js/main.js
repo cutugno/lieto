@@ -76,7 +76,8 @@ $(document).ready(function(){
 	//owl slider
 	$(".slider").owlCarousel({
     	autoPlay: 5000,
-		singleItem:true
+		singleItem:true,
+		stopOnHover:true
   	});
 	
 	//owl carousel

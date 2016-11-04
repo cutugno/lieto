@@ -23,6 +23,10 @@
 	color: #EFF9FC;
 }
 
+.single_box .box.dark {
+	background-color: #0465AB;
+}
+
 .pricing-v1 .pricing-v1-header, .pricing-v1 .pricing-v1-header h4, .pricing-v1 .pricing-v1-header h5 {
 	color: #EFF9FC;
 }
@@ -39,4 +43,23 @@ li#lingue, li#lingue a {
 li#lingue a:hover {
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+.parallax-bg-2 h2  {
+	color: #EFF9FC;
+}
+
+.section-colored, .section-colored h2 {
+	color: #fff;
+}
+
+.section-colored .owl-theme .owl-controls .owl-page span {
+	background: #fff;
+}
+
+.section-colored .ju-btn-default.dark {
+	color: #fff;
+	background: transparent; 
+	border-radius: 0px; 
+	border: 1px solid #fff;
 }
