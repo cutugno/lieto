@@ -1,4 +1,4 @@
-<!--Slider -->
+	<!--Slider -->
 	<ul class="bxslider">
         <li class="small" style="background-image: url(<?php echo base_url(); ?>assets/img/slider/header_01.jpg);">
          	<div class="container text-left">
@@ -47,7 +47,7 @@
                 
             	<div class="col-sm-6 skills-content content">
                 	<div class="content-inner">
-                    	<h2 class="margin-bottom-25">About Us</h2>
+                    	<h2 class="margin-bottom-25">Chi siamo</h2>
 						<div class="row">
 							<div class="col-sm-12">
 								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
@@ -103,7 +103,7 @@
     	<div class="layer layer-default"></div>
     	<div class="container">
 			
-			<h2 class="margin-bottom-70">Features</h2>
+			<h2 class="margin-bottom-70">Servizi</h2>
 			
         	<div class="row">
                 <div class="col-md-3 col-sm-6">
@@ -267,13 +267,13 @@
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="owl-carousel slider">
                         <div class="item">
-                            <p class="lead">The artist is a receptacle for emotions that come from all over the place: from the sky, from the earth, from a scrap of paper, from a passing shape, from a spider's web.</p>
-                            <b>- John Doe, President of Example.com</b><br /><br />
+                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            Suspendisse sed mauris felis. Proin et mollis erat. Vestibulum lacus libero, hendrerit id pharetra sit amet, mattis et diam.<br /><br />
                             <a href="#" class="btn btn-sm ju-btn-default btn-filled dark">Leggi tutto</a>
                         </div>
                         <div class="item">
-                            <p class="lead">The artist is a receptacle for emotions that come from all over the place: from the sky, from the earth, from a scrap of paper, from a passing shape, from a spider's web.</p>
-                            <b>- Jane Doe, President of Example.com</b><br /><br />
+							<p class="lead">Suspendisse ut nibh aliquam, egestas lectus eget, tincidunt libero</p>
+                            Sed interdum sem magna, quis laoreet massa rhoncus id. Duis semper justo arcu, id ornare quam pretium sed.<br /><br />
                             <a href="#" class="btn btn-sm ju-btn-default btn-filled dark">Leggi tutto</a>
                         </div>
                     </div>
