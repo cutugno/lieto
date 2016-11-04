@@ -31,7 +31,7 @@
                 <div class="col-sm-12">
 					<!-- copyright -->
 					<div>
-						<p>Copyright &copy; 2016 - All Right reserved.</p>
+						<p>Info azienda</p>
 					</div>
 					<!-- end copyright -->
                 </div>

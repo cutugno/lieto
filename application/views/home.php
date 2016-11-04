@@ -147,6 +147,11 @@
                 </div>
                 
             </div><!-- end row -->
+            <div class="row">
+				<div class="col-xs-12 text-center">
+					<a href="#" class="btn btn-lg ju-btn-default">Scopri tutti i servizi</a>
+				</div>
+            </div>
         </div><!-- end container -->
     </section>
     <!-- /SERVIZI -->

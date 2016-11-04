@@ -63,3 +63,11 @@ li#lingue a:hover {
 	border-radius: 0px; 
 	border: 1px solid #fff;
 }
+
+.ju-btn-default:hover {
+	color: #fff;
+}
+
+#footer { 
+	padding: 75px 0 25px 0; 
+}
