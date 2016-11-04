@@ -86,6 +86,14 @@ $(document).ready(function(){
     	itemsDesktop : [1199,5],
     	itemsDesktopSmall : [979,3]
   	});
+  	
+  	// carousel servizi
+  	$(".services").owlCarousel({
+    	autoPlay: 8000,
+    	items : 4,
+    	itemsDesktop : [1199,3],
+    	itemsDesktopSmall : [979,2]
+  	});
 	
 	//placeholder
 	$(':input[placeholder]').placeholder();

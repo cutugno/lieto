@@ -1,0 +1,41 @@
+.zetta-menu > li {
+  height: 80px;
+}
+
+.zetta-menu > li > a {
+  padding: 0 30px;
+  line-height: 80px;
+}
+
+.zetta-menu > li:hover > a {
+	color: #0465AB;
+}
+
+.btn-filled, .btn-filled-2 {
+	color: #EFF9FC;
+}
+
+.single_box [class^="pe"] {
+	color: #EFF9FC;
+}
+
+.pricing-v1 .pricing-v1-header, .pricing-v1 .pricing-v1-header h4, .pricing-v1 .pricing-v1-header h5 {
+	color: #EFF9FC;
+}
+
+.section-grey {
+	background-color: #EFF9FC;
+}
+
+li#lingue {
+	margin-left: 15px;
+}
+
+li#lingue, li#lingue a {
+	color: #0465AB;
+}
+
+
+li#lingue a:hover {
+	text-decoration: underline;
+}

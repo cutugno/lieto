@@ -35,50 +35,8 @@
         </li>
     </ul>
 	<!-- end slider -->
-    
-    <!-- features section -->
-    <section class="content section-white">
-    	<div class="container">
-			
-			<div class="margin-bottom-25"></div>
-			
-        	<div class="row">
-                
-            	<div class="col-sm-4">
-                    <div class="single_box">
-                        <div class="icons_introimg image-icon box default">
-                            <i class="pe-7s-monitor"></i>
-                        </div>
-                        <h6>Responsive Layout</h6>
-                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
-                    </div>
-                </div>
-                
-                <div class="col-sm-4">
-                    <div class="single_box">
-                        <div class="icons_introimg image-icon box default">
-                            <i class="pe-7s-light"></i>
-                        </div>
-                        <h6>Modern</h6>
-                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
-                    </div>
-                </div>
-                
-                <div class="col-sm-4">
-                    <div class="single_box">
-                        <div class="icons_introimg image-icon box default">
-                            <i class="pe pe-7s-look"></i>
-                        </div>
-                        <h6>Creative Design</h6>
-                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
-                    </div>
-                </div>
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </section>
-    <!-- /features section -->
-    
-    <!-- about us section -->
+	
+	    <!-- CHI SIAMO -->
     <section class="about-us section-grey">
     	<div class="container-fluid">
         	<div class="row">
@@ -138,140 +96,199 @@
             </div><!-- end row -->
         </div><!-- container-fluid -->
     </section>
-    <!-- /about us section -->
+    <!-- /CHI SIAMO -->
     
-    <!-- pricing tables section -->
-    <section class="content section-white">
+    <!-- SERVIZI -->
+    <section class="content section-parallax parallax-bg-2" style="background-image: url(<?php echo base_url(); ?>assets/img/slider/shutterstock_196849961.jpg);">
+    	<div class="layer layer-default"></div>
     	<div class="container">
 			
-			<h2 class="margin-bottom-70">Pricing Tables</h2>
+			<h2 class="margin-bottom-70">Features</h2>
 			
         	<div class="row">
-                <div class="col-sm-6 col-md-3">
-                    <div class="pricing-v1 pricing-v1-default">
-                        <div class="pricing-v1-header text-center">
-                            <h4>Standard</h4>
-                            <h5><span>$</span>49</h5>
-                            <p>monthly</p>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_box">
+                        <div class="icons_introimg image-icon box dark">
+                            <i class="pe-7s-monitor"></i>
                         </div>
-                        <ul class="list-unstyled pricing-v1-content">
-                            <li>100 Users</li>
-                            <li>SSL Certificate</li>
-                            <li>Online Support</li>
-                            <li>300GB Disckspace</li>
-                            <li class="no-include">1000 Email Addresses</li>
-                            <li class="no-include">MySQL Databases</li>
-                            <li class="no-include">Customisable Toolbar</li>
-                        </ul>
-                        <div class="pricing-v1-footer">
-                            <a href="#" class="btn btn-primary btn-block ju-btn-default btn-filled-2">Sign Up</a>
-                        </div>
-                    </div><!-- end pricing-v1 -->
-                </div><!-- end co-sm-3 -->
+                        <h6>Responsive</h6>
+                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
+                    </div>
+                </div>
                 
-                <div class="col-sm-6 col-md-3">
-                    <div class="pricing-v1 pricing-v1-default">
-                    	<div class="best-choise">
-                        	<p>Best</p>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_box">
+                        <div class="icons_introimg image-icon box dark">
+                            <i class="pe-7s-light"></i>
                         </div>
-                        <div class="pricing-v1-header text-center">
-                            <h4>Business</h4>
-                            <h5><span>$</span>99</h5>
-                            <p>monthly</p>
-                        </div>
-                        <ul class="list-unstyled pricing-v1-content">
-                            <li>100 Users</li>
-                            <li>SSL Certificate</li>
-                            <li>Online Support</li>
-                            <li>300GB Disckspace</li>
-                            <li>1000 Email Addresses</li>
-                            <li class="no-include">MySQL Databases</li>
-                            <li class="no-include">Customisable Toolbar</li>
-                        </ul>
-                        <div class="pricing-v1-footer">
-                            <a href="#" class="btn btn-primary btn-block ju-btn-default btn-filled-2">Sign Up</a>
-                        </div>
-                    </div><!-- end pricing-v1 -->
-                </div><!-- end col-sm-3 -->
+                        <h6>Modern</h6>
+                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
+                    </div>
+                </div>
                 
-                <div class="col-sm-6 col-md-3">
-                    <div class="pricing-v1 pricing-v1-default">
-                        <div class="pricing-v1-header text-center">
-                            <h4>Premium</h4>
-                            <h5><span>$</span>179</h5>
-                            <p>monthly</p>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_box">
+                        <div class="icons_introimg image-icon box dark">
+                            <i class="pe pe-7s-look"></i>
                         </div>
-                        <ul class="list-unstyled pricing-v1-content">
-                            <li>100 Users</li>
-                            <li>SSL Certificate</li>
-                            <li>Online Support</li>
-                            <li>300GB Disckspace</li>
-                            <li>1000 Email Addresses</li>
-                            <li>MySQL Databases</li>
-                            <li class="no-include">Customisable Toolbar</li>
-                        </ul>
-                        <div class="pricing-v1-footer">
-                            <a href="#" class="btn btn-primary btn-block ju-btn-default btn-filled-2">Sign Up</a>
-                        </div>
-                    </div><!-- end pricing-v1 -->
-                </div><!-- end col-sm-3 -->
+                        <h6>Creative Design</h6>
+                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
+                    </div>
+                </div>
                 
-                <div class="col-sm-6 col-md-3">
-                    <div class="pricing-v1 pricing-v1-default">
-                        <div class="pricing-v1-header text-center">
-                            <h4>Ultimate</h4>
-                            <h5><span>$</span>249</h5>
-                            <p>monthly</p>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_box">
+                        <div class="icons_introimg image-icon box dark">
+                            <i class="pe-7s-like"></i>
                         </div>
-                        <ul class="list-unstyled pricing-v1-content">
-                            <li>100 Users</li>
-                            <li>SSL Certificate</li>
-                            <li>Online Support</li>
-                            <li>300GB Disckspace</li>
-                            <li>1000 Email Addresses</li>
-                            <li>MySQL Databases</li>
-                            <li>Customisable Toolbar</li>
-                        </ul>
-                        <div class="pricing-v1-footer">
-                            <a href="#" class="btn btn-primary btn-block ju-btn-default btn-filled-2">Sign Up</a>
-                        </div>
-                    </div><!-- end pricing-v1 -->
-                </div><!-- end col-sm-3 -->
+                        <h6>Full of love</h6>
+                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                
             </div><!-- end row -->
         </div><!-- end container -->
     </section>
-    <!-- /pricing tables -->
+    <!-- /SERVIZI -->
     
-    <!-- quote section -->
+
+    
+    <!-- IN EVIDENZA -->
+    <section class="content section-white">
+    	<div class="container">
+			
+			<h2 class="margin-bottom-70">In evidenza</h2>
+			
+        	<div class="row">
+				<!--
+                <div class="col-sm-12">            
+                    <div id="filters-container" class="cbp-l-filters-button">
+                        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
+                            All <div class="cbp-filter-counter"></div>
+                        </div>
+                        <div data-filter=".identity" class="cbp-filter-item">
+                            Identity <div class="cbp-filter-counter"></div>
+                        </div>
+                        <div data-filter=".web-design" class="cbp-filter-item">
+                            Web Design <div class="cbp-filter-counter"></div>
+                        </div>
+                        <div data-filter=".graphic" class="cbp-filter-item">
+                            Graphic <div class="cbp-filter-counter"></div>
+                        </div>
+                        <div data-filter=".logo" class="cbp-filter-item">
+                            Logo <div class="cbp-filter-counter"></div>
+                        </div>
+                    </div>
+                    -->
+            
+                    <div id="grid-container" class="cbp-l-grid-projects">
+                        <ul>
+                            <li class="cbp-item graphic">
+                                <div class="cbp-caption">
+                                    <div class="cbp-caption-defaultWrap">
+                                        <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_01.jpg" alt="">
+                                    </div>
+                                    <div class="cbp-caption-activeWrap">
+                                        <div class="cbp-l-caption-alignCenter">
+                                            <div class="cbp-l-caption-body">
+                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">more info</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cbp-l-grid-projects-title">Dashboard</div>
+                                <div class="cbp-l-grid-projects-desc">Web Design / Graphic</div>
+                            </li>
+                            <li class="cbp-item web-design logo">
+                                <div class="cbp-caption">
+                                    <div class="cbp-caption-defaultWrap">
+                                        <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_02.jpg" alt="">
+                                    </div>
+                                    <div class="cbp-caption-activeWrap">
+                                        <div class="cbp-l-caption-alignCenter">
+                                            <div class="cbp-l-caption-body">
+                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">more info</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cbp-l-grid-projects-title">World Clock Widget</div>
+                                <div class="cbp-l-grid-projects-desc">Logo / Web Design</div>
+                            </li>
+                            <li class="cbp-item graphic logo">
+                                <div class="cbp-caption">
+                                    <div class="cbp-caption-defaultWrap">
+                                        <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_03.jpg" alt="">
+                                    </div>
+                                    <div class="cbp-caption-activeWrap">
+                                        <div class="cbp-l-caption-alignCenter">
+                                            <div class="cbp-l-caption-body">
+                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">more info</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cbp-l-grid-projects-title">To-Do Dashboard</div>
+                                <div class="cbp-l-grid-projects-desc">Graphic / Logo</div>
+                            </li>
+                            <li class="cbp-item web-design graphic">
+                                <div class="cbp-caption">
+                                    <div class="cbp-caption-defaultWrap">
+                                        <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_04.jpg" alt="">
+                                    </div>
+                                    <div class="cbp-caption-activeWrap">
+                                        <div class="cbp-l-caption-alignCenter">
+                                            <div class="cbp-l-caption-body">
+                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">more info</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cbp-l-grid-projects-title">Events and More</div>
+                                <div class="cbp-l-grid-projects-desc">Web Design / Graphic</div>
+                            </li>
+                        </ul>
+                    </div>
+            
+                </div><!-- end col-sm-12 -->
+                
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section>
+    <!-- /IN EVIDENZA-->
+    
+    <!-- NOTIZIE -->
     <section class="content section-grey">
     	<div class="container">
 			
-			<h2 class="margin-bottom-70">what people say about us</h2>
+			<h2 class="margin-bottom-25">Notizie</h2>
 			
         	<div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="owl-carousel slider">
                         <div class="item">
                             <p class="lead">The artist is a receptacle for emotions that come from all over the place: from the sky, from the earth, from a scrap of paper, from a passing shape, from a spider's web.</p>
-                            <b>- John Doe, President of Example.com</b>
+                            <b>- John Doe, President of Example.com</b><br /><br />
+                            <a href="#" class="btn btn-sm ju-btn-default btn-filled dark">Leggi tutto</a>
                         </div>
                         <div class="item">
                             <p class="lead">The artist is a receptacle for emotions that come from all over the place: from the sky, from the earth, from a scrap of paper, from a passing shape, from a spider's web.</p>
-                            <b>- Jane Doe, President of Example.com</b>
+                            <b>- Jane Doe, President of Example.com</b><br /><br />
+                            <a href="#" class="btn btn-sm ju-btn-default btn-filled dark">Leggi tutto</a>
                         </div>
                     </div>
                 </div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
     </section>
-    <!-- /quote section -->
+    <!-- /NOTIZIE -->
     
     
-    <!-- our partners -->
+    <!-- PARTNER -->
     <section class="content section-white">
     	<div class="container">
 			
-			<h2 class="margin-bottom-70">Our Partners</h2>
+			<h2 class="margin-bottom-70">Area Partner</h2>
 			
 			<div class="owl-carousel partners">
 				<div class="item">
@@ -307,10 +324,11 @@
 			</div><!-- end carousel -->
         </div><!-- end container -->
     </section>
-    <!-- /our partners -->
+    <!-- /PARTNER -->
     
-    <!-- contact section -->
-    <section class="content section-grey">
+    <!-- CONTATTI -->
+    <section class="content section-parallax parallax-bg-1" style="background-image: url('<?php echo base_url(); ?>assets/img/slider/shutterstock_196849961.jpg'); background-position: 50% 41px;">
+    	<div class="layer layer-white"></div>
     	<div class="container">
         	<div class="row">
             	

@@ -30,6 +30,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/cubeportfolio.css" />
     <!-- Main Style -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css" />
+    <!-- Custom Style -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/custom.css" />
     
     
     <!-- google fonts -->
