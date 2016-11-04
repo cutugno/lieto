@@ -188,7 +188,7 @@
             
                     <div id="grid-container" class="cbp-l-grid-projects">
                         <ul>
-                            <li class="cbp-item graphic">
+                            <li class="cbp-item offerte">
                                 <div class="cbp-caption">
                                     <div class="cbp-caption-defaultWrap">
                                         <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_01.jpg" alt="">
@@ -202,9 +202,9 @@
                                     </div>
                                 </div>
                                 <div class="cbp-l-grid-projects-title">Dashboard</div>
-                                <div class="cbp-l-grid-projects-desc">Web Design / Graphic</div>
+                                <div class="cbp-l-grid-projects-desc">Offerte</div>
                             </li>
-                            <li class="cbp-item web-design logo">
+                            <li class="cbp-item web-design usato">
                                 <div class="cbp-caption">
                                     <div class="cbp-caption-defaultWrap">
                                         <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_02.jpg" alt="">
@@ -218,9 +218,9 @@
                                     </div>
                                 </div>
                                 <div class="cbp-l-grid-projects-title">World Clock Widget</div>
-                                <div class="cbp-l-grid-projects-desc">Logo / Web Design</div>
+                                <div class="cbp-l-grid-projects-desc">Usato</div>
                             </li>
-                            <li class="cbp-item graphic logo">
+                            <li class="cbp-item graphic usato">
                                 <div class="cbp-caption">
                                     <div class="cbp-caption-defaultWrap">
                                         <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_03.jpg" alt="">
@@ -234,9 +234,9 @@
                                     </div>
                                 </div>
                                 <div class="cbp-l-grid-projects-title">To-Do Dashboard</div>
-                                <div class="cbp-l-grid-projects-desc">Graphic / Logo</div>
+                                <div class="cbp-l-grid-projects-desc">Usato</div>
                             </li>
-                            <li class="cbp-item web-design graphic">
+                            <li class="cbp-item web-design offerte">
                                 <div class="cbp-caption">
                                     <div class="cbp-caption-defaultWrap">
                                         <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_04.jpg" alt="">
@@ -250,7 +250,7 @@
                                     </div>
                                 </div>
                                 <div class="cbp-l-grid-projects-title">Events and More</div>
-                                <div class="cbp-l-grid-projects-desc">Web Design / Graphic</div>
+                                <div class="cbp-l-grid-projects-desc">Offerte</div>
                             </li>
                         </ul>
                     </div>
