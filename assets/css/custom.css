@@ -38,4 +38,5 @@ li#lingue, li#lingue a {
 
 li#lingue a:hover {
 	text-decoration: underline;
+	cursor: pointer;
 }
