@@ -68,6 +68,14 @@ li#lingue a:hover {
 	color: #fff;
 }
 
+.social-icon-3 {
+	color: #fff;
+}
+
+.cbp-l-caption-buttonLeft {
+	cursor: pointer;
+}
+
 #footer { 
 	padding: 75px 0 25px 0; 
 }

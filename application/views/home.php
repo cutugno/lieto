@@ -191,18 +191,18 @@
                             <li class="cbp-item offerte">
                                 <div class="cbp-caption">
                                     <div class="cbp-caption-defaultWrap">
-                                        <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_01.jpg" alt="">
+                                        <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/usato.jpg" alt="Gommone a chiglia rigida Seapower GT 550 - Usato Nautica Lieto">
                                     </div>
                                     <div class="cbp-caption-activeWrap">
                                         <div class="cbp-l-caption-alignCenter">
                                             <div class="cbp-l-caption-body">
-                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">more info</a>
+                                                <a href="<?php echo site_url('usato'); ?>" class="cbp-l-caption-buttonLeft">dettagli</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cbp-l-grid-projects-title">Dashboard</div>
-                                <div class="cbp-l-grid-projects-desc">Offerte</div>
+                                <div class="cbp-l-grid-projects-title">Gommone a chiglia rigida Seapower GT 550</div>
+                                <div class="cbp-l-grid-projects-desc">Usato</div>
                             </li>
                             <li class="cbp-item web-design usato">
                                 <div class="cbp-caption">

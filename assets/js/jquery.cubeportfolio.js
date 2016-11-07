@@ -143,7 +143,8 @@
                     'data-action': (t.type === 'lightbox') ? 'close' : ''
                 }).appendTo(t.wrap);
             }
-
+			
+	
             // create navigation wrap
             t.navigationWrap = $('<div/>', {
                 'class': 'cbp-popup-navigation-wrap'
@@ -151,7 +152,8 @@
 
             // create navigation block
             t.navigation = $('<div/>', {
-                'class': 'cbp-popup-navigation'
+                'class': 'cbp-popup-navigation',
+                'style': 'display:none'
             }).appendTo(t.navigationWrap);
 
             // close button
@@ -159,7 +161,7 @@
                 'class': 'cbp-popup-close',
                 'title': 'Close (Esc arrow key)',
                 'type': 'button',
-                'data-action': 'close'
+                'data-action': 'close',
             }).appendTo(t.navigation);
 
             // next button
@@ -167,7 +169,8 @@
                 'class': 'cbp-popup-next',
                 'title': 'Next (Right arrow key)',
                 'type': 'button',
-                'data-action': 'next'
+                'data-action': 'next',
+                'style': 'display:none'
             }).appendTo(t.navigation);
 
 
@@ -176,9 +179,9 @@
                 'class': 'cbp-popup-prev',
                 'title': 'Previous (Left arrow key)',
                 'type': 'button',
-                'data-action': 'prev'
+                'data-action': 'prev',
+                'style': 'display:none'
             }).appendTo(t.navigation);
-
 
             if (t.type === 'singlePage') {
 

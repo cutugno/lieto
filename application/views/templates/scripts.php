@@ -22,7 +22,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.placeholder.js"></script>
     <!-- cubeportfolio -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.cubeportfolio.js"></script>
-    <!-- cubeportfolio team -->
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/team.js"></script>
+    <!-- cubeportfolio masonry -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/portfolio-juicy.js"></script>
     <!-- Main Script -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.js"></script>
