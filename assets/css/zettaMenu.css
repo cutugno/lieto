@@ -888,6 +888,7 @@
   }
   .zetta-menu.zm-response-switch:before {
     font-family: FontAwesome;
+    font-size:25px;
     content: '\f0c9';
     float: right;
     cursor: pointer;
