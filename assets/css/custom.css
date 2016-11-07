@@ -64,6 +64,13 @@ li#lingue a:hover {
 	border: 1px solid #fff;
 }
 
+.section-colored .ju-btn-default.dark:hover {
+	color: #0465AB;
+	background: #fff; 
+	border-radius: 0px; 
+	border: 1px solid #fff;
+}
+
 .ju-btn-default:hover {
 	color: #fff;
 }

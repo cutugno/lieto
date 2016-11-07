@@ -4,9 +4,9 @@
          	<div class="container text-left">
 				<div class="row">
 					<div class="col-sm-6 col-md-5 col-md-offset-6 col-sm-offset-5">
-						<h3 style="color: #393939;">About our company</h3>
+						<h3 style="color: #393939;">INFO PRODOTTO 1</h3>
 						<p style="color: #393939; font-size: 19px; line-height: 27px;">Ea nec enim accumsan, ut prima blandit mel, labores nonumes detraxit an sed. Omnis malis propriae an sed, eu mea erat utinam meliore, inciderint philosophia usu ne.</p>
-						<a href="#" class="btn btn-primary ju-btn-default btn-filled-2">Learn more</a>
+						<a href="#" class="btn btn-primary ju-btn-default btn-filled-2">Scopri dettagli</a>
 					</div><!-- end col-sm-10 -->
 				</div><!-- end row -->
             </div><!-- end container-->
@@ -15,9 +15,9 @@
          	<div class="container text-left">
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-1">
-						<h3 style="color: #393939;">our services</h3>
+						<h3 style="color: #393939;">INFO PRODOTTO 2</h3>
 						<p style="color: #393939; font-size: 19px; line-height: 27px;">Ea nec enim accumsan, ut prima blandit mel, labores nonumes detraxit an sed. Omnis malis propriae an sed, eu mea erat utinam meliore, inciderint philosophia usu ne.</p>
-						<a href="#" class="btn btn-primary ju-btn-default btn-filled-2">What We Do</a>
+						<a href="#" class="btn btn-primary ju-btn-default btn-filled-2">Scopri dettagli</a>
 					</div><!-- end col-sm-10 -->
 				</div><!-- end row -->
             </div><!-- end container-->
@@ -26,9 +26,9 @@
          	<div class="container text-center">
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
-						<h3 style="color: #393939;">Get a quote</h3>
+						<h3 style="color: #393939;">Richiedi un preventivo</h3>
 						<p style="color: #393939; font-size: 19px; line-height: 27px;">Ea nec enim accumsan, ut prima blandit mel, labores nonumes detraxit an sed. Omnis malis propriae an sed, eu mea erat utinam meliore, inciderint philosophia usu ne.</p>
-						<a href="#" class="btn btn-primary ju-btn-default btn-filled-2">Contact us</a>
+						<a href="#" class="btn btn-primary ju-btn-default btn-filled-2">Contattaci</a>
 					</div><!-- end col-sm-10 -->
 				</div><!-- end row -->
             </div><!-- end container-->
@@ -59,7 +59,7 @@
 										<i class="pe-7s-monitor"></i>
 									</div>
 									<div class="single_box_right">
-										<h6>Responsive Layout</h6>
+										<h6>Info azienda 1</h6>
 										<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.</p>
 									</div>
 								</div>
@@ -71,7 +71,7 @@
 										<i class="pe-7s-light"></i>
 									</div>
 									<div class="single_box_right">
-										<h6>Modern</h6>
+										<h6>Info azienda 2</h6>
 										<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.</p>
 									</div>
 								</div>
@@ -83,13 +83,13 @@
 										<i class="pe-7s-look"></i>
 									</div>
 									<div class="single_box_right">
-										<h6>Creative Design</h6>
+										<h6>Info azienda 3</h6>
 										<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit.</p>
 									</div>
 								</div>
 							</div>
                         </div><!-- end row -->
-                        <a href="#" class="btn btn-primary btn-filled">Learn more</a>
+                        <a href="#" class="btn btn-primary btn-filled">Richiedi un nostro gadget</a>
                     </div>
                 </div>
                 
@@ -111,7 +111,7 @@
                         <div class="icons_introimg image-icon box dark">
                             <i class="pe-7s-monitor"></i>
                         </div>
-                        <h6>Responsive</h6>
+                        <h6>Servizio 1</h6>
                         <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                         <div class="icons_introimg image-icon box dark">
                             <i class="pe-7s-light"></i>
                         </div>
-                        <h6>Modern</h6>
+                        <h6>Servizio 2</h6>
                         <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                         <div class="icons_introimg image-icon box dark">
                             <i class="pe pe-7s-look"></i>
                         </div>
-                        <h6>Creative Design</h6>
+                        <h6>Servizio 3</h6>
                         <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                         <div class="icons_introimg image-icon box dark">
                             <i class="pe-7s-like"></i>
                         </div>
-                        <h6>Full of love</h6>
+                        <h6>Servizio 4</h6>
                         <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cbp-l-grid-projects-title">World Clock Widget</div>
+                                <div class="cbp-l-grid-projects-title">Nome prodotto</div>
                                 <div class="cbp-l-grid-projects-desc">Usato</div>
                             </li>
                             <li class="cbp-item graphic usato">
@@ -233,7 +233,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cbp-l-grid-projects-title">To-Do Dashboard</div>
+                                <div class="cbp-l-grid-projects-title">Nome prodotto</div>
                                 <div class="cbp-l-grid-projects-desc">Usato</div>
                             </li>
                             <li class="cbp-item web-design offerte">
@@ -249,7 +249,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cbp-l-grid-projects-title">Events and More</div>
+                                <div class="cbp-l-grid-projects-title">Nome prodotto</div>
                                 <div class="cbp-l-grid-projects-desc">Offerte</div>
                             </li>
                         </ul>
@@ -347,8 +347,8 @@
 								<div class="icons_introimg image-icon box default">
 									<i class="pe-7s-map-marker"></i>
 								</div>
-								<h6>Address</h6>
-								<p>77 Mass. Ave., E14/E15 Seattle, MA 02139-4307 USA</p>
+								<h6>Indirizzo</h6>
+								<p>Lungomare Caboto, Gaeta (LT)</p>
 							</div>
 						</div>
 						
@@ -357,8 +357,8 @@
 								<div class="icons_introimg image-icon box default">
 									<i class="pe-7s-call"></i>
 								</div>
-								<h6>Phone</h6>
-								<p>+00 (123) 456 78 90 <br /> +11 (123) 456 78 90</p>
+								<h6>Telefono</h6>
+								<p>+39 329 45 55 555 <br /> +39 0771 77 77 77</p>
 							</div>
 						</div>
 						
@@ -368,7 +368,7 @@
 									<i class="pe-7s-mail"></i>
 								</div>
 								<h6>E-mail</h6>
-								<p>info@domain.com <br /> info@domain.com</p>
+								<p>info@info.com <br /> info@info.com</p>
 							</div>
 						</div>
                     </div><!-- end row-->
