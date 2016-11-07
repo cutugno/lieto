@@ -89,7 +89,7 @@ li#lingue a:hover {
 
 @media screen and (max-width: 990px) {
 	.zetta-menu {
-		max-height: 100%;
+		max-height: 85%;
 		overflow-y: scroll;
 	}
 
