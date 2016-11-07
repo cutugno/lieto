@@ -84,7 +84,7 @@
                     </ul>
                 </li>
                 
-                <li><a href="#">Usato</a></li>
+                <li><a href="<?php echo site_url('usato'); ?>">Usato</a></li>
                 
                 <li><a href="#">Offerte</a></li>
                
