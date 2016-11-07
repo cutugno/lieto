@@ -109,15 +109,15 @@
   display: block;
   vertical-align: top;
   float: left;
-  height: 60px;
+  height: 80px;
 }
 .zetta-menu > li.zm-right-item {
   margin-right: 0;
   float: right;
 }
 .zetta-menu > li > a {
-  padding: 0 20px;
-  line-height: 60px;
+  padding: 0 30px;
+  line-height: 80px;
 }
 .zetta-menu > li:hover,
 .zetta-menu > li.zm-active {
@@ -203,8 +203,8 @@
   min-height: 50px;
 }
 .zetta-menu ul > li a {
-  padding: 0 20px;
-  line-height: 60px;
+  padding: 0 30px;
+  line-height: 80px;
 }
 .zetta-menu > li > ul,
 .zetta-menu > li > ul ul,
@@ -588,12 +588,12 @@
   cursor: text;
   left: 0;
   top: 0;
-  padding: 0 20px;
-  line-height: 60px;
+  padding: 0 30px;
+  line-height: 80px;
 }
 .zetta-menu .zm-search input {
-  height: 60px;
-  padding: 0 27.5px;
+  height: 80px;
+  padding: 0 37.5px;
   font-size: inherit;
   width: 0;
   opacity: 0.01;
@@ -891,9 +891,9 @@
     content: '\f0c9';
     float: right;
     cursor: pointer;
-    line-height: 60px;
-    height: 60px;
-    padding: 0 20px;
+    line-height: 80px;
+    height: 80px;
+    padding: 0 30px;
     z-index: 1;
   }
   .zetta-menu.zm-response-switch:hover:before {
