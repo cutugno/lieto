@@ -20,13 +20,19 @@
                 	
                     <div class="owl-carousel slider">
                         <div class="item">
-                            <img src="<?php echo base_url(); ?>assets/img/shop_images/image_01_538x548.jpg" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/shop_images/01.jpg" alt="Gommone a chiglia rigida Seapower GT 550 - Usato Nautica Lieto">
                         </div>
                         <div class="item">
-                        	<img src="<?php echo base_url(); ?>assets/img/shop_images/image_03_538x548.jpg" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/shop_images/02.jpg" alt="Gommone a chiglia rigida Seapower GT 550 - Usato Nautica Lieto">
                         </div>
                         <div class="item">
-                            <img src="<?php echo base_url(); ?>assets/img/shop_images/image_11_538x548.jpg" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/shop_images/03.jpg" alt="Gommone a chiglia rigida Seapower GT 550 - Usato Nautica Lieto">
+                        </div>
+                        <div class="item">
+                            <img src="<?php echo base_url(); ?>assets/img/shop_images/04.jpg" alt="Gommone a chiglia rigida Seapower GT 550 - Usato Nautica Lieto">
+                        </div>
+                        <div class="item">
+                            <img src="<?php echo base_url(); ?>assets/img/shop_images/05.jpg" alt="Gommone a chiglia rigida Seapower GT 550 - Usato Nautica Lieto">
                         </div>
                     </div><!-- end owl-carousel -->
 
@@ -80,7 +86,7 @@
                         <div class="product-image">
                             <div class="product-layer"></div>
                             <div class="new-product">New</div>
-                            <img src="img/shop_images/image_01_254x300.jpg" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/shop_images/image_01_254x300.jpg" alt="">
                             <div class="product-button">
                                 <a href="#" class="btn btn-sm ju-btn-default dark">Add to card</a>
                             </div>
@@ -98,7 +104,7 @@
                             <div class="product-layer"></div>
                             <div class="for-sales">Sale</div>
                             <div class="product-off">Off</div>
-                            <img src="img/shop_images/image_03_254x300.jpg" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/shop_images/image_03_254x300.jpg" alt="">
                             <div class="product-button">
                                 <a href="#" class="btn btn-sm ju-btn-default dark">Add to card</a>
                             </div>
@@ -115,7 +121,7 @@
                     <li class="product">
                         <div class="product-image">
                             <div class="product-layer"></div>
-                            <img src="img/shop_images/image_11_254x300.jpg" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/shop_images/image_11_254x300.jpg" alt="">
                             <div class="product-button">
                                 <a href="#" class="btn btn-sm ju-btn-default dark">Add to card</a>
                             </div>
@@ -131,7 +137,7 @@
                     <li class="product">
                         <div class="product-image">
                             <div class="product-layer"></div>
-                            <img src="img/shop_images/image_13_254x300.png" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/shop_images/image_13_254x300.png" alt="">
                             <div class="product-button">
                                 <a href="#" class="btn btn-sm ju-btn-default dark">Add to card</a>
                             </div>

@@ -24,7 +24,7 @@
         
         	<!--zetta menu -->
             <ul onClick="" class="zetta-menu zm-response-switch zm-full-width zm-effect-fade">
-                <li class="zm-logo"><a href="index.html"><img title="logo" src="<?php echo base_url(); ?>assets/img/logo.png" alt=""></a></li>
+                <li class="zm-logo"><a href="<?php echo base_url(); ?>"><img title="logo" src="<?php echo base_url(); ?>assets/img/logo.png" alt=""></a></li>
 
                 <li><a href="#">Azienda</a>
                     <!--
