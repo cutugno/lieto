@@ -36,7 +36,7 @@
     </ul>
 	<!-- end slider -->
 	
-	    <!-- CHI SIAMO -->
+	<!-- CHI SIAMO -->
     <section class="about-us section-grey">
     	<div class="container-fluid">
         	<div class="row">
@@ -212,7 +212,7 @@
                                     <div class="cbp-caption-activeWrap">
                                         <div class="cbp-l-caption-alignCenter">
                                             <div class="cbp-l-caption-body">
-                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">more info</a>
+                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">dettagli</a>
                                             </div>
                                         </div>
                                     </div>
@@ -228,7 +228,7 @@
                                     <div class="cbp-caption-activeWrap">
                                         <div class="cbp-l-caption-alignCenter">
                                             <div class="cbp-l-caption-body">
-                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">more info</a>
+                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">dettagli</a>
                                             </div>
                                         </div>
                                     </div>
@@ -244,7 +244,7 @@
                                     <div class="cbp-caption-activeWrap">
                                         <div class="cbp-l-caption-alignCenter">
                                             <div class="cbp-l-caption-body">
-                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">more info</a>
+                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">dettagli</a>
                                             </div>
                                         </div>
                                     </div>
