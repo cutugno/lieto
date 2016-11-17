@@ -27,13 +27,10 @@
 				<li class="zm-logo"><a href="<?php echo base_url(); ?>"><img title="logo" src="<?php echo base_url(); ?>assets/img/logo.png" alt=""></a></li>
 				
 				<li><a href="#">Azienda</a>
-                    <!--
                     <ul class="w-200">
-                        <li><a href="index.html">Home Agency</a></li>
-                        <li><a href="home-business.html">Home Bussines</a></li>
-                        <li><a href="home-corporate.html">Home Corporate</a></li>
+                        <li><a href="<?php echo site_url('azienda/1'); ?>">versione 1</a></li>
+                        <li><a href="<?php echo site_url('azienda/2'); ?>">versione 2</a></li>
                     </ul>
-                    -->
                 </li>
                 
                 <li class="zm-content-full"><a>Prodotti</a>

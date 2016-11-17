@@ -36,7 +36,7 @@
     </ul>
 	<!-- end slider -->
 	
-	<!-- CHI SIAMO -->
+	<!-- AZIENDA -->
     <section class="about-us section-grey">
     	<div class="container-fluid">
         	<div class="row">
@@ -47,20 +47,20 @@
                 
             	<div class="col-sm-6 skills-content content">
                 	<div class="content-inner">
-                    	<h2 class="margin-bottom-25">Chi siamo</h2>
+                    	<h2 class="margin-bottom-25">Azienda</h2>
 						<div class="row">
 							<div class="col-sm-12">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+								<p>La Nautica Lieto è un’azienda specializzata dal 1960 nei più svariati servizi per la nautica, dalla vendita al post-vendita, assistenza e rimessaggio</p>
 							</div>
 							
 							<div class="col-sm-12">
 								<div class="left_icons style6">
 									<div class="single_box_left default">
-										<i class="pe-7s-monitor"></i>
+										<i class="pe-7s-medal"></i>
 									</div>
 									<div class="single_box_right">
-										<h6>Info azienda 1</h6>
-										<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.</p>
+										<h6>Vendita</h6>
+										<p>Rappresentiamo alcuni dei migliori marchi presenti sul mercato nautico</p>
 									</div>
 								</div>
 							</div>
@@ -68,11 +68,11 @@
 							<div class="col-sm-12">
 								<div class="left_icons style6">
 									<div class="single_box_left default">
-										<i class="pe-7s-light"></i>
+										<i class="pe-7s-tools"></i>
 									</div>
 									<div class="single_box_right">
-										<h6>Info azienda 2</h6>
-										<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.</p>
+										<h6>Assistenza</h6>
+										<p>Personale altamente qualificato fornisce assistenza ordinaria e straordinaria su barche e motori</p>
 									</div>
 								</div>
 							</div>
@@ -80,11 +80,11 @@
 							<div class="col-sm-12">
 								<div class="left_icons style6">
 									<div class="single_box_left default">
-										<i class="pe-7s-look"></i>
+										<i class="pe-7s-light"></i>
 									</div>
 									<div class="single_box_right">
-										<h6>Info azienda 3</h6>
-										<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit.</p>
+										<h6>Filosofia</h6>
+										<p>Serietà, professionalità ed esperienza al servizio del diportista</p>
 									</div>
 								</div>
 							</div>

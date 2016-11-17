@@ -79,6 +79,12 @@ $(document).ready(function(){
 		singleItem:true,
 		stopOnHover:true
   	});
+  	
+  	$(".slider2").owlCarousel({
+    	autoPlay: 10000,
+		singleItem:true,
+		stopOnHover:true
+  	});
 	
 	//owl carousel
 	$(".partners").owlCarousel({
