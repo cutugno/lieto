@@ -7,8 +7,8 @@
             <div class="top-header">
             	<div class="top-contact pull-left">
                 	<ul class="list-inline list-unstyled">
-                    	<li><p><i class="pe-7s-call pe-lg pe-va"></i> +39 329 34 55 555</p></li>
-                        <li><p><i class="pe-7s-mail pe-lg pe-va"></i> <a href="mailto:#">email@email.com</a></p></li>
+                    	<li><p><i class="pe-7s-call pe-lg pe-va"></i> <a href="tel:+390771472017">0771 472017</a></p></li>
+                        <li><p><i class="pe-7s-mail pe-lg pe-va"></i> <a href="mailto:info@nauticalieto.it">info@nauticalieto.it</a></p></li>
                     </ul>    
                 </div>
                 <div class="top-social pull-right">
@@ -26,12 +26,7 @@
             <ul class="zetta-menu zm-response-switch zm-full-width zm-effect-fade">
 				<li class="zm-logo"><a href="<?php echo base_url(); ?>"><img title="logo" src="<?php echo base_url(); ?>assets/img/logo.png" alt=""></a></li>
 				
-				<li><a href="#">Azienda</a>
-                    <ul class="w-200">
-                        <li><a href="<?php echo site_url('azienda/1'); ?>">versione 1</a></li>
-                        <li><a href="<?php echo site_url('azienda/2'); ?>">versione 2</a></li>
-                    </ul>
-                </li>
+				<li><a href="<?php echo site_url('azienda'); ?>">Azienda</a></li>
                 
                 <li class="zm-content-full"><a>Prodotti</a>
                     <div>
