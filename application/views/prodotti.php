@@ -17,7 +17,8 @@
         	<div class="row">
             
 				<div class="col-sm-5">
-                	
+                	<img class="img-responsive" src="<?php echo base_url(); ?>assets/img/prodotti/<?php echo $prodotto->img; ?>" alt="<?php echo $prodotto->nome; ?>">
+                    <!--
                     <div class="owl-carousel slider">
                         <div class="item">
                             <img src="<?php echo base_url(); ?>assets/img/shop_images/image_01_538x548.jpg" alt="">
@@ -28,8 +29,8 @@
                         <div class="item">
                             <img src="<?php echo base_url(); ?>assets/img/shop_images/image_11_538x548.jpg" alt="">
                         </div>
-                    </div><!-- end owl-carousel -->
-
+                    </div>
+					<!-- end owl-carousel -->
                 </div>
                 
                 <div class="col-sm-7">
