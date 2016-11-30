@@ -1,5 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
+	<?php 
+		$prod=$menuprod[0];
+		$maxprod=$menuprod[1];
+		$totcat=$menuprod[2];
+	?>
 	<!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
     	<div class="container">
@@ -30,37 +35,35 @@
                 
                 <li class="zm-content-full"><a>Prodotti</a>
                     <div>
-                        <div class="zm-row">
-                            <div class="zm-col c-3">
-                                <ul>
-                                    <li><a href="#">Cat 1 Prodotto 1</a></li>                                    
-                                    <li><a href="#">Cat 1 Prodotto 2</a></li>                                    
-                                    <li><a href="#">Cat 1 Prodotto 3</a></li>                                                                      
-                                </ul>
-                            </div>
-                            <div class="zm-col c-3">
-                                <ul>
-                                    <li><a href="#">Cat 2 Prodotto 1</a></li>                                    
-                                    <li><a href="#">Cat 2 Prodotto 2</a></li>                                    
-                                    <li><a href="#">Cat 2 Prodotto 3</a></li>                                    
-                                    <li><a href="#">Cat 1 Prodotto 4</a></li>                                    
-                                </ul>
-                            </div>
-                            <div class="zm-col c-3">
-                                <ul>
-                                    <li><a href="#">Cat 3 Prodotto 1</a></li>                                    
-                                    <li><a href="#">Cat 3 Prodotto 2</a></li>                                    
-                                    <li><a href="#">Cat 3 Prodotto 3</a></li>                                    
-                                    <li><a href="#">Cat 3 Prodotto 4</a></li>                                    
-                                    <li><a href="#">Cat 3 Prodotto 5</a></li>                                    
-                                </ul>
-                            </div>
-                            <div class="zm-col c-3">
-                                <ul class="last">
-                                    <li><a href="#">Cat 4 Prodotto 1</a></li>                                    
-                                    <li><a href="#">Cat 4 Prodotto 2</a></li>                                                                       
-                                </ul>
-                            </div>
+                        <div class="row zm-row">
+						<?php
+							$ccat=0;
+							foreach ($prod as $val) : ?>
+							<div class="zm-col c-2">
+								<?php $ccat++; ?>
+								<?php if ($ccat==$totcat) : ?>
+								<ul class="last">									
+								<?php else : ?>
+								<ul>
+								<?php endif ?>
+									<li class="sub_title"><?php echo $val->nome; ?></li>
+									<?php 
+										$countp=0;
+										foreach ($val->prodotti as $valp) 
+									: ?>
+									<li><a href="<?php echo site_url($valp->link); ?>"><?php echo $valp->nome; ?></a></li>  
+									<?php 
+										$countp++;
+										endforeach 
+									?>
+									<?php if ($maxprod - $countp > 0) : ?>
+										<?php for ($x=1;$x<=$maxprod - $countp;$x++) : ?>
+										<li></li>
+										<?php endfor ?>										
+									<?php endif ?>
+								</ul>
+							</div>
+						<?php endforeach ?>
                         </div>
                     </div>
                 </li>
