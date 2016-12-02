@@ -38,8 +38,9 @@
                 		<span class="product-price-single-off">&euro;45.00</span>
                 		<span class="product-price-single">&euro;45.00</span>
                     </div>
-                    <div class="description margin-bottom-45">
+                    <div class="description margin-bottom-60">
                     	<p><?php echo $prodotto->descr; ?></p>
+                    	<p><a href="http://<?php echo $prodotto->ext_link; ?>" target="_blank"><?php echo $prodotto->ext_link; ?></a></p>
                     </div>
                     <ul class="margin-bottom-45 list-unstyled product-desciption">
                     	<li style="display:none"><b>Category:</b> <a href="#">other</a></li>
