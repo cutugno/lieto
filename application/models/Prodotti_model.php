@@ -18,6 +18,7 @@
 			
 			$ids=array("2","3");
 			$query=$this->db->where_in('visible', $ids)
+							->order_by('nome','ASC')
 							->get('prodotti');
 			return $query->result();
 			
