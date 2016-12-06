@@ -15,10 +15,28 @@ class Home extends CI_Controller {
 			$dati['menuprod']=$this->common->buildProductsMenu($lang="it");
 			$this->session->menuprod=$dati['menuprod'];
 		}
+		
+		// dati partner
+		$partner=array();
+		array_push($partner,array("castoldi.jpg","www.castoldijet.it"));
+		array_push($partner,array("ellebi.jpg","www.ellebi.com"));
+		array_push($partner,array("evinrude.jpg","www.evinrude.com"));
+		array_push($partner,array("fiart.jpg","www.fiart.com"));
+		array_push($partner,array("fnm.jpg","www.fnm-marine.com"));
+		array_push($partner,array("garmin.jpg","www.garmin.com"));
+		array_push($partner,array("joker-boat.jpg","www.jokerboat.it"));
+		array_push($partner,array("saver.jpg","www.saverimbarcazioni.com"));
+		array_push($partner,array("saver-mg.jpg","www.saverimbarcazioni.com"));
+		array_push($partner,array("sea-doo.jpg","www.sea-doo.com"));
+		array_push($partner,array("selva.jpg","www.selvamarine.com"));
+		array_push($partner,array("torqeedo.jpg","www.torqeedo.com"));
+		array_push($partner,array("volvo-penta.jpg","www.volvopenta.com"));
+		array_push($partner,array("yanmar.jpg","www.yanmaritalia.it"));
+		$dati['partner']=$partner;
 
 		$this->load->view('templates/start');
 		$this->load->view('templates/menu', $dati);
-		$this->load->view('home');
+		$this->load->view('home',$dati);
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');
 		// custom scripts

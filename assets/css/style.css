@@ -252,7 +252,7 @@ a:hover { color: #0465AB; text-decoration: none; }
 .container { position: relative; }
 .content { padding: 85px 0; position: relative; }
 .section-white {
-	background-color: #f9f9f9;
+	background-color: #fff;
 	background-repeat: repeat-x;
 }
 .section-grey {

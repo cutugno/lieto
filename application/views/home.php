@@ -296,36 +296,12 @@
 			<h2 class="margin-bottom-70">Area Partner</h2>
 			
 			<div class="owl-carousel partners">
+				<?php foreach ($partner as $val) : ?>
 				<div class="item">
-					<img src="<?php echo base_url(); ?>assets/img/clients/logo1.png" alt="" />
+					<a href="<?php echo "http://".$val[1]; ?>" target="_blank"><img src="<?php echo site_url('assets/img/partner/'.$val[0]); ?>" alt="<?php echo $val[1]; ?>" /></a>
 				</div>
-				<div class="item">
-					<img src="<?php echo base_url(); ?>assets/img/clients/logo2.png" alt="" />
-				</div>
-				<div class="item">
-					<img src="<?php echo base_url(); ?>assets/img/clients/logo3.png" alt="" />
-				</div>
-				<div class="item">
-					<img src="<?php echo base_url(); ?>assets/img/clients/logo4.png" alt="" />
-				</div>
-				<div class="item">
-					<img src="<?php echo base_url(); ?>assets/img/clients/logo5.png" alt="" />
-				</div>
-				<div class="item">
-					<img src="<?php echo base_url(); ?>assets/img/clients/logo1.png" alt="" />
-				</div>
-				<div class="item">
-					<img src="<?php echo base_url(); ?>assets/img/clients/logo2.png" alt="" />
-				</div>
-				<div class="item">
-					<img src="<?php echo base_url(); ?>assets/img/clients/logo3.png" alt="" />
-				</div>
-				<div class="item">
-					<img src="<?php echo base_url(); ?>assets/img/clients/logo4.png" alt="" />
-				</div>
-				<div class="item">
-					<img src="<?php echo base_url(); ?>assets/img/clients/logo5.png" alt="" />
-				</div>
+				<?php endforeach ?>
+				
 			</div><!-- end carousel -->
         </div><!-- end container -->
     </section>
