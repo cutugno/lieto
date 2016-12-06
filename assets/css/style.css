@@ -1076,6 +1076,6 @@ ul.product-desciption li a:hover { color: #393939; }
 /*------------------------------------------
 -- FOOTER ----------------------------------
 -------------------------------------------*/
-#footer { border-top: 1px solid #eeeeee; padding: 100px 0 25px 0; }
+#footer { border-top: 1px solid #eeeeee; padding: 100px 0 25px 0; background-color: #f9f9f9 }
 #footer .social-icons li { margin-right: 5px; width: 30px; }
 #footer .social-icons li:last-child { margin-right: 0px; }
