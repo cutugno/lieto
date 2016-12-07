@@ -50,6 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+$route['servizi/servizio2'] = 'servizi/index/2';
+$route['servizi/servizio3'] = 'servizi/index/3';
+$route['servizi/servizio4'] = 'servizi/index/4';
+$route['servizi/servizio5'] = 'servizi/index/5';
+$route['servizi/servizio6'] = 'servizi/index/6';
 
 $route['prodotti/(:any)/(:any)'] = 'prodotti/index/$1/$2';
 

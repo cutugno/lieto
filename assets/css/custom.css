@@ -138,6 +138,10 @@ li.sub_title {
 	font-weight: 700;
 }
 
-.description a {
+.description a, .single_box_right a {
 	font-weight: 700;
+}
+
+img.logo_small {
+	width: 280px;
 }

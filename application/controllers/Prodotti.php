@@ -32,4 +32,5 @@ class Prodotti extends CI_Controller {
 		$this->load->view('templates/close');
 		
 	}
+
 }

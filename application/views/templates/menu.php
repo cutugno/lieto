@@ -70,12 +70,12 @@
             
                 <li><a>Servizi</a>
                     <ul class="w-200">
-                        <li><a href="#">Servizio 1</a></li>
-                        <li><a href="#">Servizio 2</a></li>
-                        <li><a href="#">Servizio 3</a></li>
-                        <li><a href="#">Servizio 4</a></li>
-                        <li><a href="#">Servizio 5</a></li>
-                        <li><a href="#">Servizio 6</a></li>
+                        <li><a href="<?php echo site_url('servizi/assistenza'); ?>">Assistenza</a></li>
+                        <li><a href="<?php echo site_url('servizi/servizio2'); ?>">Servizio 2</a></li>
+                        <li><a href="<?php echo site_url('servizi/servizio3'); ?>">Servizio 3</a></li>
+                        <li><a href="<?php echo site_url('servizi/servizio4'); ?>">Servizio 4</a></li>
+                        <li><a href="<?php echo site_url('servizi/servizio5'); ?>">Servizio 5</a></li>
+                        <li><a href="<?php echo site_url('servizi/servizio6'); ?>">Servizio 6</a></li>
                     </ul>
                 </li>
                 

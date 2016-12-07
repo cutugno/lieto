@@ -38,7 +38,7 @@
     
     
     <!-- about us section SI -->    
-    <section class="content section-grey">
+    <section class="content section-white">
         <div class="container">
             <div class="row">
             	<div class="col-sm-8 col-sm-offset-2">
