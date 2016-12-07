@@ -16,7 +16,7 @@
 		lng: 13.567426,
 		title: 'Marker with InfoWindow',
 		infoWindow: {
-		  content: '<p>77 Mass. Ave., E14/E15 Seattle, MA 02139-4307 USA</p>'
+		  content: '<p>Mar Tirreno</p>'
 		}
 	  });
 	});
