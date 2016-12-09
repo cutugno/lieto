@@ -5,7 +5,7 @@
         	<div class="row">
 				<div class="col-sm-12">
 					<h2><?php // echo $prodotto->nome; ?></h2>
-					<h2>Servizio <?php echo $cat; ?></h2>
+					<h2>Servizi</h2>
 				</div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->

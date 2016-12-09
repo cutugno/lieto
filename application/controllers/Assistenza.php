@@ -1,33 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Servizi extends CI_Controller {
+class Assistenza extends CI_Controller {
 
 	public function index() {
-		
-		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
-
-		/* COMMON */
-	
-		// dati menu prodotti
-		if ($this->session->menuprod){
-			$dati['menuprod']=$this->session->menuprod;
-		}else{
-			$dati['menuprod']=$this->common->buildProductsMenu($lang="it");
-			$this->session->menuprod=$dati['menuprod'];
-		}
-		
-		$this->load->view('templates/start');
-		$this->load->view('templates/menu', $dati);
-		$this->load->view('servizi');
-		$this->load->view('templates/footer');
-		$this->load->view('templates/scripts');
-		// custom scripts
-		$this->load->view('templates/close');
-		
-	}
-	
-	public function assistenza() {
 		
 		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
 		$dati['cat']="ASSISTENZA";

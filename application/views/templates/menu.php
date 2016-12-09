@@ -58,7 +58,7 @@
 									?>
 									<?php if ($maxprod - $countp > 0) : ?>
 										<?php for ($x=1;$x<=$maxprod - $countp;$x++) : ?>
-										<li></li>
+										<li class="hidden-sm"></li>
 										<?php endfor ?>										
 									<?php endif ?>
 								</ul>
@@ -68,16 +68,9 @@
                     </div>
                 </li>
             
-                <li><a>Servizi</a>
-                    <ul class="w-200">
-                        <li><a href="<?php echo site_url('servizi/assistenza'); ?>">Assistenza</a></li>
-                        <li><a href="<?php echo site_url('servizi/servizio2'); ?>">Servizio 2</a></li>
-                        <li><a href="<?php echo site_url('servizi/servizio3'); ?>">Servizio 3</a></li>
-                        <li><a href="<?php echo site_url('servizi/servizio4'); ?>">Servizio 4</a></li>
-                        <li><a href="<?php echo site_url('servizi/servizio5'); ?>">Servizio 5</a></li>
-                        <li><a href="<?php echo site_url('servizi/servizio6'); ?>">Servizio 6</a></li>
-                    </ul>
-                </li>
+                <li><a href="<?php echo site_url('servizi'); ?>">Servizi</a></li>
+                
+                <li><a href="<?php echo site_url('assistenza'); ?>">Assistenza</a></li>
                 
                 <li><a href="<?php echo site_url('usato'); ?>">Usato</a></li>
                 
