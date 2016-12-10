@@ -145,3 +145,7 @@ li.sub_title {
 img.logo_small {
 	width: 220px;
 }
+
+.section-parallax {
+	background-position: 0px !important;
+}
