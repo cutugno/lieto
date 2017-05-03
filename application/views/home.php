@@ -106,50 +106,60 @@
 			<h2 class="margin-bottom-70">Servizi</h2>
 			
         	<div class="row">
-                <div class="col-md-3 col-sm-6">
+                <div class="five-cols col-md-1">
                     <div class="single_box">
                         <div class="icons_introimg image-icon box dark">
                             <i class="pe-7s-monitor"></i>
                         </div>
-                        <h6>Servizio 1</h6>
-                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
+                        <h6>Re-fitting<br><br></h6>
+                        <p class="introtext">Trattamenti delle carene, antivegetativa, antiosmosi, verniciatura, gelcoattatura e lavorazione componenti in legno, teak incluso.</p>
                     </div>
                 </div>
                 
-                <div class="col-md-3 col-sm-6">
+                <div class="five-cols col-md-1">
                     <div class="single_box">
                         <div class="icons_introimg image-icon box dark">
                             <i class="pe-7s-light"></i>
                         </div>
-                        <h6>Servizio 2</h6>
-                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
+                        <h6>Realizzazione impianti</h6>
+                        <p class="introtext">Impianti elettrici, installazioni eliche di prua, impianti aria condizionata, strumentazione elettronica di bordo, di ogni genere e tipo.</p>
                     </div>
                 </div>
                 
-                <div class="col-md-3 col-sm-6">
+                <div class="five-cols col-md-1">
                     <div class="single_box">
                         <div class="icons_introimg image-icon box dark">
                             <i class="pe pe-7s-look"></i>
                         </div>
-                        <h6>Servizio 3</h6>
-                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
+                        <h6>Rimessaggio invernale</h6>
+                        <p class="introtext">Invernaggio delle imbarcazioni e, per queste, servizio di controllo delle scadenze di bordo (documentazione, dotazioni, etc).</p>
                     </div>
                 </div>
                 
-                <div class="col-md-3 col-sm-6">
+                <div class="five-cols col-md-1">
                     <div class="single_box">
                         <div class="icons_introimg image-icon box dark">
                             <i class="pe-7s-like"></i>
                         </div>
-                        <h6>Servizio 4</h6>
-                        <p class="introtext">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip minim veniam ex ea commodo consequat.</p>
+                        <h6>Varo ed Alaggio<br><br></h6>
+                        <p class="introtext">Servizio di recupero imbarcazioni con carrelli o camion, varo ed alaggio con gru da 35T per scafi fino a 15 metri.</p>
+                    </div>
+                </div>
+                
+                 <div class="five-cols col-md-1">
+                    <div class="single_box">
+                        <div class="icons_introimg image-icon box dark">
+                            <i class="pe-7s-like"></i>
+                        </div>
+                        <h6>Ricambi ed accessori</h6>
+                        <p class="introtext">Viene offerto servizio di ricambi per motori marini, moto d’acqua, accessoristica e tutte le dotazioni di bordo obbligatorie.</p>
                     </div>
                 </div>
                 
             </div><!-- end row -->
             <div class="row">
 				<div class="col-xs-12 text-center">
-					<a href="#" class="btn btn-lg ju-btn-default">Scopri tutti i servizi</a>
+					<a href="<?php echo site_url('servizi') ?>" class="btn btn-lg ju-btn-default">Scopri tutti i servizi</a>
 				</div>
             </div>
         </div><!-- end container -->
@@ -159,7 +169,7 @@
 
     
     <!-- IN EVIDENZA -->
-    <section class="content section-white">
+    <section class="content section-white" style="display:none">
     	<div class="container">
 			
 			<h2 class="margin-bottom-70">In evidenza</h2>

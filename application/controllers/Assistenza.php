@@ -16,6 +16,9 @@ class Assistenza extends CI_Controller {
 		}
 		$dati['assistenza']=$assistenza;
 		
+		// banner assistenza
+		$dati['banner']=site_url('assets/img/banner/assistenza.jpg');
+		
 		/* COMMON */
 		
 		// dati menu prodotti

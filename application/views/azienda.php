@@ -50,18 +50,27 @@
                     <div class="owl-carousel slider">
           
                         <div class="item">
-                            <img src="<?php echo base_url(); ?>assets/img/slider/shutterstock_196849961.jpg" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/azienda/carousel_01.jpg" alt="Nautica Lieto - Azienda">
                         </div>
                         <div class="item">
-                            <img src="<?php echo base_url(); ?>assets/img/slider/shutterstock_206643561.jpg" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/azienda/carousel_02.jpg" alt="Nautica Lieto - Azienda">
                         </div>
                         <div class="item">
-                            <img src="<?php echo base_url(); ?>assets/img/slider/shutterstock_196849961.jpg" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/azienda/carousel_03.jpg" alt="Nautica Lieto - Azienda">
                         </div>
                         <div class="item">
-                            <img src="<?php echo base_url(); ?>assets/img/slider/shutterstock_206643561.jpg" alt="">
+                            <img src="<?php echo base_url(); ?>assets/img/azienda/carousel_04.jpg" alt="Nautica Lieto - Azienda">
                         </div>
-                        
+                        <div class="item">
+                            <img src="<?php echo base_url(); ?>assets/img/azienda/carousel_05.jpg" alt="Nautica Lieto - Azienda">
+                        </div>
+                        <div class="item">
+                            <img src="<?php echo base_url(); ?>assets/img/azienda/carousel_06.jpg" alt="Nautica Lieto - Azienda">
+                        </div>
+                        <div class="item">
+                            <img src="<?php echo base_url(); ?>assets/img/azienda/carousel_07.jpg" alt="Nautica Lieto - Azienda">
+                        </div>
+                                             
                     </div>
                     <!-- /versione 1 -->
                     
