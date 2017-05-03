@@ -17,6 +17,13 @@
 							->get('usato');
 			return $query->row();
 		}
+		
+		public function getUsatoPics($id) {
+			$query=$this->db->where('id_usato',$id)
+							->order_by('pic')
+							->get('usato_pics');
+			return $query->result();
+		}
 	
 	}
 	

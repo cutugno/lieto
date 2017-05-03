@@ -57,12 +57,14 @@ class Usato extends CI_Controller {
 		$usato->descr=$descr->$lang;
 		$usato->tecniche=$tecniche->$lang;
 		$usato->accessori=$accessori->$lang;
-		// scan dir per immagini carosello 
-		$images=scandir("/var/www/lieto/assets/img/usato/".$usato->url);
+		// immagini carosello 
 		$usato->images=array();
-		foreach ($images as $image) {
-			if (substr($image,0,1) != ".") $usato->images[]=site_url('assets/img/usato/'.$usato->url.'/'.$image);
+		if ($images=$this->usato_model->getUsatoPics($usato->id)) {
+			foreach ($images as $val) {
+				$usato->images[]=site_url('assets/img/usato/'.$usato->url.'/'.$val->pic);
+			}
 		}
+	
 		$dati['usato']=$usato;
 		
 		$this->load->view('templates/start');
