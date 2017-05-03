@@ -97,7 +97,7 @@ $db['default'] = array(
 
 $db['online'] = array(
 	'dsn'	=> '',
-	'hostname' => '46.28.2.49',
+	'hostname' => '46.254.37.47',
 	'username' => 'nautica2_admin',
 	'password' => 'Aleare26',
 	'database' => 'nautica2_lieto',

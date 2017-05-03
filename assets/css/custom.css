@@ -179,3 +179,7 @@ li.sub_title {
 img.logo_small {
 	width: 220px;
 }
+
+.section-parallax {
+	background-position: 50% 0px !important;
+}
