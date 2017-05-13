@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $route['usato/(:any)'] = 'usato/single/$1';
+$route['offerte/(:any)'] = 'offerte/single/$1';
 
 $route['servizi/servizio2'] = 'servizi/index/2';
 $route['servizi/servizio3'] = 'servizi/index/3';

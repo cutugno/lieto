@@ -74,7 +74,7 @@
                 
                 <li><a href="<?php echo site_url('usato'); ?>">Usato</a></li>
                 
-                <li><a href="#">Offerte</a></li>
+                <li><a href="<?php echo site_url('offerte'); ?>">Offerte</a></li>
                
                 <li><a href="#">News</a></li>
                 

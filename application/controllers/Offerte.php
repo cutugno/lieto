@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usato extends CI_Controller {
+class Offerte extends CI_Controller {
 
 	public function index() {
 
-		/* LISTA USATI */
+		/* LISTA OFFERTE */
 		
 		// dati menu prodotti
 		if ($this->session->menuprod){
@@ -15,27 +15,28 @@ class Usato extends CI_Controller {
 			$this->session->menuprod=$dati['menuprod'];
 		}
 		
-		// usati
-		if ($usati=$this->usato_model->getUsati()) {
-			$dati['usati']=$usati;
+		// offerte
+		if ($offerte=$this->offerte_model->getOfferte()) {
+			$dati['offerte']=$offerte;
 		}else{
-			$dati['usati']="";
+			$dati['offerte']="";
 		}
 		
 		$this->load->view('templates/start');
 		$this->load->view('templates/menu', $dati);
-		$this->load->view('usato/list');
+		$this->load->view('offerte/list');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');
 		// custom scripts
 		$this->load->view('templates/close');
 	}
 	
-	public function single ($usato) {
+	public function single ($offerta) {
 		
-		/* SINGOLO USATO */
+		/* SINGOLA OFFERTA */
 		
-		if (!isset($usato)) redirect('usato');
+		
+		if (!isset($offerta)) redirect('offerte');
 		
 		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
 		
@@ -47,27 +48,27 @@ class Usato extends CI_Controller {
 			$this->session->menuprod=$dati['menuprod'];
 		}
 		
-		// dati singolo usato 
-		if (!$usato=$this->usato_model->getUsatobyUrl($usato)) show_404();	
-		$descr=json_decode($usato->descr);
-		$tecniche=json_decode($usato->tecniche);
-		$accessori=json_decode($usato->accessori);
-		$usato->descr=$descr->$lang;
-		$usato->tecniche=$tecniche->$lang;
-		$usato->accessori=$accessori->$lang;
+		// dati singola offerta
+		if (!$offerta=$this->offerte_model->getOffertabyUrl($offerta)) show_404();	
+		$descr=json_decode($offerta->descr);
+		$tecniche=json_decode($offerta->tecniche);
+		$accessori=json_decode($offerta->accessori);
+		$offerta->descr=$descr->$lang;
+		$offerta->tecniche=$tecniche->$lang;
+		$offerta->accessori=$accessori->$lang;
 		// immagini carosello 
-		$usato->images=array();
-		if ($images=$this->usato_model->getUsatoPics($usato->id)) {
+		$offerta->images=array();
+		if ($images=$this->offerte_model->getOffertaPics($offerta->id)) {
 			foreach ($images as $val) {
-				$usato->images[]=site_url('assets/img/usato/'.$usato->url.'/'.$val->pic);
+				$offerta->images[]=site_url('assets/img/offerte/'.$offerta->url.'/'.$val->pic);
 			}
 		}
 	
-		$dati['usato']=$usato;
+		$dati['offerta']=$offerta;
 		
 		$this->load->view('templates/start');
 		$this->load->view('templates/menu', $dati);
-		$this->load->view('usato/single');
+		$this->load->view('offerte/single');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');
 		// custom scripts
