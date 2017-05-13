@@ -59,7 +59,7 @@ class Usato extends CI_Controller {
 		$usato->images=array();
 		if ($images=$this->usato_model->getUsatoPics($usato->id)) {
 			foreach ($images as $val) {
-				$usato->images[]=site_url('assets/img/usato/'.$usato->url.'/'.$val->pic);
+				$usato->images[]=site_url('assets/img/usato/'.$val->pic);
 			}
 		}
 	

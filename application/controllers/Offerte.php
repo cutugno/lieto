@@ -60,7 +60,7 @@ class Offerte extends CI_Controller {
 		$offerta->images=array();
 		if ($images=$this->offerte_model->getOffertaPics($offerta->id)) {
 			foreach ($images as $val) {
-				$offerta->images[]=site_url('assets/img/offerte/'.$offerta->url.'/'.$val->pic);
+				$offerta->images[]=site_url('assets/img/offerte/'.$val->pic);
 			}
 		}
 	
