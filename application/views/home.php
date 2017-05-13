@@ -334,7 +334,7 @@
 									<i class="pe-7s-map-marker"></i>
 								</div>
 								<h6>Indirizzo</h6>
-								<p>Lungomare Caboto, Gaeta (LT)</p>
+								<p>Lungomare Caboto, 23/25<br />04024 Gaeta (LT)</p>
 							</div>
 						</div>
 						
@@ -343,8 +343,8 @@
 								<div class="icons_introimg image-icon box default">
 									<i class="pe-7s-call"></i>
 								</div>
-								<h6>Telefono</h6>
-								<p>+39 329 45 55 555 <br /> +39 0771 77 77 77</p>
+								<h6>RECAPITI</h6>
+								<p>Tel: +39 0771 472017<br /> Fax: +39 0771 310632</p>
 							</div>
 						</div>
 						
@@ -354,7 +354,7 @@
 									<i class="pe-7s-mail"></i>
 								</div>
 								<h6>E-mail</h6>
-								<p>info@info.com <br /> info@info.com</p>
+								<p><a href="mailto:info@nauticalieto.it">info@nauticalieto.it</a></p>
 							</div>
 						</div>
                     </div><!-- end row-->
