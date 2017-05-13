@@ -109,7 +109,7 @@
                 <div class="five-cols col-md-1">
                     <div class="single_box">
                         <div class="icons_introimg image-icon box dark">
-                            <i class="pe-7s-monitor"></i>
+                            <img src="<?php echo site_url('assets/img/home_refitting.png') ?>" />
                         </div>
                         <h6>Re-fitting<br><br></h6>
                         <p class="introtext">Trattamenti delle carene, antivegetativa, antiosmosi, verniciatura, gelcoattatura e lavorazione componenti in legno, teak incluso.</p>
@@ -119,7 +119,7 @@
                 <div class="five-cols col-md-1">
                     <div class="single_box">
                         <div class="icons_introimg image-icon box dark">
-                            <i class="pe-7s-light"></i>
+                            <img src="<?php echo site_url('assets/img/home_impianti.png') ?>" />
                         </div>
                         <h6>Realizzazione impianti</h6>
                         <p class="introtext">Impianti elettrici, installazioni eliche di prua, impianti aria condizionata, strumentazione elettronica di bordo, di ogni genere e tipo.</p>
@@ -129,7 +129,7 @@
                 <div class="five-cols col-md-1">
                     <div class="single_box">
                         <div class="icons_introimg image-icon box dark">
-                            <i class="pe pe-7s-look"></i>
+                            <img src="<?php echo site_url('assets/img/home_rimessaggio.png') ?>" />
                         </div>
                         <h6>Rimessaggio invernale</h6>
                         <p class="introtext">Invernaggio delle imbarcazioni e, per queste, servizio di controllo delle scadenze di bordo (documentazione, dotazioni, etc).</p>
@@ -139,7 +139,7 @@
                 <div class="five-cols col-md-1">
                     <div class="single_box">
                         <div class="icons_introimg image-icon box dark">
-                            <i class="pe-7s-like"></i>
+                            <img src="<?php echo site_url('assets/img/home_varo.png') ?>" />
                         </div>
                         <h6>Varo ed Alaggio<br><br></h6>
                         <p class="introtext">Servizio di recupero imbarcazioni con carrelli o camion, varo ed alaggio con gru da 35T per scafi fino a 15 metri.</p>
@@ -149,9 +149,9 @@
                  <div class="five-cols col-md-1">
                     <div class="single_box">
                         <div class="icons_introimg image-icon box dark">
-                            <i class="pe-7s-like"></i>
+                            <img src="<?php echo site_url('assets/img/home_ricambi.png') ?>" />
                         </div>
-                        <h6>Ricambi ed accessori</h6>
+                        <h6>Ricambi e accessori</h6>
                         <p class="introtext">Viene offerto servizio di ricambi per motori marini, moto d’acqua, accessoristica e tutte le dotazioni di bordo obbligatorie.</p>
                     </div>
                 </div>
