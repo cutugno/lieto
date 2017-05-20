@@ -4,7 +4,7 @@
     	<div class="container white-content">
         	<div class="row">
 				<div class="col-sm-12">
-					<h2>Azienda</h2>
+					<h2>Contatti</h2>
 				</div>
             </div><!-- end row -->
         </div><!-- end container -->
