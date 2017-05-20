@@ -42,7 +42,7 @@
         	<div class="row">
             
             	<div class="col-sm-6 image-cover">
-                	<div class="image-cover-inner" style=" background-image: url(<?php echo base_url(); ?>assets/img/slider/shutterstock_196849961.jpg);"></div>
+                	<div class="image-cover-inner" style=" background-image: url(<?php echo base_url(); ?>assets/img/home_azienda.jpg);"></div>
                 </div>
                 
             	<div class="col-sm-6 skills-content content">
@@ -99,7 +99,7 @@
     <!-- /CHI SIAMO -->
     
     <!-- SERVIZI -->
-    <section class="content section-parallax parallax-bg-1" style="background-image: url(<?php echo base_url(); ?>assets/img/slider/shutterstock_196849961.jpg);">
+    <section class="content section-parallax parallax-bg-1" style="background-image: url(<?php echo base_url(); ?>assets/img/home_servizi.jpg);">
     	<div class="layer layer-white"></div>
     	<div class="container">
 			

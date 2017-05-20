@@ -38,20 +38,9 @@
                     <div class="description margin-bottom-45">
                     	<p><?php echo $offerta->descr ?></p>
                     </div>
-                    <h5>Caratteristiche tecniche</h5>
-                    <ul class="margin-bottom-45 list-unstyled product-desciption">
-					<?php if (!empty($offerta->tecniche)) : ?>
-						<?php foreach($offerta->tecniche as $car) : ?>
-						<li><?php echo $car ?></li>
-						<?php endforeach ?>
-					<?php endif ?>
-                    </ul>
-                    <?php if ($offerta->accessori != "") : ?>
-                    <h5>Accessori inclusi</h5>
-                    <?php echo $offerta->accessori ?>
-                    <?php endif ?>
                     <div class="margin-bottom-45"></div>
-                    <a href="#" class="btn btn-sm ju-btn-default dark">Richiedi maggiori informazioni</a>
+                    <a href="<?php echo site_url($offerta->link) ?>" class="btn btn-sm ju-btn-default dark" target=<?php echo $offerta->target ?>><?php echo $offerta->btn_txt ?></a>
+              
                     
                 </div>
                 

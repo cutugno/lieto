@@ -76,11 +76,11 @@
                 
                 <li><a href="<?php echo site_url('offerte'); ?>">Offerte</a></li>
                
-                <li><a href="#">News</a></li>
+                <li><a href="<?php echo site_url('news'); ?>">News</a></li>
                 
-                <li><a href="#">Contatti</a></li>
+                <li><a href="<?php echo site_url('contatti'); ?>">Contatti</a></li>
                 
-                <li><a href="#">Richiedi Preventivo</a></li>
+                <li><a href="<?php echo site_url('richiedi_preventivo'); ?>">Richiedi Preventivo</a></li>
 			</ul>
     	</div><!-- end container -->
     </nav>
