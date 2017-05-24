@@ -1,38 +1,28 @@
 	<!--Slider -->
 	<ul class="bxslider">
-        <li class="small" style="background-image: url(<?php echo base_url(); ?>assets/img/slider/header_01.jpg);">
+        <li class="small" style="background-image: url(<?php echo base_url(); ?>assets/img/home_saver750WA.jpg);">
          	<div class="container text-left">
 				<div class="row">
 					<div class="col-sm-6 col-md-5 col-md-offset-6 col-sm-offset-5">
-						<h3 style="color: #393939;">INFO PRODOTTO 1</h3>
-						<p style="color: #393939; font-size: 19px; line-height: 27px;">Ea nec enim accumsan, ut prima blandit mel, labores nonumes detraxit an sed. Omnis malis propriae an sed, eu mea erat utinam meliore, inciderint philosophia usu ne.</p>
-						<a href="#" class="btn btn-primary ju-btn-default btn-filled-2">Scopri dettagli</a>
+						<h3 style="color: #393939;">SAVER 750 WA</h3>
+						<p style="color: #393939; font-size: 19px; line-height: 27px;">Linee morbide ed avvolgenti per un modello sfruttabile sia di giorno che di notte, grazie alla sua configurazione degli spazi ed alla cabina sotto l’area prendisole di prua.</p>
+						<a href="<?php echo site_url('prodotti/imbarcazioni/saver') ?>" class="btn btn-primary ju-btn-default btn-filled-2">Scopri dettagli</a>
 					</div><!-- end col-sm-10 -->
 				</div><!-- end row -->
             </div><!-- end container-->
         </li>
-        <li class="small" style="background-image: url(<?php echo base_url(); ?>assets/img/slider/header_02.jpg);">
+        <li class="small" style="background-image: url(<?php echo base_url(); ?>assets/img/home_evinrudeG2.jpg);">
          	<div class="container text-left">
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-1">
-						<h3 style="color: #393939;">INFO PRODOTTO 2</h3>
-						<p style="color: #393939; font-size: 19px; line-height: 27px;">Ea nec enim accumsan, ut prima blandit mel, labores nonumes detraxit an sed. Omnis malis propriae an sed, eu mea erat utinam meliore, inciderint philosophia usu ne.</p>
-						<a href="#" class="btn btn-primary ju-btn-default btn-filled-2">Scopri dettagli</a>
+						<h3 style="color: #393939;">EVINRUDE G2</h3>
+						<p style="color: #393939; font-size: 19px; line-height: 27px;">300 hp, il top di questa nuova gamma dalle prestazioni eccezionali, grazie al PurePower, all’i-Trim, al servosterzo dinamico ed alla scatola ingranaggi SLX.</p>
+						<a href="<?php echo site_url('prodotti/motori-fuoribordo/brp-evinrude-johnson') ?>" class="btn btn-primary ju-btn-default btn-filled-2">Scopri dettagli</a>
 					</div><!-- end col-sm-10 -->
 				</div><!-- end row -->
             </div><!-- end container-->
         </li>
-        <li class="small" style="background-image: url(<?php echo base_url(); ?>assets/img/slider/header_03.jpg);">
-         	<div class="container text-center">
-				<div class="row">
-					<div class="col-sm-8 col-sm-offset-2">
-						<h3 style="color: #393939;">Richiedi un preventivo</h3>
-						<p style="color: #393939; font-size: 19px; line-height: 27px;">Ea nec enim accumsan, ut prima blandit mel, labores nonumes detraxit an sed. Omnis malis propriae an sed, eu mea erat utinam meliore, inciderint philosophia usu ne.</p>
-						<a href="#" class="btn btn-primary ju-btn-default btn-filled-2">Contattaci</a>
-					</div><!-- end col-sm-10 -->
-				</div><!-- end row -->
-            </div><!-- end container-->
-        </li>
+ 
     </ul>
 	<!-- end slider -->
 	
@@ -89,14 +79,14 @@
 								</div>
 							</div>
                         </div><!-- end row -->
-                        <a href="#" class="btn btn-primary btn-filled">Richiedi un nostro gadget</a>
+                        <a href="<?php echo site_url('contatti') ?>" class="btn btn-primary btn-filled">Richiedi un nostro gadget</a>
                     </div>
                 </div>
                 
             </div><!-- end row -->
         </div><!-- container-fluid -->
     </section>
-    <!-- /CHI SIAMO -->
+    <!-- / AZIENDA -->
     
     <!-- SERVIZI -->
     <section class="content section-parallax parallax-bg-1" style="background-image: url(<?php echo base_url(); ?>assets/img/home_servizi.jpg);">
@@ -164,113 +154,7 @@
             </div>
         </div><!-- end container -->
     </section>
-    <!-- /SERVIZI -->
-    
-
-    
-    <!-- IN EVIDENZA -->
-    <section class="content section-white" style="display:none">
-    	<div class="container">
-			
-			<h2 class="margin-bottom-70">In evidenza</h2>
-			
-        	<div class="row">
-				<!--
-                <div class="col-sm-12">            
-                    <div id="filters-container" class="cbp-l-filters-button">
-                        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
-                            All <div class="cbp-filter-counter"></div>
-                        </div>
-                        <div data-filter=".identity" class="cbp-filter-item">
-                            Identity <div class="cbp-filter-counter"></div>
-                        </div>
-                        <div data-filter=".web-design" class="cbp-filter-item">
-                            Web Design <div class="cbp-filter-counter"></div>
-                        </div>
-                        <div data-filter=".graphic" class="cbp-filter-item">
-                            Graphic <div class="cbp-filter-counter"></div>
-                        </div>
-                        <div data-filter=".logo" class="cbp-filter-item">
-                            Logo <div class="cbp-filter-counter"></div>
-                        </div>
-                    </div>
-                    -->
-            
-                    <div id="grid-container" class="cbp-l-grid-projects">
-                        <ul>
-                            <li class="cbp-item offerte">
-                                <div class="cbp-caption">
-                                    <div class="cbp-caption-defaultWrap">
-                                        <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/usato.jpg" alt="Gommone a chiglia rigida Seapower GT 550 - Usato Nautica Lieto">
-                                    </div>
-                                    <div class="cbp-caption-activeWrap">
-                                        <div class="cbp-l-caption-alignCenter">
-                                            <div class="cbp-l-caption-body">
-                                                <a href="<?php echo site_url('usato'); ?>" class="cbp-l-caption-buttonLeft">dettagli</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cbp-l-grid-projects-title">Gommone a chiglia rigida Seapower GT 550</div>
-                                <div class="cbp-l-grid-projects-desc">Usato</div>
-                            </li>
-                            <li class="cbp-item web-design usato">
-                                <div class="cbp-caption">
-                                    <div class="cbp-caption-defaultWrap">
-                                        <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_02.jpg" alt="">
-                                    </div>
-                                    <div class="cbp-caption-activeWrap">
-                                        <div class="cbp-l-caption-alignCenter">
-                                            <div class="cbp-l-caption-body">
-                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">dettagli</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cbp-l-grid-projects-title">Nome prodotto</div>
-                                <div class="cbp-l-grid-projects-desc">Usato</div>
-                            </li>
-                            <li class="cbp-item graphic usato">
-                                <div class="cbp-caption">
-                                    <div class="cbp-caption-defaultWrap">
-                                        <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_03.jpg" alt="">
-                                    </div>
-                                    <div class="cbp-caption-activeWrap">
-                                        <div class="cbp-l-caption-alignCenter">
-                                            <div class="cbp-l-caption-body">
-                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">dettagli</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cbp-l-grid-projects-title">Nome prodotto</div>
-                                <div class="cbp-l-grid-projects-desc">Usato</div>
-                            </li>
-                            <li class="cbp-item web-design offerte">
-                                <div class="cbp-caption">
-                                    <div class="cbp-caption-defaultWrap">
-                                        <img src="<?php echo base_url(); ?>assets/img/portfolio-juice/image_04.jpg" alt="">
-                                    </div>
-                                    <div class="cbp-caption-activeWrap">
-                                        <div class="cbp-l-caption-alignCenter">
-                                            <div class="cbp-l-caption-body">
-                                                <a href="#" class="cbp-singlePage cbp-l-caption-buttonLeft">dettagli</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cbp-l-grid-projects-title">Nome prodotto</div>
-                                <div class="cbp-l-grid-projects-desc">Offerte</div>
-                            </li>
-                        </ul>
-                    </div>
-            
-                </div><!-- end col-sm-12 -->
-                
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </section>
-    <!-- /IN EVIDENZA-->
+    <!-- / SERVIZI -->
     
     <!-- NOTIZIE -->
     <section class="content section-colored">
@@ -280,18 +164,17 @@
 			
         	<div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
+					<?php if (is_array($news)) : ?>
                     <div class="owl-carousel slider">
+						<?php foreach ($news as $notizia) : ?>
                         <div class="item">
-                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                            Suspendisse sed mauris felis. Proin et mollis erat. Vestibulum lacus libero, hendrerit id pharetra sit amet, mattis et diam.<br /><br />
-                            <a href="#" class="btn btn-sm ju-btn-default dark">Leggi tutto</a>
+                            <p class="lead"><?php echo $notizia->titolo ?></p>
+                            <?php echo $notizia->abst ?><br /><br />
+                            <a href="<?php echo site_url('news/'.$notizia->url) ?>" class="btn btn-sm ju-btn-default dark">Leggi tutto</a>
                         </div>
-                        <div class="item">
-							<p class="lead">Suspendisse ut nibh aliquam, egestas lectus eget, tincidunt libero</p>
-                            Sed interdum sem magna, quis laoreet massa rhoncus id. Duis semper justo arcu, id ornare quam pretium sed.<br /><br />
-                            <a href="#" class="btn btn-sm ju-btn-default dark">Leggi tutto</a>
-                        </div>
+                        <?php endforeach ?>
                     </div>
+                    <?php endif ?>
                 </div><!-- end col -->
             </div><!-- end row -->
         </div><!-- end container -->
@@ -318,7 +201,7 @@
     <!-- /PARTNER -->
     
     <!-- CONTATTI -->
-    <section class="content section-parallax parallax-bg-1" style="background-image: url('<?php echo base_url(); ?>assets/img/slider/shutterstock_196849961.jpg'); background-position: 50% 41px;">
+    <section class="content section-parallax parallax-bg-1" style="background-image: url('<?php echo site_url('assets/img/home_recapiti.jpg') ?>'); background-position: 50% 41px;">
     	<div class="layer layer-white"></div>
     	<div class="container">
         	<div class="row">

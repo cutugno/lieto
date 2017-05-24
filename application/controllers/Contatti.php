@@ -20,7 +20,7 @@ class Contatti extends CI_Controller {
 		$this->load->view('contatti');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');
-		$this->load->view('contatti_scripts');
+		$this->load->view('scripts/contatti');
 		$this->load->view('templates/close');
 	}
 }

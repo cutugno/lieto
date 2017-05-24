@@ -37,7 +37,7 @@
                                 </a>
                                 <a href="<?php echo site_url('news/'.$notizia->url) ?>" target="_self" class="cbp-l-grid-blog-title"><?php echo $notizia->titolo ?></a>
                                 <div class="cbp-l-grid-blog-date"><?php echo $notizia->ts ?></div>
-                                <div class="cbp-l-grid-blog-desc"><?php echo $notizia->abstract ?></div>
+                                <div class="cbp-l-grid-blog-desc"><?php echo $notizia->abst ?>...</div>
                             </li>   
                             <!-- / loop news -->
                             <?php endforeach ?>                     

@@ -18,12 +18,12 @@
 			return $query->row();
 		}
 		
-		public function getUsatoPics($id) {
-			$query=$this->db->where('id_usato',$id)
-							->order_by('pic')
-							->get('usato_pics');
+		public function getRecentNews($limit) {
+			$query=$this->db->order_by('ts', 'DESC')
+							->limit($limit)
+							->get('news');
 			return $query->result();
 		}
-	
+		
 	}
 	

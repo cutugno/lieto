@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class News extends CI_Controller {
 
 	public function index() {
+		
+		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
 
 		/* LISTA NEWS */
 		
@@ -19,6 +21,10 @@ class News extends CI_Controller {
 		if ($news=$this->news_model->getNews()) {
 			foreach ($news as $key=>$val) {
 				$news[$key]->ts=convertDateTime($val->ts);
+				$titolo=json_decode($val->titolo);
+				$abst=json_decode($val->abst);
+				$news[$key]->titolo=$titolo->$lang;
+				$news[$key]->abst=$abst->$lang;
 			}
 			$dati['news']=$news;
 		}else{
@@ -37,8 +43,7 @@ class News extends CI_Controller {
 	public function single ($news) {
 		
 		/* SINGOLA NEWS */
-		
-		
+				
 		if (!isset($news)) redirect('news');
 		
 		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
@@ -54,6 +59,8 @@ class News extends CI_Controller {
 		// dati singola news
 		if (!$news=$this->news_model->getNewsbyUrl($news)) show_404();
 		$news->ts=convertDateTime($news->ts);
+		$news->titolo=json_decode($news->titolo); $news->titolo=$news->titolo->$lang;
+		$news->text=json_decode($news->text); $news->text=$news->text->$lang;
 	
 		$dati['news']=$news;
 		

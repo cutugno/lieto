@@ -51,7 +51,7 @@
                     <?php echo $usato->accessori ?>
                     <?php endif ?>
                     <div class="margin-bottom-45"></div>
-                    <a href="#" class="btn btn-sm ju-btn-default dark">Richiedi maggiori informazioni</a>
+                    <a href="<?php echo site_url('contatti') ?>" class="btn btn-sm ju-btn-default dark">Richiedi maggiori informazioni</a>
                     
                 </div>
                 

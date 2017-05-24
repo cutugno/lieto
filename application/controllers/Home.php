@@ -4,7 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Home extends CI_Controller {
 
 	public function index() {
-		$this->output->enable_profiler(FALSE);
+		
+		$this->output->enable_profiler(FALSE);		
+		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
 		
 		/* COMMON */
 	
@@ -33,7 +35,19 @@ class Home extends CI_Controller {
 		array_push($partner,array("volvo-penta.jpg","www.volvopenta.com"));
 		array_push($partner,array("yanmar.jpg","www.yanmaritalia.it"));
 		$dati['partner']=$partner;
-
+		
+		// news (prendo le 3 più recenti)
+		$news=$this->news_model->getRecentNews(3);
+		foreach ($news as $key=>$val) {
+			$titolo=json_decode($val->titolo);
+			$abst=json_decode($val->abst);
+			$news[$key]->titolo=$titolo->$lang;
+			$news[$key]->abst=$abst->$lang;
+		}
+		$dati['news']=$news;
+		//var_dump ($dati['news']);	
+		
+		
 		$this->load->view('templates/start');
 		$this->load->view('templates/menu', $dati);
 		$this->load->view('home',$dati);
