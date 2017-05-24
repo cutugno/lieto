@@ -21,7 +21,7 @@
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     	<li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li id="lingue"><small>Scegli lingua: <a href="#">ITA</a> - <a href="#">ENG</a></small></li>
+                        <li id="lingue"><small>Scegli lingua: <a href="<?php echo site_url('setlanguage/italian')?>">ITA</a> - <a href="<?php echo site_url('setlanguage/english')?>">ENG</a></small></li>
                     </ul>   
                 </div>
             </div>

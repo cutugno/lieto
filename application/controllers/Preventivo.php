@@ -5,6 +5,11 @@ class Preventivo extends CI_Controller {
 
 	public function index() {
 		
+		$lang=$this->session->lang ? $this->session->lang : "italian";	
+		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
+		$this->lang->load('custom',$lang);
+		$this->session->set_userdata('next','preventivo');
+		
 		/* COMMON */
 	
 		// dati menu prodotti

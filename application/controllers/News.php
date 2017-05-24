@@ -5,7 +5,10 @@ class News extends CI_Controller {
 
 	public function index() {
 		
-		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
+		$lang=$this->session->lang ? $this->session->lang : "italian";	
+		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
+		$this->lang->load('custom',$lang);
+		$this->session->set_userdata('next','news');
 
 		/* LISTA NEWS */
 		
@@ -46,7 +49,10 @@ class News extends CI_Controller {
 				
 		if (!isset($news)) redirect('news');
 		
-		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
+		$lang=$this->session->lang ? $this->session->lang : "italian";	
+		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
+		$this->lang->load('custom',$lang);
+		$this->session->set_userdata('next','news/'.$news);
 		
 		// dati menu prodotti
 		if ($this->session->menuprod){
@@ -59,8 +65,8 @@ class News extends CI_Controller {
 		// dati singola news
 		if (!$news=$this->news_model->getNewsbyUrl($news)) show_404();
 		$news->ts=convertDateTime($news->ts);
-		$news->titolo=json_decode($news->titolo); $news->titolo=$news->titolo->$lang;
-		$news->text=json_decode($news->text); $news->text=$news->text->$lang;
+		$news->titolo=json_decode($news->titolo); $news->titolo=$news->titolo->$jlang;
+		$news->text=json_decode($news->text); $news->text=$news->text->$jlang;
 	
 		$dati['news']=$news;
 		

@@ -5,6 +5,11 @@ class Offerte extends CI_Controller {
 
 	public function index() {
 
+		$lang=$this->session->lang ? $this->session->lang : "italian";	
+		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
+		$this->lang->load('custom',$lang);
+		$this->session->set_userdata('next','offerte');
+		
 		/* LISTA OFFERTE */
 		
 		// dati menu prodotti
@@ -38,7 +43,10 @@ class Offerte extends CI_Controller {
 		
 		if (!isset($offerta)) redirect('offerte');
 		
-		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
+		$lang=$this->session->lang ? $this->session->lang : "italian";	
+		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
+		$this->lang->load('custom',$lang);
+		$this->session->set_userdata('next','offerte/'.$offerta);
 		
 		// dati menu prodotti
 		if ($this->session->menuprod){
@@ -53,9 +61,9 @@ class Offerte extends CI_Controller {
 		$descr=json_decode($offerta->descr);
 		$tecniche=json_decode($offerta->tecniche);
 		$accessori=json_decode($offerta->accessori);
-		$offerta->descr=$descr->$lang;
-		$offerta->tecniche=$tecniche->$lang;
-		$offerta->accessori=$accessori->$lang;
+		$offerta->descr=$descr->$jlang;
+		$offerta->tecniche=$tecniche->$jlang;
+		$offerta->accessori=$accessori->$jlang;
 		// immagini carosello 
 		$offerta->images=array();
 		if ($images=$this->offerte_model->getOffertaPics($offerta->id)) {

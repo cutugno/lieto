@@ -5,8 +5,10 @@ class Home extends CI_Controller {
 
 	public function index() {
 		
-		$this->output->enable_profiler(FALSE);		
-		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
+		$lang=$this->session->lang ? $this->session->lang : "italian";	
+		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
+		$this->lang->load('custom',$lang);
+		$this->session->set_userdata('next',base_url());
 		
 		/* COMMON */
 	
@@ -41,12 +43,10 @@ class Home extends CI_Controller {
 		foreach ($news as $key=>$val) {
 			$titolo=json_decode($val->titolo);
 			$abst=json_decode($val->abst);
-			$news[$key]->titolo=$titolo->$lang;
-			$news[$key]->abst=$abst->$lang;
+			$news[$key]->titolo=$titolo->$jlang;
+			$news[$key]->abst=$abst->$jlang;
 		}
 		$dati['news']=$news;
-		//var_dump ($dati['news']);	
-		
 		
 		$this->load->view('templates/start');
 		$this->load->view('templates/menu', $dati);

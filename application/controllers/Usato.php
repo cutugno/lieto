@@ -4,6 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Usato extends CI_Controller {
 
 	public function index() {
+		
+		$lang=$this->session->lang ? $this->session->lang : "italian";	
+		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
+		$this->lang->load('custom',$lang);
+		$this->session->set_userdata('next','usato');
 
 		/* LISTA USATI */
 		
@@ -37,7 +42,10 @@ class Usato extends CI_Controller {
 		
 		if (!isset($usato)) redirect('usato');
 		
-		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
+		$lang=$this->session->lang ? $this->session->lang : "italian";	
+		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
+		$this->lang->load('custom',$lang);
+		$this->session->set_userdata('next','usato/single/'.$usato);
 		
 		// dati menu prodotti
 		if ($this->session->menuprod){
@@ -52,9 +60,9 @@ class Usato extends CI_Controller {
 		$descr=json_decode($usato->descr);
 		$tecniche=json_decode($usato->tecniche);
 		$accessori=json_decode($usato->accessori);
-		$usato->descr=$descr->$lang;
-		$usato->tecniche=$tecniche->$lang;
-		$usato->accessori=$accessori->$lang;
+		$usato->descr=$descr->$jlang;
+		$usato->tecniche=$tecniche->$jlang;
+		$usato->accessori=$accessori->$jlang;
 		// immagini carosello 
 		$usato->images=array();
 		if ($images=$this->usato_model->getUsatoPics($usato->id)) {

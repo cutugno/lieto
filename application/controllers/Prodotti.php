@@ -5,12 +5,15 @@ class Prodotti extends CI_Controller {
 
 	public function index($cat,$marchio) {
 		
-		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
+		$lang=$this->session->lang ? $this->session->lang : "italian";	
+		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
+		$this->lang->load('custom',$lang);
+		$this->session->set_userdata('next','prodotti/'.$cat.'/'.$marchio);
 		
 		// query caricamento dati prodotto
 		if (!$prodotto=$this->prodotti_model->getProductbyUrl($cat,$marchio)) show_404();	
 		$descr=json_decode($prodotto->descr);
-		$prodotto->descr=$descr->$lang;
+		$prodotto->descr=$descr->$jlang;
 		$dati['prodotto']=$prodotto;
 				
 		/* COMMON */

@@ -2,17 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Assistenza extends CI_Controller {
-
+	
 	public function index() {
 		
-		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
-		$dati['cat']="ASSISTENZA";
+		$lang=$this->session->lang ? $this->session->lang : "italian";	
+		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
+		$this->lang->load('custom',$lang);
+		$this->session->set_userdata('next','assistenza');
 		
 		// dati assistenza
 		$assistenza=$this->prodotti_model->getServices();
 		foreach ($assistenza as $key=>$val) {
 			$descr=json_decode($val->descr);
-			$assistenza[$key]->descr=$descr->$lang;
+			$assistenza[$key]->descr=$descr->$jlang;
 		}
 		$dati['assistenza']=$assistenza;
 		
