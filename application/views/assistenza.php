@@ -4,7 +4,7 @@
     	<div class="container white-content">
         	<div class="row">
 				<div class="col-sm-12">
-					<h2>Assistenza</h2>
+					<h2><?php echo $this->lang->line('custom_assistenza_01') ?></h2>
 				</div>
             </div><!-- end row -->
         </div><!-- end container -->
@@ -20,7 +20,7 @@
 				 <div class="col-xs-12">
 					<div class="left_icons style6">
 						<div class="single_box_right default">
-							<p>E’ uno dei punti di forza della Nautica Lieto, sia in ambito motoristico che per alcuni importanti brand d’imbarcazioni. Presso il centro verrà fornita assistenza meccanica sia su motori fuoribordo che entrobordo ed entrofuoribordo, oltre che sulle moto d’acqua e barche. Tra i prestigiosi marchi di cui siamo “Centro di Assistenza Autorizzato” vanno segnalati: EVINRUDE, JOHNSON e SELVA per ciò che concerne le motorizzazioni fuoribordo,  CASTOLDI, VOLVO PENTA, YANMAR e FNM per quelle entrobordo ed entrofuoribordo, SEA DOO per le moto d’acqua e, per ciò che concerne le imbarcazioni, viene fornita Assistenza Autorizzata su tutte le imbarcazioni a marchio FIART. Inoltre, attraverso dei centri affiliati e visibili sull’apposita mappa, la Nautica Lieto è in grado d’intervenire anche al difuori di Gaeta, coprendo così un ampio tratto di costa.</p>
+							<p><?php echo $this->lang->line('custom_assistenza_02') ?></p>
 						</div>
 						
 					</div>

@@ -3,7 +3,7 @@
     	<div class="container white-content">
         	<div class="row">
 				<div class="col-sm-12">
-					<h2>Offerte</h2>
+					<h2><?php echo $this->lang->line('custom_offerte_01') ?></h2>
 				</div>	
             </div><!-- end row -->
         </div><!-- end container -->
@@ -16,26 +16,6 @@
         	<div class="row">
 
                 <div class="col-sm-12">  
-					<!-- FILTRI NO -->          
-                    <div id="filters-container" class="cbp-l-filters-button" style="display:none">
-                        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
-                            All <div class="cbp-filter-counter"></div>
-                        </div>
-                        <div data-filter=".identity" class="cbp-filter-item">
-                            Identity <div class="cbp-filter-counter"></div>
-                        </div>
-                        <div data-filter=".web-design" class="cbp-filter-item">
-                            Web Design <div class="cbp-filter-counter"></div>
-                        </div>
-                        <div data-filter=".graphic" class="cbp-filter-item">
-                            Graphic <div class="cbp-filter-counter"></div>
-                        </div>
-                        <div data-filter=".logo" class="cbp-filter-item">
-                            Logo <div class="cbp-filter-counter"></div>
-                        </div>
-                    </div>
-                    <!-- /FILTRI -->
-            
                     <div id="grid-container" class="cbp-l-grid-projects">
 						<?php if ($offerte != "") : ?>
                         <ul>
@@ -44,12 +24,12 @@
                             <li class="cbp-item">
                                 <div class="cbp-caption">
                                     <div class="cbp-caption-defaultWrap">
-                                        <img src="<?php echo site_url('assets/img/offerte/'.$offerta->img_home) ?>" alt="">
+                                        <img src="<?php echo site_url('assets/img/offerte/'.$offerta->img_home) ?>" alt="<?php echo $offerta->nome ?>">
                                     </div>
                                     <div class="cbp-caption-activeWrap">
                                         <div class="cbp-l-caption-alignCenter">
                                             <div class="cbp-l-caption-body">                                                                                               
-                                                <a href="<?php echo site_url('offerte/'.$offerta->url) ?>" class="cbp-l-caption-buttonLeft">Scheda</a>
+                                                <a href="<?php echo site_url('offerte/'.$offerta->url) ?>" class="cbp-l-caption-buttonLeft"><?php echo $this->lang->line('custom_offerte_02') ?></a>
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +40,7 @@
                            <?php endforeach ?>
                         </ul>
                         <?php else : ?>
-                        Nessun offerta disponibile
+                        <?php echo $this->lang->line('custom_offerte_03') ?>
                         <?php endif ?>
                     </div>
            

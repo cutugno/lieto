@@ -7,10 +7,12 @@ Class Common {
 
     }
 
-	public function buildProductsMenu($lang) { // restituisce i dati relativi al menu prodotti tradotti
+	public function buildProductsMenu() { // restituisce i dati relativi al menu prodotti tradotti
 		
 		$CI =& get_instance();
-		$lang="it"; // eliminare quando avremo pulsanti traduzioni e sostituire con valore in sessione
+		$lang=$CI->session->lang ? $CI->session->lang : "italian";	
+		$jlang=$CI->session->jlang ? $CI->session->jlang : "it";	
+		$CI->lang->load('custom',$lang);
 		
 		$prodcat=$CI->prodotti_model->getProdCat();
 		$prodotti=$CI->prodotti_model->getProducts();
@@ -19,7 +21,7 @@ Class Common {
 		$totcat=0;
 		foreach ($prodcat as $val) {
 			$nome=json_decode($val->nome);
-			$val->nome=$nome->$lang;
+			$val->nome=$nome->$jlang;
 			$prodmenu[$val->id]=$val;
 			$prodmenu[$val->id]->prodotti=array();
 			$totcat++;

@@ -28,7 +28,7 @@
 			
 			$ids=array("1","3");
 			$query=$this->db->where_in('visible', $ids)
-							->order_by('nome','ASC')
+							->order_by('ordine','ASC')
 							->get('prodotti');
 			return $query->result();
 			

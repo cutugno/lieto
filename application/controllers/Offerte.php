@@ -13,15 +13,10 @@ class Offerte extends CI_Controller {
 		/* LISTA OFFERTE */
 		
 		// dati menu prodotti
-		if ($this->session->menuprod){
-			$dati['menuprod']=$this->session->menuprod;
-		}else{
-			$dati['menuprod']=$this->common->buildProductsMenu($lang="it");
-			$this->session->menuprod=$dati['menuprod'];
-		}
+		$dati['menuprod']=$this->common->buildProductsMenu();
 		
 		// offerte
-		if ($offerte=$this->offerte_model->getOfferte()) {
+		if ($offerte=$this->offerte_model->getOfferte()) {			
 			$dati['offerte']=$offerte;
 		}else{
 			$dati['offerte']="";
@@ -49,21 +44,18 @@ class Offerte extends CI_Controller {
 		$this->session->set_userdata('next','offerte/'.$offerta);
 		
 		// dati menu prodotti
-		if ($this->session->menuprod){
-			$dati['menuprod']=$this->session->menuprod;
-		}else{
-			$dati['menuprod']=$this->common->buildProductsMenu($lang="it");
-			$this->session->menuprod=$dati['menuprod'];
-		}
+		$dati['menuprod']=$this->common->buildProductsMenu();
 		
 		// dati singola offerta
 		if (!$offerta=$this->offerte_model->getOffertabyUrl($offerta)) show_404();	
 		$descr=json_decode($offerta->descr);
 		$tecniche=json_decode($offerta->tecniche);
 		$accessori=json_decode($offerta->accessori);
+		$btn_txt=json_decode($offerta->btn_txt);
 		$offerta->descr=$descr->$jlang;
 		$offerta->tecniche=$tecniche->$jlang;
 		$offerta->accessori=$accessori->$jlang;
+		$offerta->btn_txt=$btn_txt->$jlang;
 		// immagini carosello 
 		$offerta->images=array();
 		if ($images=$this->offerte_model->getOffertaPics($offerta->id)) {

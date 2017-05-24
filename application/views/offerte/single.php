@@ -22,7 +22,7 @@
 					<?php if (!empty($offerta->images)) : ?>
 						<?php foreach ($offerta->images as $image) : ?>
                         <div class="item">
-                            <img src="<?php echo $image ?>" alt="<?php echo $offerta->nome ?> - Offerta Nautica Lieto">
+                            <img src="<?php echo $image ?>" alt="<?php echo $offerta->nome ?> - <?php echo $this->lang->line('custom_offerte_04') ?>">
                         </div>
 						<?php endforeach ?>
 					<?php endif ?>
@@ -31,10 +31,6 @@
                 </div>
                 
                 <div class="col-sm-7">
-                	<div class="product-price" style="display:none">
-                		<!--<span class="product-price-single-off">&euro;45.00</span>-->
-                		<span class="product-price-single">&euro;17.000,00</span>
-                    </div>
                     <div class="description margin-bottom-45">
                     	<p><?php echo $offerta->descr ?></p>
                     </div>

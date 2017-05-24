@@ -21,7 +21,7 @@
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     	<li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li id="lingue"><small>Scegli lingua: <a href="<?php echo site_url('setlanguage/italian')?>">ITA</a> - <a href="<?php echo site_url('setlanguage/english')?>">ENG</a></small></li>
+                        <li id="lingue"><small><?php echo $this->lang->line('custom_menu_01') ?>: <a href="<?php echo site_url('setlanguage/italian')?>">ITA</a> - <a href="<?php echo site_url('setlanguage/english')?>">ENG</a></small></li>
                     </ul>   
                 </div>
             </div>
@@ -31,9 +31,9 @@
             <ul class="zetta-menu zm-response-switch zm-full-width zm-effect-fade">
 				<li class="zm-logo"><a href="<?php echo base_url(); ?>"><img title="logo" src="<?php echo base_url(); ?>assets/img/logo.png" alt=""></a></li>
 				
-				<li><a href="<?php echo site_url('azienda'); ?>">Azienda</a></li>
+				<li><a href="<?php echo site_url('azienda'); ?>"><?php echo $this->lang->line('custom_menu_02') ?></a></li>
                 
-                <li class="zm-content-full"><a>Prodotti</a>
+                <li class="zm-content-full"><a><?php echo $this->lang->line('custom_menu_03') ?></a>
                     <div>
                         <div class="row zm-row">
 						<?php
@@ -68,19 +68,19 @@
                     </div>
                 </li>
             
-                <li><a href="<?php echo site_url('servizi'); ?>">Servizi</a></li>
+                <li><a href="<?php echo site_url('servizi'); ?>"><?php echo $this->lang->line('custom_menu_04') ?></a></li>
                 
-                <li><a href="<?php echo site_url('assistenza'); ?>">Assistenza</a></li>
+                <li><a href="<?php echo site_url('assistenza'); ?>"><?php echo $this->lang->line('custom_menu_05') ?></a></li>
                 
-                <li><a href="<?php echo site_url('usato'); ?>">Usato</a></li>
+                <li><a href="<?php echo site_url('usato'); ?>"><?php echo $this->lang->line('custom_menu_06') ?></a></li>
                 
-                <li><a href="<?php echo site_url('offerte'); ?>">Offerte</a></li>
+                <li><a href="<?php echo site_url('offerte'); ?>"><?php echo $this->lang->line('custom_menu_07') ?></a></li>
                
-                <li><a href="<?php echo site_url('news'); ?>">News</a></li>
+                <li><a href="<?php echo site_url('news'); ?>"><?php echo $this->lang->line('custom_menu_08') ?></a></li>
                 
-                <li><a href="<?php echo site_url('contatti'); ?>">Contatti</a></li>
+                <li><a href="<?php echo site_url('contatti'); ?>"><?php echo $this->lang->line('custom_menu_09') ?></a></li>
                 
-                <li><a href="<?php echo site_url('richiedi_preventivo'); ?>">Richiedi Preventivo</a></li>
+                <li><a href="<?php echo site_url('richiedi_preventivo'); ?>"><?php echo $this->lang->line('custom_menu_10') ?></a></li>
 			</ul>
     	</div><!-- end container -->
     </nav>

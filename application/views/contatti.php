@@ -4,7 +4,7 @@
     	<div class="container white-content">
         	<div class="row">
 				<div class="col-sm-12">
-					<h2>Contatti</h2>
+					<h2><?php echo $this->lang->line('custom_contatti_01') ?></h2>
 				</div>
             </div><!-- end row -->
         </div><!-- end container -->
@@ -24,7 +24,7 @@
 							<i class="pe-7s-map-marker"></i>
 						</div>
 						<div class="single_box_right">
-							<h6>Indirizzo</h6>
+							<h6><?php echo $this->lang->line('custom_contatti_02') ?></h6>
 							<p>Lungomare Caboto, 23/25<br />04024 Gaeta (LT)</p>
 						</div>
 					</div>
@@ -36,7 +36,7 @@
 							<i class="pe-7s-call"></i>
 						</div>
 						<div class="single_box_right">
-							<h6>RECAPITI</h6>
+							<h6><?php echo $this->lang->line('custom_contatti_03') ?></h6>
 								<p>Tel: +39 0771 472017<br /> Fax: +39 0771 310632</p>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 							<i class="pe-7s-mail"></i>
 						</div>
 						<div class="single_box_right">
-							<h6>E-mail</h6>
+							<h6><?php echo $this->lang->line('custom_contatti_04') ?></h6>
 							<p><a href="mailto:info@nauticalieto.it">info@nauticalieto.it</a></p>
 						</div>
 					</div>
@@ -80,7 +80,7 @@
                             <textarea class="form-control" rows="8" placeholder="Your message here"></textarea>
                         </div>
                         <div class="text-left">
-                        	<a href="#" class="btn btn-primary ju-btn-default btn-filled-2 rounded">Invia messaggio</a>
+                        	<a href="#" class="btn btn-primary ju-btn-default btn-filled-2 rounded"><?php echo $this->lang->line('custom_contatti_05') ?></a>
                         </div>    
                     </form>
                 </div>

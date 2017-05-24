@@ -29,7 +29,7 @@
                             </div><!-- end article details -->
                             <h2><?php echo $news->titolo ?></h2>
                             <p><?php echo $news->text ?></p>
-                            <!-- se abbiamo altro material andra qua
+                            <!-- se abbiamo altro materiale andra qua
                             <figure>
                             	<img src="img/slider/shutterstock_206624476.jpg" alt="" />
                             	<figcaption>Here is a caption for this picture</figcaption>

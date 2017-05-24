@@ -3,7 +3,7 @@
     	<div class="container white-content">
         	<div class="row">
 				<div class="col-sm-12">
-					<h2>News</h2>
+					<h2><?php echo $this->lang->line('custom_news_01') ?></h2>
 				</div>	
             </div><!-- end row -->
         </div><!-- end container -->
@@ -22,29 +22,29 @@
                         <ul>
 							<?php foreach ($news as $notizia) : ?>
 							<!-- loop news -->
-                            <li class="cbp-item print motion">
-                                <a href="<?php echo site_url('news/'.$notizia->url) ?>" target="_self" class="cbp-caption">
+                            <li class="cbp-item">
+                                <div class="cbp-caption">
                                     <div class="cbp-caption-defaultWrap">
                                         <img src="<?php echo site_url('assets/img/news/'.$notizia->img_titolo) ?>" alt="<?php echo $notizia->titolo ?>">
                                     </div>
                                     <div class="cbp-caption-activeWrap">
                                         <div class="cbp-l-caption-alignCenter">
-                                            <div class="cbp-l-caption-body">
-                                                <div class="cbp-l-caption-text">LEGGI</div>
+                                            <div class="cbp-l-caption-body">                                                                                               
+                                                <a href="<?php echo site_url('news/'.$notizia->url) ?>" class="cbp-l-caption-buttonLeft"><?php echo $this->lang->line('custom_offerte_02') ?></a>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                                <a href="<?php echo site_url('news/'.$notizia->url) ?>" target="_self" class="cbp-l-grid-blog-title"><?php echo $notizia->titolo ?></a>
+                                </div>
+                                <div class="cbp-l-grid-projects-title"><span class="text-uppercase"><?php echo $notizia->titolo ?></span></div>
                                 <div class="cbp-l-grid-blog-date"><?php echo $notizia->ts ?></div>
                                 <div class="cbp-l-grid-blog-desc"><?php echo $notizia->abst ?>...</div>
-                            </li>   
+                            </li>
                             <!-- / loop news -->
                             <?php endforeach ?>                     
                         </ul>
                     </div>
                     <?php else : ?>
-                    <p>Nessuna news disponibile</p>
+                    <p><?php echo $this->lang->line('custom_news_02') ?></p>
                     <?php endif ?>
                 </div><!-- end col-sm-10 -->
                 

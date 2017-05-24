@@ -24,12 +24,7 @@ class Assistenza extends CI_Controller {
 		/* COMMON */
 		
 		// dati menu prodotti
-		if ($this->session->menuprod){
-			$dati['menuprod']=$this->session->menuprod;
-		}else{
-			$dati['menuprod']=$this->common->buildProductsMenu($lang="it");
-			$this->session->menuprod=$dati['menuprod'];
-		}
+		$dati['menuprod']=$this->common->buildProductsMenu();
 		
 		$this->load->view('templates/start');
 		$this->load->view('templates/menu', $dati);

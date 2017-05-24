@@ -22,7 +22,7 @@
 					<?php if (!empty($usato->images)) : ?>
 						<?php foreach ($usato->images as $image) : ?>
                         <div class="item">
-                            <img src="<?php echo $image ?>" alt="<?php echo $usato->nome ?> - Usato Nautica Lieto">
+                            <img src="<?php echo $image ?>" alt="<?php echo $usato->nome ?> - <?php echo $this->lang->line('custom_usato_04') ?>">
                         </div>
 						<?php endforeach ?>
 					<?php endif ?>
@@ -31,14 +31,10 @@
                 </div>
                 
                 <div class="col-sm-7">
-                	<div class="product-price" style="display:none">
-                		<!--<span class="product-price-single-off">&euro;45.00</span>-->
-                		<span class="product-price-single">&euro;17.000,00</span>
-                    </div>
                     <div class="description margin-bottom-45">
                     	<p><?php echo $usato->descr ?></p>
                     </div>
-                    <h5>Caratteristiche tecniche</h5>
+                    <h5><?php echo $this->lang->line('custom_usato_05') ?></h5>
                     <ul class="margin-bottom-45 list-unstyled product-desciption">
 					<?php if (!empty($usato->tecniche)) : ?>
 						<?php foreach($usato->tecniche as $car) : ?>
@@ -47,11 +43,11 @@
 					<?php endif ?>
                     </ul>
                     <?php if ($usato->accessori != "") : ?>
-                    <h5>Accessori inclusi</h5>
+                    <h5><?php echo $this->lang->line('custom_usato_06') ?></h5>
                     <?php echo $usato->accessori ?>
                     <?php endif ?>
                     <div class="margin-bottom-45"></div>
-                    <a href="<?php echo site_url('contatti') ?>" class="btn btn-sm ju-btn-default dark">Richiedi maggiori informazioni</a>
+                    <a href="<?php echo site_url('contatti') ?>" class="btn btn-sm ju-btn-default dark"><?php echo $this->lang->line('custom_usato_07') ?></a>
                     
                 </div>
                 

@@ -4,7 +4,7 @@
     	<div class="container white-content">
         	<div class="row">
 				<div class="col-sm-12">
-					<h2>Richiedi Preventivo</h2>
+					<h2><?php echo $this->lang->line('custom_preventivo_01') ?></h2>
 				</div>
             </div><!-- end row -->
         </div><!-- end container -->
@@ -54,7 +54,7 @@
                                 <input class="form-control" type="text" placeholder="Phone *">
                             </div>
                         </div>
-                        <input class="btn btn-primary btn-block ju-btn-default btn-filled-2 rounded" type="submit" value="Invia Preventivo">
+                        <input class="btn btn-primary btn-block ju-btn-default btn-filled-2 rounded" type="submit" value="<?php echo $this->lang->line('custom_preventivo_02') ?>">
                     </form>
                         
                 </div><!-- end col-sm-10 -->

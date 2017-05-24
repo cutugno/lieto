@@ -13,12 +13,7 @@ class Usato extends CI_Controller {
 		/* LISTA USATI */
 		
 		// dati menu prodotti
-		if ($this->session->menuprod){
-			$dati['menuprod']=$this->session->menuprod;
-		}else{
-			$dati['menuprod']=$this->common->buildProductsMenu($lang="it");
-			$this->session->menuprod=$dati['menuprod'];
-		}
+		$dati['menuprod']=$this->common->buildProductsMenu();
 		
 		// usati
 		if ($usati=$this->usato_model->getUsati()) {
@@ -48,12 +43,7 @@ class Usato extends CI_Controller {
 		$this->session->set_userdata('next','usato/single/'.$usato);
 		
 		// dati menu prodotti
-		if ($this->session->menuprod){
-			$dati['menuprod']=$this->session->menuprod;
-		}else{
-			$dati['menuprod']=$this->common->buildProductsMenu($lang="it");
-			$this->session->menuprod=$dati['menuprod'];
-		}
+		$dati['menuprod']=$this->common->buildProductsMenu();
 		
 		// dati singolo usato 
 		if (!$usato=$this->usato_model->getUsatobyUrl($usato)) show_404();	
