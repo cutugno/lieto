@@ -11,7 +11,7 @@ $lang['custom_menu_06'] = 'Used';
 $lang['custom_menu_07'] = 'Offers';
 $lang['custom_menu_08'] = 'News';
 $lang['custom_menu_09'] = 'Contacts';
-$lang['custom_menu_10'] = 'Estimates';
+$lang['custom_menu_10'] = 'Quotations';
 
 $lang['custom_home_01'] = 'Soft and enveloping lines for a day and night usable model, thanks to its layout and cabin under the bow sunbathing area.';
 $lang['custom_home_02'] = '300 hp, the top of this exceptional performance range thanks to PurePower, i-Trim, dynamic power steering and SLX gearbox.';
@@ -53,41 +53,41 @@ $lang['custom_azienda_06'] = 'Nautica Lieto - Company';
 
 $lang['custom_prodotti_01'] = 'Share';
 
-$lang['custom_servizi_01'] = 'Servizi';
-$lang['custom_servizi_02'] = '<strong>Nautica Lieto</strong> non è solo "vendita" di barche, gommoni ed accessori, ma anche un centro specializzato in vari servizi, ed in grado di fornire assistenza per qualsiasi tipo di necessità in ambito diportistico.';
-$lang['custom_servizi_03'] = 'Tra le principali attività messe in campo c’è tutto quanto concerne il "Re-fitting" delle imbarcazioni, che include i trattamenti alle carene pre-varo e post-alaggio, con rimozione di microorganismi con lance ad alta pressione, asportazione della vecchia antivegetativa, eventuale trattamento antiosmosi, applicazione di nuova antivegetativa prima del varo, verniciatura e gelcoattatura delle parti usurate o danneggiate.';
-$lang['custom_servizi_04'] = 'Il nostro centro assistenza è in grado d’intervenire anche sui componenti "in legno" della coperta, pulendo, ravvivando e sostituendo parzialmente o totalmente l’eventuale teak installato.';
-$lang['custom_servizi_05'] = 'Siamo inoltre attrezzati per la realizzazione di qualsiasi tipo d’impianto elettrico di bordo, con installazione di ogni tipologia di accessorio (Aria Condizionata, Generatori di corrente con sistema di alimentazione a terra, Elica di prua, Strumentazione elettronica di ogni genere e tipo). Inoltre siamo centro raccolta e dismissione delle dotazioni di bordo scadute (giubbini di salvataggio, razzi e fuochi, zattere, etc.) che verranno da noi mandate in revisione o smaltite secondo quanto stabilito dalla normativa vigente.';
-$lang['custom_servizi_06'] = 'Ai clienti che hanno la loro imbarcazione in rimessaggio presso di noi, garantiamo infine un servizio costante di controllo di tutta la documentazione di bordo (scadenze delle dotazioni di sicurezza, dei documenti di navigazione e personali) presenti a bordo dell’unità da diporto a noi affidate per l’invernaggio e siamo in grado di provvedere alla "loro messa in regola".';
-$lang['custom_servizi_07'] = 'Per chi non è munito di mezzo autonomo di trasporto inoltre, effettuiamo un servizio di recupero imbarcazioni (attraverso carrelli o camion) e messa a terra presso il nostro Cantiere, ove grazie ad un’efficiente servizio gru da 35T siamo in grado di effettuare operazioni di varo ed alaggio d’imbarcazioni (solo a motore) fino a 15 metri di lunghezza.';
-$lang['custom_servizi_08'] = 'Nautica Lieto - Servizi';
+$lang['custom_servizi_01'] = 'Services';
+$lang['custom_servizi_02'] = 'Nautica Lieto is not only "sale" of boats, RIB and accessories, but also a specialist in various services center, and able to provide assistance for any kind of need in a recreational area.';
+$lang['custom_servizi_03'] = 'Among the main activities put in there everything concerning the "Re-fitting" of the boats, which include treatments for pre-launch and post-hauling hulls, with removal of microorganisms with high pressure lance, removal of the old antifouling, any anti-osmosis treatment, application of new antifouling before the launch, painting and gelcoat treatment of worn or damaged parts.';
+$lang['custom_servizi_04'] = 'Our service center is able to intervene even on the "wooden components" of the deck, cleaning, reviving and replacing partially or totally any installed teak.';
+$lang['custom_servizi_05'] = 'We are also equipped for the realization of any type of electrical system on board, with installation of all types of accessories (air conditioning, generator power with ground power system, bow thruster, electronic instrumentation of each gender and type). We are also the center of the collection and disposal of expired provisions (life jackets, flares and fireworks, rafts, etc.) that will be sent to us for review or disposed of as provided by law.';
+$lang['custom_servizi_06'] = 'For customers who have their boat in storage with us, finally, guarantee a constant service control of all documentation on board (safety equipment deadlines, navigation documents and personal) on board the craft to us entrusted to the Wintering and we are able to provide for "putting them in order for law."';
+$lang['custom_servizi_07'] = 'For those who does not have an independent means of transport also, we provide a service of boats recovery (through trucks or truck) and grounding at our Shipyard, where thanks to an efficient service crane 35T we can perform operations launching and hauling of boats (motor only) up to 15 meters long.';
+$lang['custom_servizi_08'] = 'Nautica Lieto - Services';
 
-$lang['custom_assistenza_01'] = 'Assistenza';
-$lang['custom_assistenza_02'] = 'E’ uno dei punti di forza della Nautica Lieto, sia in ambito motoristico che per alcuni importanti brand d’imbarcazioni. Presso il centro verrà fornita assistenza meccanica sia su motori fuoribordo che entrobordo ed entrofuoribordo, oltre che sulle moto d’acqua e barche. Tra i prestigiosi marchi di cui siamo “Centro di Assistenza Autorizzato” vanno segnalati: EVINRUDE, JOHNSON e SELVA per ciò che concerne le motorizzazioni fuoribordo,  CASTOLDI, VOLVO PENTA, YANMAR e FNM per quelle entrobordo ed entrofuoribordo, SEA DOO per le moto d’acqua e, per ciò che concerne le imbarcazioni, viene fornita Assistenza Autorizzata su tutte le imbarcazioni a marchio FIART. Inoltre, attraverso dei centri affiliati e visibili sull’apposita mappa, la Nautica Lieto è in grado d’intervenire anche al difuori di Gaeta, coprendo così un ampio tratto di costa.';
+$lang['custom_assistenza_01'] = 'Support';
+$lang['custom_assistenza_02'] = 'It’s one of the strong points of the Nautica Lieto, both the engine in for some major brands of boats. At the center will be provided mechanical assistance both outboards, sterndrive and inboard/outboard engines, as well as on jet ski and boats. Among the brands that we are "Authorized Service Center" should be reported: EVINRUDE, JOHNSON and SELVA as regards outboard engines, CASTOLDI, Volvo Penta, Yanmar and FNM for the inboard and sterndrive, SEA DOO for jet Ski water and, for what concerns the boats, is provided on all Authorized to FIART boats. In addition, through the affiliated centers and visible on the appropriate map, the Nautica Lieto is able to guarantee assistance also outside of Gaeta, thus covering a large stretch of coastline.';
 
-$lang['custom_usato_01'] = 'Usato';
-$lang['custom_usato_02'] = 'Scheda';
-$lang['custom_usato_03'] = 'Nessun usato disponibile';
-$lang['custom_usato_04'] = 'Usato Nautica Lieto';
-$lang['custom_usato_05'] = 'Caratteristiche tecniche';
-$lang['custom_usato_06'] = 'Accessori inclusi';
-$lang['custom_usato_07'] = 'Richiedi maggiori informazioni';
+$lang['custom_usato_01'] = 'Used';
+$lang['custom_usato_02'] = 'Details';
+$lang['custom_usato_03'] = 'No item available';
+$lang['custom_usato_04'] = 'Used Nautica Lieto';
+$lang['custom_usato_05'] = 'Technical features';
+$lang['custom_usato_06'] = 'Included accessories';
+$lang['custom_usato_07'] = 'Request more information';
 
-$lang['custom_offerte_01'] = 'Offerte';
-$lang['custom_offerte_02'] = 'Scheda';
-$lang['custom_offerte_03'] = 'Nessun\'offerta disponibile';
-$lang['custom_offerte_04'] = 'Offerta Nautica Lieto';
+$lang['custom_offerte_01'] = 'Offers';
+$lang['custom_offerte_02'] = 'Details';
+$lang['custom_offerte_03'] = 'No item available';
+$lang['custom_offerte_04'] = 'Offer Nautica Lieto';
 
 $lang['custom_news_01'] = 'News';
-$lang['custom_news_02'] = 'Nessuna news disponibile';
+$lang['custom_news_02'] = 'No item available';
 
-$lang['custom_contatti_01'] = 'Contatti';
-$lang['custom_contatti_02'] = 'Indirizzo';
-$lang['custom_contatti_03'] = 'Recapiti';
+$lang['custom_contatti_01'] = 'Contacts';
+$lang['custom_contatti_02'] = 'Address';
+$lang['custom_contatti_03'] = 'Contact Info';
 $lang['custom_contatti_04'] = 'E-mail';
-$lang['custom_contatti_05'] = 'Invia messaggio';
+$lang['custom_contatti_05'] = 'Send Message';
 
-$lang['custom_preventivo_01'] = 'Richiedi Preventivo';
-$lang['custom_preventivo_02'] = 'Invia Preventivo';
+$lang['custom_preventivo_01'] = 'Quotation Request';
+$lang['custom_preventivo_02'] = 'Send Quotation';
 
 
