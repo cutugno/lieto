@@ -265,7 +265,7 @@ a:hover { color: #0465AB; text-decoration: none; }
 }
 .section-parallax {
 	background-repeat: repeat;
-	background-attachment: fixed;
+	/* background-attachment: fixed; */
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
