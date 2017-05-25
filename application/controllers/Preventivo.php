@@ -60,7 +60,7 @@ class Preventivo extends CI_Controller {
 			
 			$this->email->from($post['email'], $post['nome']." ".$post['cognome']);
 			$this->email->to($this->config->item('to_preventivo'),$this->config->item('to_preventivo_name'));
-			$this->email->subject('Richiesta preventivo da www.nauticalieto.com');
+			$this->email->subject($this->config->item('subject_preventivo'));
 			$this->email->message($message);
 			if ($this->email->send(false)) {
 				$this->session->set_flashdata('ok', 1);				

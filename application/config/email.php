@@ -9,6 +9,8 @@ $config['mailtype'] = 'html';
 
 $config['to_contatti']='sberz666@gmail.com';
 $config['to_contatti_name']='Contatti Nautica Lieto';
+$config['subject_contatti']='Richiesta contatti da www.nauticalieto.com';
 $config['to_preventivo']='sberz666@gmail.com';
 $config['to_preventivo_name']='Preventivi Nautica Lieto';
+$config['subject_preventivo']='Richiesta preventivo da www.nauticalieto.com';
 ?>

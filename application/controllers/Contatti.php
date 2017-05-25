@@ -57,7 +57,7 @@ class Contatti extends CI_Controller {
 			
 			$this->email->from($post['email'], $post['nome']." ".$post['cognome']);
 			$this->email->to($this->config->item('to_contatti'),$this->config->item('to_contatti_name'));
-			$this->email->subject('Richiesta contatti da www.nauticalieto.com');
+			$this->email->subject($this->config->item('subject_contatti'));
 			$this->email->message($message);
 			if ($this->email->send(false)) {
 				$this->session->set_flashdata('ok', 1);				
