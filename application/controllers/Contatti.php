@@ -49,10 +49,23 @@ class Contatti extends CI_Controller {
 				
 		if ($this->form_validation->run() !== FALSE) {
 			// procedura creazione e invio mail
+			$post=$this->input->post();
+			$message=$this->load->view('templates/email/contatti',$post,true);
 			
-			$this->session->set_flashdata('ok', 1);
-			redirect(current_url());
-		};
+			$this->load->library('email');
+			$this->config->load('email');
+			
+			$this->email->from($post['email'], $post['nome']." ".$post['cognome']);
+			$this->email->to($this->config->item('to_contatti'),$this->config->item('to_contatti_name'));
+			$this->email->subject('Richiesta contatti da www.nauticalieto.com');
+			$this->email->message($message);
+			if ($this->email->send(false)) {
+				$this->session->set_flashdata('ok', 1);				
+			}else{
+				$this->session->set_flashdata('ko', strip_tags($this->email->print_debugger('header')));
+			}
+			redirect(current_url());			
+		}
 		
 		/* COMMON */
 		// dati menu prodotti

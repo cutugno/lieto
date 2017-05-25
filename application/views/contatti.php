@@ -20,6 +20,7 @@
                     <?php
 						$attr=array('id'=>'form_contatti');
 						echo form_open(site_url('contatti'), $attr);
+						//echo form_open(site_url('email/contatti'), $attr);
 					?>	
 					<div class="row text-left">
 						<div class="form-group col-sm-6">
@@ -91,25 +92,25 @@
 						</div>						
 						<div class="form-group col-sm-3">							
 							<?php 
-								echo form_checkbox('interessato[barche]',1,set_checkbox('interessato[barche]',1));
+								echo form_checkbox('interessato[barche]','barche',set_checkbox('interessato[barche]','barche'));
 							?>	
 							<label><?php echo $this->lang->line('custom_contatti_16') ?></label>
 						</div>
 						<div class="form-group col-sm-3">							
 							<?php 
-								echo form_checkbox('interessato[gommoni]',1,set_checkbox('interessato[gommoni]',1));
+								echo form_checkbox('interessato[gommoni]','gommoni',set_checkbox('interessato[gommoni]','gommoni'));
 							?>	
 							<label><?php echo $this->lang->line('custom_contatti_17') ?></label>
 						</div>
 						<div class="form-group col-sm-3">							
 							<?php 
-								echo form_checkbox('interessato[moto]',1,set_checkbox('interessato[moto]',1));
+								echo form_checkbox('interessato[moto]','moto',set_checkbox('interessato[moto]','moto'));
 							?>	
 							<label><?php echo $this->lang->line('custom_contatti_18') ?></label>
 						</div>
 						<div class="form-group col-sm-3">							
 							<?php 
-								echo form_checkbox('interessato[motori]',1,set_checkbox('interessato[motori]',1));
+								echo form_checkbox('interessato[motori]','motori',set_checkbox('interessato[motori]','motori'));
 							?>	
 							<label><?php echo $this->lang->line('custom_contatti_19') ?></label>
 						</div>

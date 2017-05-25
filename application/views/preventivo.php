@@ -20,6 +20,7 @@
                     <?php
 						$attr=array('id'=>'form_preventivo');
 						echo form_open(site_url('preventivo'), $attr);
+						//echo form_open(site_url('email/preventivo'), $attr);
 					?>	
 					<div class="row text-left">
 						<div class="form-group col-sm-6">
