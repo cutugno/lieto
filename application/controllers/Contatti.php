@@ -50,20 +50,8 @@ class Contatti extends CI_Controller {
 		if ($this->form_validation->run() !== FALSE) {
 			// procedura creazione e invio mail
 			$post=$this->input->post();
-			$message=$this->load->view('templates/email/contatti',$post,true);
-			
-			$this->load->library('email');
-			$this->config->load('email');
-			
-			$this->email->from($post['email'], $post['nome']." ".$post['cognome']);
-			$this->email->to($this->config->item('to_contatti'),$this->config->item('to_contatti_name'));
-			$this->email->subject($this->config->item('subject_contatti'));
-			$this->email->message($message);
-			if ($this->email->send(false)) {
-				$this->session->set_flashdata('ok', 1);				
-			}else{
-				$this->session->set_flashdata('ko', strip_tags($this->email->print_debugger('header')));
-			}
+			$type="contatti";
+			$this->session->set_flashdata('esito',$this->common->sendMail($post,$type));
 			redirect(current_url());			
 		}
 		

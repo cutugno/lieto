@@ -40,10 +40,29 @@ Class Common {
 		
 		return array($prodmenu,$maxprod,$totcat);
 		
-		
-		
-		
 	}
 	
+	public function sendMail ($post,$type) { // invia una mail
+		
+		// $type può essere o "preventivo" o "contatti"
+		if ( ($type!="preventivo") && ($type!="contatti") ) return "Errore parametro type sendMail ($type)";
+		
+		$CI =& get_instance();
+		$message=$CI->load->view('templates/email/'.$type,$post,true);
+			
+		$CI->load->library('email');
+		$CI->config->load('email');
+		
+		$CI->email->from($post['email'], $post['nome']." ".$post['cognome']);
+		$CI->email->to($CI->config->item('to_'.$type),$CI->config->item('to_'.$type.'_name'));
+		$CI->email->subject($CI->config->item('subject_'.$type));
+		$CI->email->message($message);
+		if ($CI->email->send(false)) {
+			return "1"; // mail inviata				
+		}else{
+			return strip_tags($CI->email->print_debugger('header')); // errori invio mail
+		}
+	
+	}
 	
 }
