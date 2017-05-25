@@ -13,7 +13,7 @@
             	<div class="top-contact pull-left">
                 	<ul class="list-inline list-unstyled">
                     	<li><p><i class="pe-7s-call pe-lg pe-va"></i> <a href="tel:+390771472017">0771 472017</a></p></li>
-                        <li><p><i class="pe-7s-mail pe-lg pe-va"></i> <a href="mailto:info@nauticalieto.it">info@nauticalieto.it</a></p></li>
+                        <li><p><i class="pe-7s-mail pe-lg pe-va"></i> <a href="mailto:info@nauticalieto.it" target="_blank">info@nauticalieto.it</a></p></li>
                     </ul>    
                 </div>
                 <div class="top-social pull-right">
