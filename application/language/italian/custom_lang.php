@@ -126,5 +126,8 @@ $lang['custom_form_02'] = '%s obbligatoria';
 $lang['custom_form_03'] = 'Formato %s non valido';
 $lang['custom_form_04'] = 'Grazie per averci contattato! Le risponderemo al più presto';
 
-
+$lang['custom_cookies_01'] = 'Questo sito utilizza cookie';
+$lang['custom_cookies_02'] = 'Questo sito utilizza i cookie per garantirti un\'esperienza di utilizzo ottimale. Si rinvia all\'informativa estesa per ulteriori informazioni. La prosecuzione nella navigazione o la chiusura di questo popup comportano l\'accettazione dei cookie.';
+$lang['custom_cookies_03'] = 'Accetta cookie';
+$lang['custom_cookies_04'] = 'Leggi informativa';
 

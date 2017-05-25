@@ -126,3 +126,8 @@ $lang['custom_form_02'] = '%s is required';
 $lang['custom_form_03'] = 'Wrong %s format';
 $lang['custom_form_04'] = 'Thanks for contacting us! We will get in touch with you ASAP';
 
+$lang['custom_cookies_01'] = 'This site uses cookies';
+$lang['custom_cookies_02'] = 'This site uses cookies to ensure you having an optimal use experience. Please refer to extended information for more information. Proceeding in navigation or closing of this popup will result in acceptance of cookies.';
+$lang['custom_cookies_03'] = 'Accept cookies';
+$lang['custom_cookies_04'] = 'Read information';
+

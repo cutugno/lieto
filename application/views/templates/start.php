@@ -30,6 +30,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/cubeportfolio.css" />
     <!-- sweetalert -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/sweetalert.css" />
+    <!-- cookie -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/jquery-eu-cookie-law-popup.css" />
     <!-- Main Style -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css" />
     <!-- Custom Style -->
@@ -41,4 +43,4 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
     
 </head>
-<body>
+<body class="eupopup">
