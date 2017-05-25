@@ -22,6 +22,8 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.placeholder.js"></script>
     <!-- cubeportfolio -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.cubeportfolio.js"></script>
+    <!-- sweetalert -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/sweetalert.min.js"></script>
     <!-- cubeportfolio masonry -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/portfolio-juicy.js"></script>
     <!-- Main Script -->

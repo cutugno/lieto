@@ -7,11 +7,11 @@ $lang['custom_menu_02'] = 'Company';
 $lang['custom_menu_03'] = 'Products';
 $lang['custom_menu_04'] = 'Services';
 $lang['custom_menu_05'] = 'Support';
-$lang['custom_menu_06'] = 'Used';
+$lang['custom_menu_06'] = 'Second-hand';
 $lang['custom_menu_07'] = 'Offers';
 $lang['custom_menu_08'] = 'News';
 $lang['custom_menu_09'] = 'Contacts';
-$lang['custom_menu_10'] = 'Quotations';
+$lang['custom_menu_10'] = 'Quotes';
 
 $lang['custom_home_01'] = 'Soft and enveloping lines for a day and night usable model, thanks to its layout and cabin under the bow sunbathing area.';
 $lang['custom_home_02'] = '300 hp, the top of this exceptional performance range thanks to PurePower, i-Trim, dynamic power steering and SLX gearbox.';
@@ -65,7 +65,7 @@ $lang['custom_servizi_08'] = 'Nautica Lieto - Services';
 $lang['custom_assistenza_01'] = 'Support';
 $lang['custom_assistenza_02'] = 'It’s one of the strong points of the Nautica Lieto, both the engine in for some major brands of boats. At the center will be provided mechanical assistance both outboards, sterndrive and inboard/outboard engines, as well as on jet ski and boats. Among the brands that we are "Authorized Service Center" should be reported: EVINRUDE, JOHNSON and SELVA as regards outboard engines, CASTOLDI, Volvo Penta, Yanmar and FNM for the inboard and sterndrive, SEA DOO for jet Ski water and, for what concerns the boats, is provided on all Authorized to FIART boats. In addition, through the affiliated centers and visible on the appropriate map, the Nautica Lieto is able to guarantee assistance also outside of Gaeta, thus covering a large stretch of coastline.';
 
-$lang['custom_usato_01'] = 'Used';
+$lang['custom_usato_01'] = 'Second-hand';
 $lang['custom_usato_02'] = 'Details';
 $lang['custom_usato_03'] = 'No item available';
 $lang['custom_usato_04'] = 'Used Nautica Lieto';
@@ -86,8 +86,43 @@ $lang['custom_contatti_02'] = 'Address';
 $lang['custom_contatti_03'] = 'Contact Info';
 $lang['custom_contatti_04'] = 'E-mail';
 $lang['custom_contatti_05'] = 'Send Message';
+$lang['custom_contatti_06'] = 'Would you like to receive our gadget? Then just complete this form in every part and we will send you "something" which concern us to your address.<br>The indicated data must be complete and obviously truthful. Who compiles this form assumes all responsibility for incorrect or invented data.';
+$lang['custom_contatti_07'] = 'Name';
+$lang['custom_contatti_08'] = 'Surname';
+$lang['custom_contatti_09'] = 'E-mail';
+$lang['custom_contatti_10'] = 'Phone';
+$lang['custom_contatti_11'] = 'Address';
+$lang['custom_contatti_12'] = 'City';
+$lang['custom_contatti_13'] = 'Province';
+$lang['custom_contatti_14'] = 'Postal code';
+$lang['custom_contatti_15'] = 'Interested in';
+$lang['custom_contatti_16'] = 'Boats';
+$lang['custom_contatti_17'] = 'Ribs';
+$lang['custom_contatti_18'] = 'Motorboats';
+$lang['custom_contatti_19'] = 'OB/IN&OB Engines';
+$lang['custom_contatti_20'] = 'Sign up to receive, in addition to the gadget, promotional e-mails from our company';
+$lang['custom_contatti_21'] = 'All fields are required';
+$lang['custom_contatti_22'] = 'By clicking "Send Message" you declare to have read and accepted our <a href="#" style="text-decoration:underline">Privacy Disclaimer</a>.<br>You can at any time cancel your consent to receive e-mails simply by sending us an e-mail request to: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
+
 
 $lang['custom_preventivo_01'] = 'Quotation Request';
 $lang['custom_preventivo_02'] = 'Send Quotation';
+$lang['custom_preventivo_03'] = 'Do you want to have a detailed quote on a product? Or do you want information about service, maintenance, and invernal storage? Please write us down below by entering your full contact details and as soon as possible we will reply to your request. The indicated data must be complete and obviously truthful. Who compiles this form assumes all responsibility for incorrect or invented data.';
+$lang['custom_preventivo_07'] = 'Name';
+$lang['custom_preventivo_08'] = 'Surname';
+$lang['custom_preventivo_09'] = 'E-mail';
+$lang['custom_preventivo_10'] = 'Phone';
+$lang['custom_preventivo_11'] = 'Address';
+$lang['custom_preventivo_12'] = 'City';
+$lang['custom_preventivo_13'] = 'Province';
+$lang['custom_preventivo_14'] = 'Postal Code';
+$lang['custom_preventivo_15'] = 'Request';
+$lang['custom_preventivo_20'] = 'Sign up to receive promotional e-mails from our company';
+$lang['custom_preventivo_21'] = 'All fields are required';
+$lang['custom_preventivo_22'] = 'By clicking "Send Quotation" you declare to have read and accepted our <a href="#" style="text-decoration:underline">Privacy Disclaimer</a>.<br>You can at any time cancel your consent to receive e-mails simply by sending us an e-mail request to: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
 
+$lang['custom_form_01'] = '%s is required';
+$lang['custom_form_02'] = '%s is required';
+$lang['custom_form_03'] = 'Wrong %s format';
+$lang['custom_form_04'] = 'Thanks for contacting us! We will get in touch with you ASAP';
 

@@ -86,8 +86,45 @@ $lang['custom_contatti_02'] = 'Indirizzo';
 $lang['custom_contatti_03'] = 'Recapiti';
 $lang['custom_contatti_04'] = 'E-mail';
 $lang['custom_contatti_05'] = 'Invia messaggio';
+$lang['custom_contatti_06'] = 'Ti farebbe piacere ricevere un nostro gadget? Allora basta che compili il presente modulo in ogni parte e provvederemo a spedire al tuo indirizzo un “qualche cosa” che ci riguarda.<br>I dati indicati devono essere completi ed ovviamente veritieri. Chi compila il presente modulo si assume ogni responsabilità in caso di dati non corretti o inventati.';
+$lang['custom_contatti_07'] = 'Nome';
+$lang['custom_contatti_08'] = 'Cognome';
+$lang['custom_contatti_09'] = 'Email';
+$lang['custom_contatti_10'] = 'Telefono';
+$lang['custom_contatti_11'] = 'Indirizzo';
+$lang['custom_contatti_12'] = 'Città';
+$lang['custom_contatti_13'] = 'Provincia';
+$lang['custom_contatti_14'] = 'CAP';
+$lang['custom_contatti_15'] = 'Interessato a';
+$lang['custom_contatti_16'] = 'Barche';
+$lang['custom_contatti_17'] = 'Gommoni';
+$lang['custom_contatti_18'] = 'Moto d\'acqua';
+$lang['custom_contatti_19'] = 'Motori FB o EFB';
+$lang['custom_contatti_20'] = 'Iscriviti per ricevere, oltre al gadget, e-mail promozionali dalla nostra Azienda';
+$lang['custom_contatti_21'] = 'Tutti i campi sono obbligatori';
+$lang['custom_contatti_22'] = 'Cliccando su "Invia Messaggio" si dichiara di aver letto e accettato l\'<a href="#" style="text-decoration:underline">Informativa sulla Privacy</a>.<br>Potrai cancellare in qualsiasi istante il tuo consenso alla ricezione di messaggi di posta elettronica semplicemente inviandoci richiesta di cancellazione attraverso la tua e-mail a: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
+
 
 $lang['custom_preventivo_01'] = 'Richiedi Preventivo';
 $lang['custom_preventivo_02'] = 'Invia Preventivo';
+$lang['custom_preventivo_03'] = 'Volete avere un preventivo dettagliato su di un nostro prodotto? Oppure volete avere informazioni su assistenza, manutenzione e rimessaggio? Scriveteci qui di seguito inserendo i Vostri dati completi di recapiti e nel più breve tempo possibile soddisferemo la vostra richiesta. I dati indicati devono essere completi ed ovviamente veritieri. Chi compila il presente modulo si assume ogni responsabilità in caso di dati non corretti o inventati.';
+$lang['custom_preventivo_07'] = 'Nome';
+$lang['custom_preventivo_08'] = 'Cognome';
+$lang['custom_preventivo_09'] = 'Email';
+$lang['custom_preventivo_10'] = 'Telefono';
+$lang['custom_preventivo_11'] = 'Indirizzo';
+$lang['custom_preventivo_12'] = 'Città';
+$lang['custom_preventivo_13'] = 'Provincia';
+$lang['custom_preventivo_14'] = 'CAP';
+$lang['custom_preventivo_15'] = 'Richiesta';
+$lang['custom_preventivo_20'] = 'Iscriviti per ricevere e-mail promozionali dalla nostra Azienda';
+$lang['custom_preventivo_21'] = 'Tutti i campi sono obbligatori';
+$lang['custom_preventivo_22'] = 'Cliccando su "Invia Preventivo" si dichiara di aver letto e accettato l\'<a href="#" style="text-decoration:underline">Informativa sulla Privacy</a>.<br>Potrai cancellare in qualsiasi istante il tuo consenso alla ricezione di messaggi di posta elettronica semplicemente inviandoci richiesta di cancellazione attraverso la tua e-mail a: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
+
+$lang['custom_form_01'] = '%s obbligatorio';
+$lang['custom_form_02'] = '%s obbligatoria';
+$lang['custom_form_03'] = 'Formato %s non valido';
+$lang['custom_form_04'] = 'Grazie per averci contattato! Le risponderemo al più presto';
+
 
 

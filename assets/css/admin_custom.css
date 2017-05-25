@@ -1,1 +1,18 @@
+textarea {resize:none}
+
+.dz-preview {
+	float:left;
+	padding-right: 10px;
+	margin-bottom: 10px
+}
+.dz-preview:not(:first-child) {
+	padding-left: 10px
+}
+.dz-details {
+	margin-bottom: 5px
+}
+
+.btn_delcar {
+	margin-top:5px
+}
 

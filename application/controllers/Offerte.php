@@ -52,10 +52,12 @@ class Offerte extends CI_Controller {
 		$tecniche=json_decode($offerta->tecniche);
 		$accessori=json_decode($offerta->accessori);
 		$btn_txt=json_decode($offerta->btn_txt);
+		$link=json_decode($offerta->link);
 		$offerta->descr=$descr->$jlang;
 		$offerta->tecniche=$tecniche->$jlang;
 		$offerta->accessori=$accessori->$jlang;
 		$offerta->btn_txt=$btn_txt->$jlang;
+		$offerta->link=$link->$jlang;
 		// immagini carosello 
 		$offerta->images=array();
 		if ($images=$this->offerte_model->getOffertaPics($offerta->id)) {

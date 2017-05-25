@@ -28,6 +28,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/owl.carousel.css" />
     <!-- cubeportfolio -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/cubeportfolio.css" />
+    <!-- sweetalert -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/sweetalert.css" />
     <!-- Main Style -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css" />
     <!-- Custom Style -->
