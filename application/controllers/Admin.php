@@ -9,6 +9,7 @@ class Admin extends CI_Controller {
 	}
 	
 	public function index() {
+		audit_log ("redirect a usato");
 		redirect('admin/usato');
 	}
 

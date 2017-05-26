@@ -14,7 +14,9 @@ class MY_Log extends CI_Log {
 				return FALSE;
 			}
 
-			$filepath = $this->_log_path.CUSTOMLOG.'.'.$this->_file_ext;
+			$CI =& get_instance();
+			$CI->config->load('admin');
+			$filepath = $this->_log_path.$CI->config->item('admin_log').'.'.$this->_file_ext;
 			$message = '';
 
 			if ( ! file_exists($filepath))
