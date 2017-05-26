@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/* nome file .log audit backoffice */
+define ('CUSTOMLOG','admin_log-'.date("Y-m-d"));
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

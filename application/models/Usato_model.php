@@ -24,6 +24,21 @@
 							->get('usato_pics');
 			return $query->result();
 		}
+		
+		public function createUsato($record) {
+			$this->db->db_debug = FALSE; // mi serve l'eventuale messaggio errore
+			
+			//return 1; //TOGLIERE!!!
+
+			if ($query=$this->db->set($record)->insert('usato')) return $this->db->insert_id();
+			return $this->db->error();
+		}
+		
+		public function createUsatoPics($pics) {
+			//return true; // togliere!!!
+			$query=$this->db->insert_batch('usato_pics',$pics);
+			return $query;
+		}
 	
 	}
 	

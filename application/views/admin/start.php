@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" />
     <!-- FontAwesome -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" />
+    <!-- SweetAlert -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/sweetalert.css" />
 
     <!-- Custom Style -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/admin_custom.css" />

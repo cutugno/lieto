@@ -40,7 +40,7 @@ class Usato extends CI_Controller {
 		$lang=$this->session->lang ? $this->session->lang : "italian";	
 		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
 		$this->lang->load('custom',$lang);
-		$this->session->set_userdata('next','usato/single/'.$usato);
+		$this->session->set_userdata('next','usato/'.$usato);
 		
 		// dati menu prodotti
 		$dati['menuprod']=$this->common->buildProductsMenu();

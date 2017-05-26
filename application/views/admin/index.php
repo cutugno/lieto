@@ -61,7 +61,6 @@
 			<?php 
 				$attr=array('class'=>'form-control', 'name'=>'accessori[it]', 'rows'=>'5');
 				echo form_textarea($attr);
-				echo form_error('accessori[it]')
 			?>	
 		</div>
 		<div class="form-group col-sm-6">
@@ -69,17 +68,16 @@
 			<?php 
 				$attr=array('class'=>'form-control', 'name'=>'accessori[en]', 'rows'=>'5');
 				echo form_textarea($attr);
-				echo form_error('accessori[en]');
 			?>	
 		</div>
 		
 		<div class="form-group col-xs-12">
 			<label>Foto Home (300x190)</label><br>
 			<button type="button" class="btn btn-primary btn-xs" id="newhome">Carica foto</button>
-			<input type="hidden" name="home_file" value=""></input>			
+			<input type="hidden" name="home_file" value="[]"></input>			
 		</div>
 		<div class="col-xs-12" id="picture-preview-home"></div>
-		<!-- preview container picture -->
+		<!-- preview container home -->
 		<div id="preview-template-home" style="display:none">
 			  <div class="dz-preview dz-file-preview img-preview">
 				  <div class="dz-details">
@@ -92,12 +90,12 @@
 		</div>
 		
 		<div class="form-group col-xs-12">
-			<label>Foto Gallery (550x350)</label><br>
+			<label>Foto Gallery (1000x635)</label><br>
 			<button type="button" class="btn btn-primary btn-xs" id="newgallery">Carica foto</button>
 			<input type="hidden" name="gallery_files" value="[]"></input>			
 		</div>
 		<div class="col-xs-12" id="picture-preview-gallery"></div>
-		<!-- preview container picture -->
+		<!-- preview container gallery -->
 		<div id="preview-template-gallery" style="display:none">
 			  <div class="dz-preview dz-file-preview img-preview">
 				  <div class="dz-details">
@@ -107,6 +105,28 @@
 					<button type="button" class="btn btn-info btn-xs" data-dz-remove>Cancella foto</button>
 				  </div>
 			  </div>
+		</div>
+		
+		<div class="form-group col-xs-12">
+			<label>Foto Banner (1900x300)</label><br>
+			<button type="button" class="btn btn-primary btn-xs" id="newbanner">Carica foto</button>
+			<input type="hidden" name="banner_file" value="[]"></input>			
+		</div>
+		<div class="col-xs-12" id="picture-preview-banner"></div>
+		<!-- preview container gallery -->
+		<div id="preview-template-banner" style="display:none">
+			  <div class="dz-preview dz-file-preview img-preview">
+				  <div class="dz-details">
+					<img data-dz-thumbnail />
+				  </div>
+				  <div class="text-center">	
+					<button type="button" class="btn btn-info btn-xs" data-dz-remove>Cancella foto</button>
+				  </div>
+			  </div>
+		</div>
+		<div class="form-group col-xs-12">			
+			<?php echo form_checkbox("visible",1,true) ?>
+			<label>Visibile</label>
 		</div>
 		<div class="col-xs-12">
 		<?php

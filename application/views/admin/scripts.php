@@ -6,16 +6,23 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
     <!-- Dropzone -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/dropzone.js"></script>
+    <!-- Sweetalert -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/sweetalert.min.js"></script>
     
     <script type="text/javascript">
 		
-		var id="<?php echo isset($id) ? $id : 0 ?>"; // se sto modificando 
+		$(function(){
+			<?php if (isset($this->session->save)) : ?>
+			swal({title:"", text:"<?php echo $this->session->save ?>", timer:1500, showConfirmButton:false, type: "<?php echo $this->session->save_status ?>"});
+			<?php endif ?>
+		});
 		
 		var dzGallery = new Dropzone("#newgallery", { 
 			url: "<?php echo site_url('admin/upload'); ?>",
 			autoProcessQueue: false,
 			uploadMultiple: true,
 			maxFiles: 10,
+			parallelUploads: 10,
 			maxFilesize: 1, // MB
 			acceptedFiles: ".jpg",
 			dictFileTooBig: "Dimensioni file: {{filesize}}MB. Dimensioni massime: {{maxFilesize}}MB",
@@ -25,7 +32,7 @@
 			previewTemplate: document.getElementById('preview-template-gallery').innerHTML
 		});
 		
-		/* gellery processQueue */
+		/* gallery processQueue */
 		dzGallery.on('sending', function(file, xhr, formData){
             formData.append('type', 'usato');
             formData.append('gallery_files', $("input[name='gallery_files']").val());
@@ -34,7 +41,7 @@
 			$(".loadmsg").hide();
 			$("#loader").show();
 		});
-		dzGallery.on("success", function(file,msg) {
+		dzGallery.on("successmultiple", function(file,msg) {
 			$("input[name='gallery_files']").val(msg);	
 			do_save(); // submit form
 		});
@@ -43,8 +50,65 @@
 			$("#notloaded").show();	
 			console.log("dzGallery error: "+msg);
 		});	
-		/* end processQueue */
+		/* end gallery processQueue */
 		
+		var dzHome = new Dropzone("#newhome", { 
+			url: "<?php echo site_url('admin/upload'); ?>",
+			maxFilesize: 1, // MB
+			acceptedFiles: ".jpg",
+			dictFileTooBig: "Dimensioni file: {{filesize}}MB. Dimensioni massime: {{maxFilesize}}MB",
+			dictInvalidFileType: "Solo immagini in formato .jpg",
+			previewsContainer: "#picture-preview-home",
+			previewTemplate: document.getElementById('preview-template-home').innerHTML
+		});
+		
+		/* home processQueue (auto) */
+		dzHome.on('sending', function(file, xhr, formData){
+			dzHome.removeAllFiles();
+            formData.append('type', 'usato');
+            formData.append('home_file', $("input[name='home_file']").val());
+        });        
+		
+		dzHome.on("success", function(file,msg) {
+			$("input[name='home_file']").val(msg);	
+		});
+		dzHome.on("error", function(file,msg) {
+			console.log("dzHome error: "+msg);
+		});	
+		/* end home processQueue */
+		
+		dzHome.on("removedfile",function(file) {
+			$("input[name='home_file']").val("[]");
+		});
+		
+		var dzBanner = new Dropzone("#newbanner", { 
+			url: "<?php echo site_url('admin/upload'); ?>",
+			maxFilesize: 1, // MB
+			acceptedFiles: ".jpg",
+			dictFileTooBig: "Dimensioni file: {{filesize}}MB. Dimensioni massime: {{maxFilesize}}MB",
+			dictInvalidFileType: "Solo immagini in formato .jpg",
+			previewsContainer: "#picture-preview-banner",
+			previewTemplate: document.getElementById('preview-template-banner').innerHTML
+		});
+		
+		/* banner processQueue (auto) */
+		dzBanner.on('sending', function(file, xhr, formData){
+			dzBanner.removeAllFiles();
+            formData.append('type', 'usato');
+            formData.append('banner_file', $("input[name='banner_file']").val());
+        });        
+		dzBanner.on("success", function(file,msg) {
+			$("input[name='banner_file']").val(msg);	
+		});
+		dzBanner.on("error", function(file,msg) {
+			console.log("dzBanner error: "+msg);
+		});	
+		/* end banner processQueue */
+		
+		dzBanner.on("removedfile",function(file) {
+			$("input[name='banner_file']").val("[]");
+		});
+				
 		// aggiungi caratteristica tecnica
 		var cartec=$("#tpl_cartec").html();
 		$("#newcar").click(function() {
@@ -61,7 +125,8 @@
 		
 		// upload foto o direttamente submit form se non ho foto
 		$("#btn_save").click(function() {
-			if (dzGallery.getQueuedFiles().length > 0) {                        
+			if (dzGallery.getQueuedFiles().length > 0) { 
+				//dzGallery.options.autoProcessQueue=true;                       
 				dzGallery.processQueue();  
 			} else {                       
 				do_save();
@@ -69,21 +134,19 @@
 		});
 	
 		// submit form salvataggio
-		function do_save() {			
+		function do_save() {		
+			$("#tpl_cartec input").prop("disabled",true);	
 			var dati=$("#form").serialize();
 			dati+="&type=usato";
 			var url="<?php echo site_url('admin/save') ?>";
 			$.post(url,dati,function(resp) {
-				console.log(resp);
+				if (resp==1) {
+					location.reload();
+				}else{
+					swal({title:"", text:resp, timer:5000, showConfirmButton:false, type: "error"});
+				}
 			})
-			.success(function(){															
-				$(".loadmsg").hide();
-				$("#loaded").show();
-				$("#play").hide();
-				$("#stop").show();
-			});
 		}
 
-    
     </script>
 
