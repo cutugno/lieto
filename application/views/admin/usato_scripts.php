@@ -35,20 +35,13 @@
 		
 		/* gallery processQueue */
 		dzGallery.on('sending', function(file, xhr, formData){
-            formData.append('type', 'usato');
             formData.append('gallery_files', $("input[name='gallery_files']").val());
         });        
-		dzGallery.on("processing", function(file) {
-			$(".loadmsg").hide();
-			$("#loader").show();
-		});
 		dzGallery.on("successmultiple", function(file,msg) {
 			$("input[name='gallery_files']").val(msg);	
 			do_save(); // submit form
 		});
 		dzGallery.on("error", function(file,msg) {
-			$(".loadmsg").hide();	
-			$("#notloaded").show();	
 			console.log("dzGallery error: "+msg);
 		});	
 		/* end gallery processQueue */
@@ -126,8 +119,9 @@
 		
 		// upload foto o direttamente submit form se non ho foto
 		$("#btn_save").click(function() {
-			if (dzGallery.getQueuedFiles().length > 0) { 
-				//dzGallery.options.autoProcessQueue=true;                       
+			$(".loadmsg").hide();
+			$("#loader").show();
+			if (dzGallery.getQueuedFiles().length > 0) {                       
 				dzGallery.processQueue();  
 			} else {                       
 				do_save();
@@ -139,12 +133,14 @@
 			$("#tpl_cartec input").prop("disabled",true);	
 			var dati=$("#form").serialize();
 			dati+="&type=usato";
-			var url="<?php echo site_url('admin/save') ?>";
+			var url="<?php echo site_url('admin/usato_save') ?>";
 			$.post(url,dati,function(resp) {
 				if (resp==1) {
 					location.reload();
-				}else{
-					swal({title:"", text:resp, timer:5000, showConfirmButton:false, type: "error"});
+				}else{	
+					$(".loadmsg").hide();
+					swal({title:"", text:resp, timer:2500, showConfirmButton:false, type: "error"});
+					console.log("do_save error: "+resp);
 				}
 			})
 		}

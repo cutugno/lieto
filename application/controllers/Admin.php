@@ -7,67 +7,22 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->config->load('admin');
 	}
-
+	
 	public function index() {
+		redirect('admin/usato');
+	}
+
+	public function usato() {
 		
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
-		$this->load->view('admin/index');
-		$this->load->view('admin/scripts');
+		$this->load->view('admin/usato');
+		$this->load->view('admin/usato_scripts');
 		// custom scripts
 		$this->load->view('admin/close');
 	}
 	
-	public function upload() {
-		
-		// REST gestione upload immagini da dropzone
-		// post: {"type":"usato","uploaded_files":"[]"}
-		
-		//$this->config->load('admin');
-		
-		$uploadedFiles=json_decode($this->input->post('uploaded_files'));		
-		$storeFolder=$this->config->item('tmp_store_folder'); 		
-		
-		if (!empty($_FILES)) {		
-			$this->load->helper('string'); 
-			if (is_array($_FILES['file']['tmp_name'])) {
-				foreach ($_FILES['file']['tmp_name'] as $tempFile) {  
-					if ($storeFile=$this->loadFile($tempFile,$storeFolder)) {
-						audit_log("Message: caricata immagine $storeFile. (admin/upload)");
-						$uploadedFiles[]=$storeFile;
-					}else{
-						audit_log("Error: caricamento immagine $tempFile. (admin/upload)");
-						header('HTTP/1.1 500 Internal Server Error');
-						exit("Errore caricamento file");
-					}					
-				}
-			}else{
-				if ($storeFile=$this->loadFile($_FILES['file']['tmp_name'],$storeFolder)) {
-					audit_log("Message: caricata immagine $storeFile. (admin/upload)");
-					$uploadedFiles[]=$storeFile;
-				}else{
-					audit_log("Error: caricamento immagine ".$_FILES['file']['tmp_name'].". (admin/upload)");
-					header('HTTP/1.1 500 Internal Server Error');
-					exit("Errore caricamento file");
-				}	
-			}
-			echo json_encode($uploadedFiles); // success
-		}else{
-			header('HTTP/1.1 500 Internal Server Error');
-			echo "Nessun file caricato";
-		}
-		
-	}
-	
-	private function loadFile($tempFile,$storeFolder) {
-		$storeFile=random_string('alnum',8).".jpg";   
-		$targetFile=$storeFolder.$storeFile;
-		if (move_uploaded_file($tempFile,$targetFile)) return $storeFile;
-		
-		return false;
-	}
-	
-	public function save() {
+	public function usato_save() { // salvo il record usato
 		
 		// validazione form save
 		$this->load->library('form_validation');
@@ -123,7 +78,6 @@ class Admin extends CI_Controller {
 			if (is_numeric($newid=$this->usato_model->createUsato($record))) {
 				audit_log("Message: salvato record usato ".json_encode($record)." con ID $newid. (admin/save)");
 				// sposto immagini tmp in cartella usato
-				$this->config->load('admin');
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
@@ -177,5 +131,50 @@ class Admin extends CI_Controller {
 		}
 		
 	}
-
+	
+	public function upload() { // REST gestione upload immagini da dropzone in folder tmp
+		
+		// post: {"type":"usato","uploaded_files":"[]"}		
+		$uploadedFiles=json_decode($this->input->post('uploaded_files'));		
+		$storeFolder=$this->config->item('tmp_store_folder'); 		
+		
+		if (!empty($_FILES)) {		
+			$this->load->helper('string'); 
+			if (is_array($_FILES['file']['tmp_name'])) {
+				foreach ($_FILES['file']['tmp_name'] as $tempFile) {  
+					if ($storeFile=$this->loadFile($tempFile,$storeFolder)) {
+						audit_log("Message: caricata immagine $storeFile. (admin/upload)");
+						$uploadedFiles[]=$storeFile;
+					}else{
+						audit_log("Error: caricamento immagine $tempFile. (admin/upload)");
+						header('HTTP/1.1 500 Internal Server Error');
+						exit("Errore caricamento file");
+					}					
+				}
+			}else{
+				if ($storeFile=$this->loadFile($_FILES['file']['tmp_name'],$storeFolder)) {
+					audit_log("Message: caricata immagine $storeFile. (admin/upload)");
+					$uploadedFiles[]=$storeFile;
+				}else{
+					audit_log("Error: caricamento immagine ".$_FILES['file']['tmp_name'].". (admin/upload)");
+					header('HTTP/1.1 500 Internal Server Error');
+					exit("Errore caricamento file");
+				}	
+			}
+			echo json_encode($uploadedFiles); // success
+		}else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Nessun file caricato";
+		}
+		
+	}
+	
+	private function loadFile($tempFile,$storeFolder) { // faccio upload
+		$storeFile=random_string('alnum',8).".jpg";   
+		$targetFile=$storeFolder.$storeFile;
+		if (move_uploaded_file($tempFile,$targetFile)) return $storeFile;
+		
+		return false;
+	}
+	
 }
