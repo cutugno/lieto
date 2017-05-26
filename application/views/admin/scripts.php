@@ -9,6 +9,7 @@
     <!-- Sweetalert -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/sweetalert.min.js"></script>
     
+    <!-- custom scripts -->
     <script type="text/javascript">
 		
 		$(function(){

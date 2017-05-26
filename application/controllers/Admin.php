@@ -91,12 +91,9 @@ class Admin extends CI_Controller {
 					);
 				}
 		}
-
 		
 		if ($this->form_validation->run() !== FALSE) {
-			$post=$this->input->post();
-
-			// post: {"nome":"nome","descr":{"it":"descr ita","en":"descr eng"},"cartec":{"1":{"it":"tecnica ita 1","en":"tecnica eng 1"},"2":{"it":"tecnica ita 2","en":"tecnica eng 2"}},"accessori":{"it":"accessori ita","en":"accessori eng"},"home_file":"[\"E8nKD5cL.jpg\"]","gallery_files":"[\"fqecdPEp.jpg\",\"SZlJIE6k.jpg\"]","banner_file":"[\"yScY6Bnz.jpg\"]","type":"usato"}	
+			$post=$this->input->post();	// post: {"nome":"nome","descr":{"it":"descr ita","en":"descr eng"},"cartec":{"1":{"it":"tecnica ita 1","en":"tecnica eng 1"},"2":{"it":"tecnica ita 2","en":"tecnica eng 2"}},"accessori":{"it":"accessori ita","en":"accessori eng"},"home_file":"[\"E8nKD5cL.jpg\"]","gallery_files":"[\"fqecdPEp.jpg\",\"SZlJIE6k.jpg\"]","banner_file":"[\"yScY6Bnz.jpg\"]","type":"usato"}	
 			
 			// creo record usato
 			$record=array();
@@ -172,8 +169,7 @@ class Admin extends CI_Controller {
 				audit_log("Message: salvataggio usato effettuato ".json_encode($post).". (admin/save)");
 				echo "1";
 			}else{
-				audit_log("Error: salvataggio record usato ".json_encode($record).". Errore DB ".$newid['message'].". (admin/save)");
-				
+				audit_log("Error: salvataggio record usato ".json_encode($record).". Errore DB ".$newid['message'].". (admin/save)");				
 				echo $newid['message'];
 			}			
 		}else{
