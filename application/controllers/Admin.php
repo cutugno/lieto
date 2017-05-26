@@ -2,6 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
+	
+	public function __construct() {
+		parent::__construct();
+		$this->config->load('admin');
+	}
 
 	public function index() {
 		
@@ -18,12 +23,10 @@ class Admin extends CI_Controller {
 		// REST gestione upload immagini da dropzone
 		// post: {"type":"usato","uploaded_files":"[]"}
 		
-		$this->config->load('admin');
+		//$this->config->load('admin');
 		
-		$uploadedFiles=json_decode($this->input->post('uploaded_files'));
-		
-		$storeFolder=str_replace("%type%",$this->input->post('type'),$this->config->item('tmp_store_folder')); 
-		
+		$uploadedFiles=json_decode($this->input->post('uploaded_files'));		
+		$storeFolder=$this->config->item('tmp_store_folder'); 		
 		
 		if (!empty($_FILES)) {		
 			$this->load->helper('string'); 
@@ -40,10 +43,10 @@ class Admin extends CI_Controller {
 				}
 			}else{
 				if ($storeFile=$this->loadFile($_FILES['file']['tmp_name'],$storeFolder)) {
-					audit_log("Message: caricata immagine $StoreFile. (admin/upload)");
+					audit_log("Message: caricata immagine $storeFile. (admin/upload)");
 					$uploadedFiles[]=$storeFile;
 				}else{
-					audit_log("Error: caricamento immagine $StoreFile. (admin/upload)");
+					audit_log("Error: caricamento immagine ".$_FILES['file']['tmp_name'].". (admin/upload)");
 					header('HTTP/1.1 500 Internal Server Error');
 					exit("Errore caricamento file");
 				}	
@@ -125,7 +128,7 @@ class Admin extends CI_Controller {
 				// sposto immagini tmp in cartella usato
 				$this->config->load('admin');
 				$gallery_files=json_decode($post['gallery_files']);
-				$tmpStoreFolder=str_replace("%type%",$post['type'],$this->config->item('tmp_store_folder')); 
+				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
 				if (isset($banner_file[0])) {
 					if (rename ($tmpStoreFolder.$banner_file[0],$storeFolder.$banner_file[0])) {
@@ -159,18 +162,18 @@ class Admin extends CI_Controller {
 					}
 					// salvo batch usato_pics
 					if ($this->usato_model->createUsatoPics($pics)) {
-						audit_log("Message: create foto gallery usato ".json_encode($pics).". (admin/save)");
-						$this->session->set_flashdata('save','Salvataggio usato effettuato');
-						$this->session->set_flashdata('save_status','success');
+						audit_log("Message: create foto gallery usato ".json_encode($pics).". (admin/save)");						
 					}else{
-						audit_log("Error: creazione foto gallery usato ".json_encode($pics).". (admin/save)");
-						$this->session->set_flashdata('save','Errore associazione immagini gallery a usato');
-						$this->session->set_flashdata('save_status','warning');
+						audit_log("Error: creazione foto gallery usato ".json_encode($pics).". (admin/save)");						
 					}
 				}
+				$this->session->set_flashdata('save','Salvataggio usato completato');
+				$this->session->set_flashdata('save_status','success');
+				audit_log("Message: salvataggio usato effettuato ".json_encode($post).". (admin/save)");
 				echo "1";
 			}else{
 				audit_log("Error: salvataggio record usato ".json_encode($record).". Errore DB ".$newid['message'].". (admin/save)");
+				
 				echo $newid['message'];
 			}			
 		}else{
