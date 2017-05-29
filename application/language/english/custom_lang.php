@@ -102,7 +102,7 @@ $lang['custom_contatti_18'] = 'Motorboats';
 $lang['custom_contatti_19'] = 'OB/IN&OB Engines';
 $lang['custom_contatti_20'] = 'Sign up to receive, in addition to the gadget, promotional e-mails from our company';
 $lang['custom_contatti_21'] = 'All fields are required';
-$lang['custom_contatti_22'] = 'By clicking "Send Message" you declare to have read and accepted our <a href="#" style="text-decoration:underline">Privacy Disclaimer</a>.<br>You can at any time cancel your consent to receive e-mails simply by sending us an e-mail request to: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
+$lang['custom_contatti_22'] = 'By clicking "Send Message" you declare to have read and accepted our <a href="'.site_url('public/pdf/privacy_en.pdf').'" target="_blank" style="text-decoration:underline">Privacy Disclaimer</a>.<br>You can at any time cancel your consent to receive e-mails simply by sending us an e-mail request to: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
 
 
 $lang['custom_preventivo_01'] = 'Quotation Request';

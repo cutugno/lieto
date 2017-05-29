@@ -102,7 +102,7 @@ $lang['custom_contatti_18'] = 'Moto d\'acqua';
 $lang['custom_contatti_19'] = 'Motori FB o EFB';
 $lang['custom_contatti_20'] = 'Iscriviti per ricevere, oltre al gadget, e-mail promozionali dalla nostra Azienda';
 $lang['custom_contatti_21'] = 'Tutti i campi sono obbligatori';
-$lang['custom_contatti_22'] = 'Cliccando su "Invia Messaggio" si dichiara di aver letto e accettato l\'<a href="#" style="text-decoration:underline">Informativa sulla Privacy</a>.<br>Potrai cancellare in qualsiasi istante il tuo consenso alla ricezione di messaggi di posta elettronica semplicemente inviandoci richiesta di cancellazione attraverso la tua e-mail a: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
+$lang['custom_contatti_22'] = 'Cliccando su "Invia Messaggio" si dichiara di aver letto e accettato l\'<a href="'.site_url('public/pdf/privacy.pdf').'" target="_blank" style="text-decoration:underline">Informativa sulla Privacy</a>.<br>Potrai cancellare in qualsiasi istante il tuo consenso alla ricezione di messaggi di posta elettronica semplicemente inviandoci richiesta di cancellazione attraverso la tua e-mail a: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
 
 
 $lang['custom_preventivo_01'] = 'Richiedi Preventivo';

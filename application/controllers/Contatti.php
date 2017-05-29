@@ -67,10 +67,5 @@ class Contatti extends CI_Controller {
 		$this->load->view('scripts/contatti');
 		$this->load->view('templates/close');
 	}
-	
-	public function send() {
-		
-		
-		
-	}
+
 }
