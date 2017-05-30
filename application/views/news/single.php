@@ -1,5 +1,5 @@
 	<!-- header -->
-    <section class="content section-parallax parallax-slider" style="background-image: url(<?php echo site_url('assets/img/news/'.$news->img_banner) ?>)">
+    <section class="content section-parallax parallax-slider" style="background-image: url(<?php echo site_url('assets/img/banner/news.jpg') ?>)">
     	<div class="layer-dark"></div>
     	<div class="container white-content">
         	<div class="row">

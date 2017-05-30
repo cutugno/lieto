@@ -119,7 +119,7 @@ $lang['custom_preventivo_14'] = 'CAP';
 $lang['custom_preventivo_15'] = 'Richiesta';
 $lang['custom_preventivo_20'] = 'Iscriviti per ricevere e-mail promozionali dalla nostra Azienda';
 $lang['custom_preventivo_21'] = 'Tutti i campi sono obbligatori';
-$lang['custom_preventivo_22'] = 'Cliccando su "Invia Preventivo" si dichiara di aver letto e accettato l\'<a href="#" style="text-decoration:underline">Informativa sulla Privacy</a>.<br>Potrai cancellare in qualsiasi istante il tuo consenso alla ricezione di messaggi di posta elettronica semplicemente inviandoci richiesta di cancellazione attraverso la tua e-mail a: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
+$lang['custom_preventivo_22'] = 'Cliccando su "Invia Preventivo" si dichiara di aver letto e accettato l\'<a href="'.site_url('public/pdf/privacy.pdf').'" target="_blank" style="text-decoration:underline">Informativa sulla Privacy</a>.<br>Potrai cancellare in qualsiasi istante il tuo consenso alla ricezione di messaggi di posta elettronica semplicemente inviandoci richiesta di cancellazione attraverso la tua e-mail a: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
 
 $lang['custom_form_01'] = '%s obbligatorio';
 $lang['custom_form_02'] = '%s obbligatoria';

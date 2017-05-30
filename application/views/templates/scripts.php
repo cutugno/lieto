@@ -60,7 +60,7 @@
 			///////////////////////////////////////////////////////////////////////////////////////////////
 			// PARAMETERS (MODIFY THIS PART) //////////////////////////////////////////////////////////////
 			_self.params = {
-				cookiePolicyUrl : '/cookies',
+				cookiePolicyUrl : '<?php echo site_url('public/pdf/privacy.pdf') ?>',
 				popupPosition : 'bottom',
 				colorStyle : 'default',
 				compactStyle : false,

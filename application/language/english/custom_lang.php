@@ -119,7 +119,7 @@ $lang['custom_preventivo_14'] = 'Postal Code';
 $lang['custom_preventivo_15'] = 'Request';
 $lang['custom_preventivo_20'] = 'Sign up to receive promotional e-mails from our company';
 $lang['custom_preventivo_21'] = 'All fields are required';
-$lang['custom_preventivo_22'] = 'By clicking "Send Quotation" you declare to have read and accepted our <a href="#" style="text-decoration:underline">Privacy Disclaimer</a>.<br>You can at any time cancel your consent to receive e-mails simply by sending us an e-mail request to: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
+$lang['custom_preventivo_22'] = 'By clicking "Send Quotation" you declare to have read and accepted our <a href="'.site_url('public/pdf/privacy_en.pdf').'" target="_blank" style="text-decoration:underline">Privacy Disclaimer</a>.<br>You can at any time cancel your consent to receive e-mails simply by sending us an e-mail request to: <a href="mailto:info@nauticalieto.it" target="_blank" style="text-decoration:underline">info@nauticalieto.it</a>';
 
 $lang['custom_form_01'] = '%s is required';
 $lang['custom_form_02'] = '%s is required';
