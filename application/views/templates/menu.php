@@ -18,9 +18,7 @@
                 </div>
                 <div class="top-social pull-right">
                 	<ul class="list-inline list-unstyled">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    	<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    	<li><a href="https://www.facebook.com/nauticalieto/" target="_blank"><i class="fa fa-facebook"></i></a></li>
                         <li id="lingue"><small><?php echo $this->lang->line('custom_menu_01') ?>: <a href="<?php echo site_url('setlanguage/italian')?>">ITA</a> - <a href="<?php echo site_url('setlanguage/english')?>">ENG</a></small></li>
                     </ul>   
                 </div>
