@@ -17,7 +17,7 @@
 					<div>
 						<p><strong>NAUTICA LIETO di Romualdo Lieto &amp; C. s.n.c.</strong><br />
 						Lungomare Caboto, 23/25 - 04024 Gaeta (LT) - P.I: 01301330591<br />
-						Tel.: <a href="tel:+390771472017"><strong>0771 472017</strong></a> - Fax: <strong>0771 310632</strong> - E-mail: <a href="mailto:"info@nauticalieto.it"><strong>info@nauticalieto.it</strong></a></p>
+						Tel.: <a href="tel:+390771472017"><strong>0771 472017</strong></a> - Fax: <strong>0771 310632</strong> - Cell: <strong>329 4708765-6</strong> - E-mail: <a href="mailto:"info@nauticalieto.it"><strong>info@nauticalieto.it</strong></a></p>
 					</div>
 					<!-- end copyright -->
                 </div>

@@ -159,7 +159,7 @@
 						</div>
 						<div class="single_box_right">
 							<h6><?php echo $this->lang->line('custom_contatti_03') ?></h6>
-								<p>Tel: +39 0771 472017<br /> Fax: +39 0771 310632</p>
+								<p>Tel: +39 0771 472017<br /> Fax: +39 0771 310632<br />Cell: +39 329 4708765-6</p>
 						</div>
 					</div>
 				</div>
