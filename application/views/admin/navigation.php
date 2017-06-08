@@ -20,6 +20,9 @@
 			</li>
 			<li><a href="#">Gestione Offerte </a></li>			
 		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+			<li><a href="<?php echo site_url('admin/logout') ?>">Logout</a></li>
+		  </ul>
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>

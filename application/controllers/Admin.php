@@ -9,10 +9,60 @@ class Admin extends CI_Controller {
 		
 	}
 	
+	public function login() { /* pagina form login */
+		
+		if ($this->session->user) redirect('admin');
+		
+		$this->load->view('admin/start');
+		$this->load->view('admin/login/index');
+		$this->load->view('admin/scripts');		
+		$this->load->view('admin/login/index_scripts');		
+		$this->load->view('admin/close');
+		
+	}
+	
+	public function login_check() {
+			
+		if (!$this->input->post()) {
+			audit_log("Error: parametri post non impostati. (admin/login_check)");
+			exit("Accesso non autorizzato");
+		}
+		
+		$post=$this->input->post();
+		
+		if ( (!isset($post['user'])) || (!isset($post['password'])) ) {
+			audit_log("Error: dati post login errati o incompleti: ".json_encode($post).". (login/checklogin)");
+			echo "Login errato";
+			exit();
+		}
+		
+		$post['password']=sha1($post['password']);
+				
+		if ($user=$this->users_model->checkLogin($post)) {
+			$this->session->user=$user;
+			$this->users_model->setLastLogin($user->id);
+			audit_log("Message: login effettuato. Dati utente: ".json_encode($user).". (admin/login_check)");
+			echo "1";
+		}else{
+			audit_log("Error: login errato. Dati login: ".json_encode($post)." (admin/login_check)");
+			echo "Login errato";
+		}
+		
+	}
+	
+	public function logout() {
+		audit_log("Message: logout effettuato. Dati utente: ".json_encode($this->session->user).". (admin/logout)");
+		$this->session->unset_userdata('user');
+		redirect('admin/login');
+	}
+	
 	public function index() /* dashboard admin */ {
+		
+		if (!$this->session->user) redirect('admin/login');
+		
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
-		// index scripts
+		// index 
 		$this->load->view('admin/scripts');		
 		// custom scripts
 		$this->load->view('admin/close');
@@ -20,6 +70,9 @@ class Admin extends CI_Controller {
 	}
 	
 	public function usato() { /* pagina lista usati */
+		
+		if (!$this->session->user) redirect('admin/login');
+		
 		$data['usati']=$this->usato_model->getUsati(true); // con true prendo anche quelli con visible==0
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
@@ -30,7 +83,10 @@ class Admin extends CI_Controller {
 		
 	}
 
-	public function usato_new() { /* pagina nuovo usato */		
+	public function usato_new() { /* pagina nuovo usato */	
+		
+		if (!$this->session->user) redirect('admin/login');
+			
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
 		$this->load->view('admin/usato/new');
@@ -41,6 +97,12 @@ class Admin extends CI_Controller {
 	}
 	
 	public function usato_save() { /* salvataggio usato */		
+		
+		if (!$this->session->user) {
+			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
+			exit("Operazione non consentita");
+		}
+		
 		// regole validazione form save
 		$this->load->library('form_validation');		
 		$this->form_validation->set_rules('nome', 'Nome', 'required',
@@ -148,6 +210,9 @@ class Admin extends CI_Controller {
 	}
 	
 	public function usato_view($url) { /* pagina dettagli usato */
+		
+		if (!$this->session->user) redirect('admin/login');
+		
 		if (!isset($url)) show_404();
 		
 		// carico usato
@@ -168,7 +233,13 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/close');
 	}
 	
-	public function usato_update($id) { /* aggiornamento usato */	
+	public function usato_update($id) { /* REST aggiornamento usato */
+		
+		if (!$this->session->user) {
+			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
+			exit("Operazione non consentita");
+		}
+			
 		if (!isset($id)) {
 			audit_log("Error: Tentativo di update usato senza parametro ID. (admin/usato_update)");
 			exit("Parametri non impostati");
@@ -289,6 +360,12 @@ class Admin extends CI_Controller {
 	}
 	
 	public function usato_delete() { /* REST cancellazione usato e relative foto */
+		
+		if (!$this->session->user) {
+			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
+			exit("Operazione non consentita");
+		}
+		
 		if (!$this->input->post()) {
 			audit_log("Error: Tentativo di delete usato senza parametro ID. (admin/usato_delete)");
 			exit("Parametri non impostati");
@@ -314,6 +391,12 @@ class Admin extends CI_Controller {
 	}
 	
 	public function upload() { /* REST gestione upload immagini da dropzone in folder tmp (sia usato che offerte) */		
+		
+		if (!$this->input->post()) {
+			audit_log("Error: tentativo upload immagine senza POST. (upload)");
+			exit("Parametri non impostati");
+		}
+		
 		// post: {"type":"usato","uploaded_files":"[]"}		
 		$uploadedFiles=json_decode($this->input->post('uploaded_files'));		
 		$storeFolder=$this->config->item('tmp_store_folder'); 		
