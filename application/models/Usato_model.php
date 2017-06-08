@@ -6,8 +6,9 @@
 			$this->load->database();
 		}
 		
-		public function getUsati() {		
-			$query=$this->db->where('visible',1)
+		public function getUsati($all=false) {					
+			if (!$all) $query=$this->db->where('visible',1);
+			$query=$this->db->order_by('nome')
 							->get('usato');						
 			return $query->result();
 		}

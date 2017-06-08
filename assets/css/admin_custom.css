@@ -16,3 +16,14 @@ textarea {resize:none}
 	margin-top:5px
 }
 
+.pagecontainer {
+	margin-bottom: 20px
+}
+
+.greyrow {
+	background-color: #f9f9f9
+}
+
+img.listimg {
+	height: 60px
+}

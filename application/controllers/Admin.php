@@ -6,28 +6,43 @@ class Admin extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->config->load('admin');
+		
 	}
 	
-	public function index() {
-		audit_log ("redirect a usato");
-		redirect('admin/usato');
-	}
-
-	public function usato() {
-		
+	public function index() /* dashboard admin */ {
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
-		$this->load->view('admin/usato');
-		$this->load->view('admin/usato_scripts');
+		// index scripts
+		$this->load->view('admin/scripts');		
 		// custom scripts
 		$this->load->view('admin/close');
+		
 	}
 	
-	public function usato_save() { // salvo il record usato
+	public function usato() { /* pagina lista usati */
+		$data['usati']=$this->usato_model->getUsati(true); // con true prendo anche quelli con visible==0
+		$this->load->view('admin/start');
+		$this->load->view('admin/navigation');
+		$this->load->view('admin/usato/list',$data);
+		$this->load->view('admin/scripts');	
+		// custom scripts
+		$this->load->view('admin/close');
 		
-		// validazione form save
-		$this->load->library('form_validation');
+	}
+
+	public function usato_new() { /* pagina nuovo usato */		
+		$this->load->view('admin/start');
+		$this->load->view('admin/navigation');
+		$this->load->view('admin/usato/new');
+		$this->load->view('admin/scripts');	
+		$this->load->view('admin/usato/new_scripts');
+		$this->load->view('admin/close');
 		
+	}
+	
+	public function usato_save() { /* salvataggio usato */		
+		// regole validazione form save
+		$this->load->library('form_validation');		
 		$this->form_validation->set_rules('nome', 'Nome', 'required',
 				array('required' => '%s obbligatorio')
 		);
@@ -47,10 +62,9 @@ class Admin extends CI_Controller {
 					);
 				}
 		}
-		
+		// validazione ok
 		if ($this->form_validation->run() !== FALSE) {
-			$post=$this->input->post();	// post: {"nome":"nome","descr":{"it":"descr ita","en":"descr eng"},"cartec":{"1":{"it":"tecnica ita 1","en":"tecnica eng 1"},"2":{"it":"tecnica ita 2","en":"tecnica eng 2"}},"accessori":{"it":"accessori ita","en":"accessori eng"},"home_file":"[\"E8nKD5cL.jpg\"]","gallery_files":"[\"fqecdPEp.jpg\",\"SZlJIE6k.jpg\"]","banner_file":"[\"yScY6Bnz.jpg\"]","type":"usato"}	
-			
+			$post=$this->input->post();	// post: {"nome":"nome","descr":{"it":"descr ita","en":"descr eng"},"cartec":{"1":{"it":"tecnica ita 1","en":"tecnica eng 1"},"2":{"it":"tecnica ita 2","en":"tecnica eng 2"}},"accessori":{"it":"accessori ita","en":"accessori eng"},"home_file":"[\"E8nKD5cL.jpg\"]","gallery_files":"[\"fqecdPEp.jpg\",\"SZlJIE6k.jpg\"]","banner_file":"[\"yScY6Bnz.jpg\"]","type":"usato"}				
 			// creo record usato
 			$record=array();
 			$record['nome']=$post['nome'];
@@ -72,7 +86,7 @@ class Admin extends CI_Controller {
 				}
 				$cartec=new stdClass();
 				$cartec->it=$cartec_it;
-				$cartec->en=$cartec_en;
+				$cartec->en=$cartec_en;				
 				$record['tecniche']=json_encode($cartec);
 			}
 			// salvo record usato
@@ -105,7 +119,6 @@ class Admin extends CI_Controller {
 						}
 					}
 				}
-						
 				// creo array usato_pics
 				if (count($gallery_files) > 0){
 					$pics=array();
@@ -128,19 +141,48 @@ class Admin extends CI_Controller {
 				echo $newid['message'];
 			}			
 		}else{
+			// validazione no
 			echo strip_tags(validation_errors());
 		}
-		
+				
 	}
 	
-	public function upload() { // REST gestione upload immagini da dropzone in folder tmp
+	public function usato_view($url) { /* pagina dettagli usato */
+		if (!isset($url)) show_404();
 		
+		// carico usato
+		if (!$usato=$this->usato_model->getUsatoByUrl($url)) show_404();
+		$usato->pics=$this->usato_model->getUsatoPics($usato->id);
+		var_dump ($usato->pics);
+		$usato->home_file=json_encode(array($usato->img_home));
+		$usato->banner_file=json_encode(array($usato->img_banner));
+		$usato->descr=json_decode($usato->descr);
+		$usato->tecniche=json_decode($usato->tecniche);
+		$usato->accessori=json_decode($usato->accessori);
+		$data['usato']=$usato;
+		
+		$this->load->view('admin/start');
+		$this->load->view('admin/navigation');
+		$this->load->view('admin/usato/view',$data);
+		$this->load->view('admin/scripts');	
+		$this->load->view('admin/usato/view_scripts');	
+		$this->load->view('admin/close');
+	}
+	
+	public function usato_update() { /* REST aggiornamento usato */
+		
+		echo json_encode($this->input->post());
+	
+		}
+	
+	public function upload() { /* REST gestione upload immagini da dropzone in folder tmp (sia usato che offerte) */		
 		// post: {"type":"usato","uploaded_files":"[]"}		
 		$uploadedFiles=json_decode($this->input->post('uploaded_files'));		
 		$storeFolder=$this->config->item('tmp_store_folder'); 		
 		
 		if (!empty($_FILES)) {		
 			$this->load->helper('string'); 
+			// upload array file (gallery)
 			if (is_array($_FILES['file']['tmp_name'])) {
 				foreach ($_FILES['file']['tmp_name'] as $tempFile) {  
 					if ($storeFile=$this->loadFile($tempFile,$storeFolder)) {
@@ -153,6 +195,7 @@ class Admin extends CI_Controller {
 					}					
 				}
 			}else{
+				// upload singolo file (banner, home)
 				if ($storeFile=$this->loadFile($_FILES['file']['tmp_name'],$storeFolder)) {
 					audit_log("Message: caricata immagine $storeFile. (admin/upload)");
 					$uploadedFiles[]=$storeFile;
@@ -170,12 +213,12 @@ class Admin extends CI_Controller {
 		
 	}
 	
-	private function loadFile($tempFile,$storeFolder) { // faccio upload
+	private function loadFile($tempFile,$storeFolder) { /* upload file con nome random; return nome */
 		$storeFile=random_string('alnum',8).".jpg";   
 		$targetFile=$storeFolder.$storeFile;
-		if (move_uploaded_file($tempFile,$targetFile)) return $storeFile;
-		
+		if (move_uploaded_file($tempFile,$targetFile)) return $storeFile;		
 		return false;
+		
 	}
 	
 }

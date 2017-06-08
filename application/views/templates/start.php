@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Lieto</title>
+    <title>Nautica Lieto - Servizi per la Nautica a Gaeta</title>
     <meta charset="utf-8">
     <meta name="description" content="Lieto">
     <meta name="author" content="Alessandro Nocella" />
