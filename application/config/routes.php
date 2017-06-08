@@ -52,6 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['setlanguage/(:any)'] = 'language/index/$1';
 
+$route['admin/offerte/(:any)/(:any)'] = 'admin/offerte_$1/$2';
+$route['admin/offerte/(:any)'] = 'admin/offerte_$1';
 $route['admin/usato/(:any)/(:any)'] = 'admin/usato_$1/$2';
 $route['admin/usato/(:any)'] = 'admin/usato_$1';
 

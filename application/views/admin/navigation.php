@@ -18,7 +18,13 @@
 					<li><a href="<?php echo site_url('admin/usato') ?>">Elenco usati</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Gestione Offerte </a></li>			
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestione offerte <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="<?php echo site_url('admin/offerte/new') ?>">Nuova offerta</a></li>
+					<li><a href="<?php echo site_url('admin/offerte') ?>">Elenco offerte</a></li>
+				</ul>
+			</li>		
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
 			<li><a href="<?php echo site_url('admin/logout') ?>">Logout</a></li>

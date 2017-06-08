@@ -239,7 +239,7 @@ class Admin extends CI_Controller {
 	public function usato_update($id) { /* REST aggiornamento usato */
 		
 		if (!$this->session->user) {
-			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
+			audit_log("Error: tentativo di update utente non loggato. (admin/usato_save)");
 			exit("Operazione non consentita");
 		}
 			
@@ -408,7 +408,7 @@ class Admin extends CI_Controller {
 		
 	}
 
-	public function usato_new() { /* pagina nuovo usato */	
+	public function offerte_new() { /* pagina nuova offerta */	
 		
 		if (!$this->session->user) redirect('admin/login');
 			
@@ -421,7 +421,7 @@ class Admin extends CI_Controller {
 		
 	}
 	
-	public function usato_save() { /* salvataggio usato */		
+	public function offerte_save() { /* salvataggio offerta */		
 		
 		if (!$this->session->user) {
 			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
@@ -534,7 +534,7 @@ class Admin extends CI_Controller {
 				
 	}
 	
-	public function usato_view($url) { /* pagina dettagli usato */
+	public function offerte_view($url) { /* pagina dettagli offerta */
 		
 		if (!$this->session->user) redirect('admin/login');
 		
@@ -558,10 +558,10 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/close');
 	}
 	
-	public function usato_update($id) { /* REST aggiornamento usato */
+	public function offerte_update($id) { /* REST aggiornamento offerta */
 		
 		if (!$this->session->user) {
-			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
+			audit_log("Error: tentativo di update utente non loggato. (admin/usato_save)");
 			exit("Operazione non consentita");
 		}
 			
@@ -684,7 +684,7 @@ class Admin extends CI_Controller {
 				
 	}
 	
-	public function usato_delete() { /* REST cancellazione usato e relative foto */
+	public function offerte_delete() { /* REST cancellazione offerta e relative foto */
 		
 		if (!$this->session->user) {
 			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
