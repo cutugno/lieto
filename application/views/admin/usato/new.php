@@ -123,7 +123,7 @@
 			<input type="hidden" name="banner_file" value="[]"></input>			
 		</div>
 		<div class="col-xs-12" id="picture-preview-banner"></div>
-		<!-- preview container gallery -->
+		<!-- preview container banner -->
 		<div id="preview-template-banner" style="display:none">
 			  <div class="dz-preview dz-file-preview img-preview">
 				  <div class="dz-details">
@@ -154,7 +154,7 @@
 		?>
 		</div>
 		<div class="col-xs-12">
-			<div class="loadmsg" id="loader" style="display:none"><i class="fa fa-spinner fa-spin text-info"></i> <span class="text-info">Attendi caricamento immagine</span></div>
+			<div class="loadmsg" id="loader" style="display:none"><i class="fa fa-spinner fa-spin text-info"></i> <span class="text-info">Attendi caricamento immagini</span></div>
 			<div class="loadmsg" id="loaded" style="display:none"><i class="fa fa-check text-success"></i></i></i> <span class="text-success">Caricamento completato</span></div>
 			<div class="loadmsg" id="notloaded" style="display:none"><i class="fa fa-times text-danger"></i></i></i> <span class="text-danger">Caricamento non effettuato</span></div>
 		</div>

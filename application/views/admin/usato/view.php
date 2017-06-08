@@ -1,6 +1,13 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <div class="container pagecontainer">
-	<h2>Dettagli usato</h2>
+	<div class="row">
+		<div class="col-xs-6">
+			<h2>Dettagli usato</h2>
+		</div>
+		<div class="col-xs-6 text-right">
+			<a href="<?php echo site_url('admin/usato') ?>"><button class="btn btn-default">Torna a elenco</button></a>
+		</div>
+	</div>
 	<?php
 		$attr=array('id'=>'form');
 		echo form_open('#', $attr);
@@ -108,7 +115,7 @@
 			<br><br>			
 			<div class="dz-preview dz-file-preview img-preview" id="img_home">
 			  <div class="dz-details">
-				<img style="width:120px;height:120px" src="<?php echo site_url('assets/img/usato/'.$usato->img_home) ?>" />
+				<img style="height:120px" src="<?php echo site_url('assets/img/usato/'.$usato->img_home) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" id="remove_img_home" class="btn btn-info btn-xs" data-dz-remove>Cancella foto</button>
@@ -132,7 +139,24 @@
 		<div class="form-group col-xs-12">
 			<label>Foto Gallery (1000x635)</label><br>
 			<button type="button" class="btn btn-primary btn-xs" id="newgallery">Carica foto</button>
-			<input type="hidden" name="gallery_files" value="[]"></input>			
+			<input type="hidden" name="gallery_files" value="[]"></input>	
+			<br><br>
+					
+			<?php if (!empty($usato->pics)) : ?>
+			<?php foreach ($usato->pics as $pic) : ?>
+			<!-- loop immagini galleria -->				
+			<div class="dz-preview dz-file-preview img-preview img_gallery">
+			  <input type="hidden" name="orig_gallery[]" value="<?echo $pic->id ?>">
+			  <div class="dz-details">
+				<img style="height:120px" src="<?php echo site_url('assets/img/usato/'.$pic->pic) ?>" />
+			  </div>
+			  <div class="text-center">	
+				<button type="button" class="btn btn-info btn-xs remove_img_gallery" data-dz-remove>Cancella foto</button>
+			  </div>
+			</div>		
+			<!-- / loop immagini galleria -->
+			<?php endforeach ?>
+			<?php endif ?>
 		</div>
 		<div class="col-xs-12" id="picture-preview-gallery"></div>
 		<!-- preview container gallery -->
@@ -155,7 +179,7 @@
 			<br><br>			
 			<div class="dz-preview dz-file-preview img-preview" id="img_banner">
 			  <div class="dz-details">
-				<img style="width:120px;height:120px" src="<?php echo site_url('assets/img/usato/'.$usato->img_banner) ?>" />
+				<img style="height:120px" src="<?php echo site_url('assets/img/usato/'.$usato->img_banner) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" id="remove_img_banner" class="btn btn-info btn-xs" data-dz-remove>Cancella foto</button>
@@ -192,9 +216,19 @@
 			);
 			echo form_button($attr);
 		?>
+		<?php
+			$attr=array(
+					'id'            => 'btn_delete',
+					'type'          => 'button',
+					'class'  		=> 'btn btn-warning',
+					'content'       => 'CANCELLA',
+					'data-id'		=> $usato->id
+			);
+			echo form_button($attr);
+		?>
 		</div>
 		<div class="col-xs-12">
-			<div class="loadmsg" id="loader" style="display:none"><i class="fa fa-spinner fa-spin text-info"></i> <span class="text-info">Attendi caricamento immagine</span></div>
+			<div class="loadmsg" id="loader" style="display:none"><i class="fa fa-spinner fa-spin text-info"></i> <span class="text-info">Attendi caricamento immagini</span></div>
 			<div class="loadmsg" id="loaded" style="display:none"><i class="fa fa-check text-success"></i></i></i> <span class="text-success">Caricamento completato</span></div>
 			<div class="loadmsg" id="notloaded" style="display:none"><i class="fa fa-times text-danger"></i></i></i> <span class="text-danger">Caricamento non effettuato</span></div>
 		</div>

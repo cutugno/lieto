@@ -14,6 +14,10 @@
 			$("#img_home").remove();
 			$("input[name='home_file']").val("[]");
 		});
+		// elimina immagine gallery originale
+		$(".remove_img_gallery").click(function() {
+			$(this).parent().parent(".img_gallery").remove();
+		});
 		// elimina immagine banner originale
 		$("#remove_img_banner").click(function() {
 			$("#img_banner").remove();
@@ -137,9 +141,8 @@
 			$("#tpl_cartec input").prop("disabled",true);	
 			var dati=$("#form").serialize();
 			dati+="&type=usato";
-			var url="<?php echo site_url('admin/usato/update') ?>";
+			var url="<?php echo site_url('admin/usato/update/'.$usato->id) ?>";
 			$.post(url,dati,function(resp) {
-				console.log(resp);exit();
 				if (resp==1) {
 					location.reload();
 				}else{	
@@ -149,6 +152,35 @@
 				}
 			})
 		}
+		
+		// elimina usato
+		$("#btn_delete").click(function() {
+			var id_usato=$(this).attr("data-id");
+			swal({
+			  title: '',
+			  text: 'Attenzione! La cancellazione è irreversibile. Continuare?',
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'SI',
+			  cancelButtonText: 'ANNULLA', 
+			  closeOnConfirm: false
+			},
+			function(){
+				var dati="id_usato="+id_usato;
+				var url="<?php echo site_url('admin/usato/delete') ?>";
+				$.post(url,dati,function(resp){
+					//console.log(resp);exit();
+					if (resp==1) {
+						location.href="<?php echo site_url('admin/usato') ?>";
+					}else{
+						swal("","Errore durante la cancellazione. Riprova","error");
+					}
+				});
+			  
+			});
+		});
 
     </script>
 
