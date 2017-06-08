@@ -135,8 +135,8 @@
 			dati+="&type=usato";
 			var url="<?php echo site_url('admin/usato/save') ?>";
 			$.post(url,dati,function(resp) {
-				if (resp==1) {
-					location.reload();
+				if ($.isNumeric(resp)) {
+					location.href="<?php echo site_url('admin/usato') ?>";
 				}else{	
 					$(".loadmsg").hide();
 					swal({title:"", text:resp, timer:2500, showConfirmButton:false, type: "error"});

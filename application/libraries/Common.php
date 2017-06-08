@@ -65,4 +65,28 @@ Class Common {
 	
 	}
 	
+	public function resizeImage ($image,$width,$height) { // ridimensione un'immagine usando la libreria GD
+		
+		$CI =& get_instance();
+		$CI->load->library('image_lib');
+		
+		$config['image_library'] = 'gd2';
+		$config['file_permissions'] = '0777';
+		$config['source_image'] = $image;
+		$config['maintain_ratio'] = false;
+		$config['width'] = $width;
+		$config['height'] = $height;
+		
+		
+		$CI->image_lib->initialize($config);
+		
+		if ( ! @$CI->image_lib->resize()) {			
+			$return=$CI->image_lib->display_errors();
+		}else{			
+			$return=true;
+		}
+		$CI->image_lib->clear();
+		return $return;
+		
+	}
 }

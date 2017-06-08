@@ -157,21 +157,36 @@ class Admin extends CI_Controller {
 			// salvo record usato
 			if (is_numeric($newid=$this->usato_model->createUsato($record))) {
 				audit_log("Message: salvato record usato ".json_encode($record)." con ID $newid. (admin/usato_save)");
-				// sposto immagini tmp in cartella usato
+				// ridimensiono e sposto immagini tmp in cartella usato
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
-				// resize DA FARE 
-				// $this->load->library('image_lib');
+				
 				if (isset($banner_file[0])) {
-					if (rename ($tmpStoreFolder.$banner_file[0],$storeFolder.$banner_file[0])) {
+					// resize
+					$tmpFile=$tmpStoreFolder.$banner_file[0];
+					if ($this->common->resizeImage($tmpFile,1900,300)) {
+						audit_log("Message: ridimensionata foto banner $tmpFile. (admin/usato_save)");
+					}else{
+						audit_log("Warning: ridimensionamento foto banner $tmpFile non riuscito. (admin/usato_save)");
+					}
+					// spostamento
+					if (rename ($tmpFile,$storeFolder.$banner_file[0])) {
 						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_save)");
 					}else{
 						audit_log("Error: spostamento foto banner ".$banner_file[0].". (admin/usato_save)");
 					}
 				}
 				if (isset($home_file[0])) {
-					if (rename ($tmpStoreFolder.$home_file[0],$storeFolder.$home_file[0])) {
+					// resize
+					$tmpFile=$tmpStoreFolder.$home_file[0];
+					if ($this->common->resizeImage($tmpFile,300,190)) {
+						audit_log("Message: ridimensionata foto home $tmpFile. (admin/usato_save)");
+					}else{
+						audit_log("Warning: ridimensionamento foto homr $tmpFile non riuscito. (admin/usato_save)");
+					}
+					// spostamento
+					if (rename ($tmpFile,$storeFolder.$home_file[0])) {
 						audit_log("Message: spostata foto home ".$home_file[0].". (admin/usato_save)");
 					}else{
 						audit_log("Error: spostamento foto home ".$home_file[0].". (admin/usato_save)");
@@ -179,7 +194,15 @@ class Admin extends CI_Controller {
 				}
 				if (isset($gallery_files[0])) {
 					foreach ($gallery_files as $file) {
-						if (rename ($tmpStoreFolder.$file,$storeFolder.$file)) {
+						// resize
+						$tmpFile=$tmpStoreFolder.$file;
+						if ($this->common->resizeImage($tmpFile,1000,635)) {
+							audit_log("Message: ridimensionata foto gallery $tmpFile. (admin/usato_save)");
+						}else{
+							audit_log("Warning: ridimensionamento foto gallery $tmpFile non riuscito. (admin/usato_save)");
+						}
+						// spostamento
+						if (rename ($tmpFile,$storeFolder.$file)) {
 							audit_log("Message: spostata foto gallery ".$file.". (admin/usato_save)");
 						}else{
 							audit_log("Error: spostamento foto gallery ".$file.". (admin/usato_save)");
@@ -202,7 +225,7 @@ class Admin extends CI_Controller {
 				$this->session->set_flashdata('save','Salvataggio usato completato');
 				$this->session->set_flashdata('save_status','success');
 				audit_log("Message: salvataggio usato effettuato ".json_encode($post).". (admin/usato_save)");
-				echo "1";
+				echo $newid;
 			}else{
 				audit_log("Error: salvataggio record usato ".json_encode($record).". Errore DB ".$newid['message'].". (admin/usato_save)");				
 				echo $newid['message'];
@@ -275,6 +298,7 @@ class Admin extends CI_Controller {
 		if ($this->form_validation->run() !== FALSE) {
 			$post=$this->input->post();	// post: {"nome":"nome","descr":{"it":"descr ita","en":"descr eng"},"cartec":{"1":{"it":"tecnica ita 1","en":"tecnica eng 1"},"2":{"it":"tecnica ita 2","en":"tecnica eng 2"}},"accessori":{"it":"accessori ita","en":"accessori eng"},"home_file":"[\"E8nKD5cL.jpg\"]","gallery_files":"[\"fqecdPEp.jpg\",\"SZlJIE6k.jpg\"]","banner_file":"[\"yScY6Bnz.jpg\"]","type":"usato"}				
 			// creo record usato
+						
 			$record=array();
 			$record['nome']=$post['nome'];
 			$record['descr']=json_encode($post['descr']);
@@ -298,6 +322,7 @@ class Admin extends CI_Controller {
 				$cartec->en=$cartec_en;				
 				$record['tecniche']=json_encode($cartec);
 			}
+
 			// aggiorno record usato
 			if ($update=$this->usato_model->updateUsato($record,$id)) { 
 				audit_log("Message: aggiornato record usato ".json_encode($record)." con ID $id. (admin/usato_update)");
@@ -305,26 +330,51 @@ class Admin extends CI_Controller {
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
+				
 				if (isset($banner_file[0])) {
-					if (rename ($tmpStoreFolder.$banner_file[0],$storeFolder.$banner_file[0])) {
-						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_update)");
+					// resize
+					$tmpFile=$tmpStoreFolder.$banner_file[0];
+					if ($this->common->resizeImage($tmpFile,1900,300)) {
+						audit_log("Message: ridimensionata foto banner $tmpFile. (admin/usato_save)");
 					}else{
-						audit_log("Error: spostamento foto banner ".$banner_file[0].". (admin/usato_update)");
+						audit_log("Warning: ridimensionamento foto banner $tmpFile non riuscito. (admin/usato_save)");
+					}
+					// spostamento
+					if (@rename ($tmpFile,$storeFolder.$banner_file[0])) {
+						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_save)");
+					}else{
+						audit_log("Warning: spostamento foto banner ".$banner_file[0].". (admin/usato_save)");
 					}
 				}
 				if (isset($home_file[0])) {
-					if (rename ($tmpStoreFolder.$home_file[0],$storeFolder.$home_file[0])) {
-						audit_log("Message: spostata foto home ".$home_file[0].". (admin/usato_update)");
+					// resize
+					$tmpFile=$tmpStoreFolder.$home_file[0];
+					if ($this->common->resizeImage($tmpFile,300,190)) {
+						audit_log("Message: ridimensionata foto home $tmpFile. (admin/usato_save)");
 					}else{
-						audit_log("Error: spostamento foto home ".$home_file[0].". (admin/usato_update)");
+						audit_log("Warning: ridimensionamento foto home $tmpFile non riuscito. (admin/usato_save)");
+					}
+					// spostamento
+					if (@rename ($tmpFile,$storeFolder.$home_file[0])) {
+						audit_log("Message: spostata foto home ".$home_file[0].". (admin/usato_save)");
+					}else{
+						audit_log("Warning: spostamento foto home ".$home_file[0].". (admin/usato_save)");
 					}
 				}
 				if (isset($gallery_files[0])) {
 					foreach ($gallery_files as $file) {
-						if (rename ($tmpStoreFolder.$file,$storeFolder.$file)) {
-							audit_log("Message: spostata foto gallery ".$file.". (admin/usato_update)");
+						// resize
+						$tmpFile=$tmpStoreFolder.$file;
+						if ($this->common->resizeImage($tmpFile,1000,635)) {
+							audit_log("Message: ridimensionata foto gallery $tmpFile. (admin/usato_save)");
 						}else{
-							audit_log("Error: spostamento foto gallery ".$file.". (admin/usato_update)");
+							audit_log("Warning: ridimensionamento foto gallery $tmpFile non riuscito. (admin/usato_save)");
+						}
+						// spostamento
+						if (@rename ($tmpFile,$storeFolder.$file)) {
+							audit_log("Message: spostata foto gallery ".$file.". (admin/usato_save)");
+						}else{
+							audit_log("Warning: spostamento foto gallery ".$file.". (admin/usato_save)");
 						}
 					}
 				}

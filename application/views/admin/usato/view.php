@@ -146,7 +146,7 @@
 			<?php foreach ($usato->pics as $pic) : ?>
 			<!-- loop immagini galleria -->				
 			<div class="dz-preview dz-file-preview img-preview img_gallery">
-			  <input type="hidden" name="orig_gallery[]" value="<?echo $pic->id ?>">
+			  <input type="hidden" name="orig_gallery[]" value="<?php echo $pic->id ?>">
 			  <div class="dz-details">
 				<img style="height:120px" src="<?php echo site_url('assets/img/usato/'.$pic->pic) ?>" />
 			  </div>
@@ -201,7 +201,7 @@
 	</div>
 	<div class="row greyrow">
 		<div class="form-group col-xs-12">			
-			<?php echo form_checkbox("visible",1,true) ?>
+			<?php echo form_checkbox("visible",1,$usato->visible==1) ?>
 			<label>Visibile</label>
 		</div>
 	</div>
