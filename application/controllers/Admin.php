@@ -161,6 +161,8 @@ class Admin extends CI_Controller {
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
+				// resize DA FARE 
+				// $this->load->library('image_lib');
 				if (isset($banner_file[0])) {
 					if (rename ($tmpStoreFolder.$banner_file[0],$storeFolder.$banner_file[0])) {
 						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_save)");
@@ -303,7 +305,6 @@ class Admin extends CI_Controller {
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
-				audit_log("&&&& ".json_encode($banner_file));
 				if (isset($banner_file[0])) {
 					if (rename ($tmpStoreFolder.$banner_file[0],$storeFolder.$banner_file[0])) {
 						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_update)");
@@ -625,19 +626,19 @@ class Admin extends CI_Controller {
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
-				audit_log("&&&& ".json_encode($banner_file));
 				if (isset($banner_file[0])) {
+					// controllo se esiste il file &tmpStoreFolder.$banner_file[0]
 					if (rename ($tmpStoreFolder.$banner_file[0],$storeFolder.$banner_file[0])) {
 						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_update)");
 					}else{
-						audit_log("Error: spostamento foto banner ".$banner_file[0].". (admin/usato_update)");
+						audit_log("Warning: spostamento foto banner ".$banner_file[0].". (admin/usato_update)");
 					}
 				}
 				if (isset($home_file[0])) {
 					if (rename ($tmpStoreFolder.$home_file[0],$storeFolder.$home_file[0])) {
 						audit_log("Message: spostata foto home ".$home_file[0].". (admin/usato_update)");
 					}else{
-						audit_log("Error: spostamento foto home ".$home_file[0].". (admin/usato_update)");
+						audit_log("Warning: spostamento foto home ".$home_file[0].". (admin/usato_update)");
 					}
 				}
 				if (isset($gallery_files[0])) {

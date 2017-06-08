@@ -8,9 +8,12 @@
 			swal({title:"", text:"<?php echo $this->session->save ?>", timer:1500, showConfirmButton:false, type: "<?php echo $this->session->save_status ?>"});
 			<?php endif ?>
 		});
-		
+	
 		var dzGallery = new Dropzone("#newgallery", { 
 			url: "<?php echo site_url('admin/upload'); ?>",
+			thumbnailWidth: 190,
+			thumbnailHeight: 120,
+			thumbnailMethod: "contain",
 			autoProcessQueue: false,
 			uploadMultiple: true,
 			maxFiles: 10,
@@ -39,6 +42,9 @@
 		
 		var dzHome = new Dropzone("#newhome", { 
 			url: "<?php echo site_url('admin/upload'); ?>",
+			thumbnailWidth: 190,
+			thumbnailHeight: 120,
+			thumbnailMethod: "contain",
 			maxFilesize: 1, // MB
 			acceptedFiles: ".jpg",
 			dictFileTooBig: "Dimensioni file: {{filesize}}MB. Dimensioni massime: {{maxFilesize}}MB",
@@ -68,6 +74,9 @@
 		
 		var dzBanner = new Dropzone("#newbanner", { 
 			url: "<?php echo site_url('admin/upload'); ?>",
+			thumbnailWidth: 760,
+			thumbnailHeight: 120,
+			thumbnailMethod: "contain",
 			maxFilesize: 1, // MB
 			acceptedFiles: ".jpg",
 			dictFileTooBig: "Dimensioni file: {{filesize}}MB. Dimensioni massime: {{maxFilesize}}MB",
