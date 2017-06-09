@@ -470,12 +470,12 @@ class Admin extends CI_Controller {
 			redirect('admin/login');
 		}
 		
-		$data['usati']=$this->offerte_model->getUsati(true); // con true prendo anche quelli con visible==0
+		$data['offerte']=$this->offerte_model->getOfferte(true); // con true prendo anche quelle con visible==0
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
-		$this->load->view('admin/usato/list',$data);
+		$this->load->view('admin/offerte/list',$data);
 		$this->load->view('admin/scripts');	
-		$this->load->view('admin/usato/list_scripts');	
+		$this->load->view('admin/offerte/list_scripts');	
 		$this->load->view('admin/close');
 		
 	}
@@ -489,9 +489,9 @@ class Admin extends CI_Controller {
 			
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
-		$this->load->view('admin/usato/new');
+		$this->load->view('admin/offerte/new');
 		$this->load->view('admin/scripts');	
-		$this->load->view('admin/usato/new_scripts');
+		$this->load->view('admin/offerte/new_scripts');
 		$this->load->view('admin/close');
 		
 	}
@@ -514,24 +514,15 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('descr[en]', 'Descrizione ENG', 'required',
 				array('required' => '%s obbligatoria')
 		);
-		if ((null!=($this->input->post('cartec'))) && (is_array($this->input->post('cartec')))) {
-				foreach ($this->input->post('cartec') as $key => $value) {
-					$this->form_validation->set_rules('cartec['.$key.'][it]', 'Caratteristica tecnica ITA '.$key, 'required',
-						array('required' => '%s obbligatoria')
-					);
-					$this->form_validation->set_rules('cartec['.$key.'][en]', 'Caratteristica tecnica ENG '.$key, 'required',
-						array('required' => '%s obbligatoria')
-					);
-				}
-		}
+		
 		// validazione ok
 		if ($this->form_validation->run() !== FALSE) {
-			$post=$this->input->post();	// post: {"nome":"nome","descr":{"it":"descr ita","en":"descr eng"},"cartec":{"1":{"it":"tecnica ita 1","en":"tecnica eng 1"},"2":{"it":"tecnica ita 2","en":"tecnica eng 2"}},"accessori":{"it":"accessori ita","en":"accessori eng"},"home_file":"[\"E8nKD5cL.jpg\"]","gallery_files":"[\"fqecdPEp.jpg\",\"SZlJIE6k.jpg\"]","banner_file":"[\"yScY6Bnz.jpg\"]","type":"usato"}				
+			$post=$this->input->post();	// post: {"nome":"sdfsd","descr":{"it":"sdfsdf","en":"sdfsdf"},"accessori":{"it":"","en":""},"home_file":"[]","gallery_files":"[]","banner_file":"[]","link":"[]","btn_txt":"sdfsdf","visible":"1","type":"offerte"}
+			
 			// creo record usato
 			$record=array();
 			$record['nome']=$post['nome'];
 			$record['descr']=json_encode($post['descr']);
-			$record['accessori']=json_encode($post['accessori']);
 			$record['url']=url_title($post['nome']);
 			$home_file=json_decode($post['home_file']);
 			$banner_file=json_decode($post['banner_file']);
@@ -539,23 +530,24 @@ class Admin extends CI_Controller {
 			$record['img_home']=isset($home_file[0]) ? $home_file[0] : "null.jpg"; // se l'utente non carica immagine uso null.jpg in sostituzione
 			$record['img_banner']=isset($banner_file[0]) ? $banner_file[0] : "null.jpg";			
 			$record['visible']=isset($post['visible']) ? "1" : "0";
-			$record['tecniche']='{"it":"","en":""}';
-			if (isset($post['cartec'])) {
-				$cartec_it=array();
-				$cartec_en=array();
-				foreach ($post['cartec'] as $cartec) {
-					$cartec_it[]=$cartec['it'];
-					$cartec_en[]=$cartec['en'];
-				}
-				$cartec=new stdClass();
-				$cartec->it=$cartec_it;
-				$cartec->en=$cartec_en;				
-				$record['tecniche']=json_encode($cartec);
-			}
-			// salvo record usato
-			if (is_numeric($newid=$this->offerte_model->createUsato($record))) { 
+			$link=json_decode($post['link']);
+			$link_it=isset($link[0]) ? $link[0] : "";
+			$link_en=json_decode($post['link_en']);
+			$link_en=isset($link_en[0]) ? $link_en[0] : "";
+			$link=new stdClass();
+			$link->it=$link_it;
+			$link->en=$link_en;
+			$record['link']=json_encode($link);
+			$buttontext=$post['btn_txt'];
+			$btn_txt=new stdClass();
+			$btn_txt->it=$buttontext['it'];
+			$btn_txt->en=$buttontext['en'];				
+			$record['btn_txt']=json_encode($btn_txt);
+
+			// salvo record offerta
+			if (is_numeric($newid=$this->offerte_model->createOfferta($record))) { 
 				// se il return della funzione non è numerico vuol dire che contiene un messaggio di errore
-				audit_log("Message: salvato record usato ".json_encode($record)." con ID $newid. (admin/offerte_save)");
+				audit_log("Message: salvato record offerta ".json_encode($record)." con ID $newid. (admin/offerte_save)");
 				// ridimensiono e sposto immagini tmp in cartella usato
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
@@ -612,21 +604,21 @@ class Admin extends CI_Controller {
 				if (count($gallery_files) > 0){
 					$pics=array();
 					foreach ($gallery_files as $val) {
-						$pics[]=array("id_usato"=>$newid,"pic"=>$val);
+						$pics[]=array("id_offerta"=>$newid,"pic"=>$val);
 					}
 					// salvo batch offerte_pics
-					if ($this->offerte_model->createUsatoPics($pics)) {
-						audit_log("Message: create foto gallery usato ".json_encode($pics).". (admin/offerte_save)");						
+					if ($this->offerte_model->createOffertaPics($pics)) {
+						audit_log("Message: create foto gallery offerta ".json_encode($pics).". (admin/offerte_save)");						
 					}else{
-						audit_log("Error: creazione foto gallery usato ".json_encode($pics).". (admin/offerte_save)");						
+						audit_log("Error: creazione foto gallery offerta ".json_encode($pics).". (admin/offerte_save)");						
 					}
 				}
-				$this->session->set_flashdata('save','Salvataggio usato completato');
+				$this->session->set_flashdata('save','Salvataggio offerta completato');
 				$this->session->set_flashdata('save_status','success');
-				audit_log("Message: salvataggio usato completato. (admin/offerte_save)");
+				audit_log("Message: salvataggio offerta completato. (admin/offerte_save)");
 				echo $newid;
 			}else{
-				audit_log("Error: salvataggio record usato ".json_encode($record).". Errore DB ".$newid['message'].". (admin/offerte_save)");				
+				audit_log("Error: salvataggio record offerta ".json_encode($record).". Errore DB ".$newid['message'].". (admin/offerte_save)");				
 				echo $newid['message']; // errore db query createUsato
 			}			
 		}else{
@@ -863,8 +855,9 @@ class Admin extends CI_Controller {
 			$this->load->helper('string'); 
 			// upload array file (gallery)
 			if (is_array($_FILES['file']['tmp_name'])) {
-				foreach ($_FILES['file']['tmp_name'] as $tempFile) {  
-					if ($storeFile=$this->loadFile($tempFile,$storeFolder)) {
+				foreach ($_FILES['file']['tmp_name'] as $key=>$tempFile) {  
+					$ext = end((explode(".", $_FILES['file']['name'][$key])));
+					if ($storeFile=$this->loadFile($tempFile,$storeFolder,$ext)) {
 						audit_log("Message: caricata immagine $storeFile. (admin/upload)");
 						$uploadedFiles[]=$storeFile;
 					}else{
@@ -875,7 +868,9 @@ class Admin extends CI_Controller {
 				}
 			}else{
 				// upload singolo file (banner, home)
-				if ($storeFile=$this->loadFile($_FILES['file']['tmp_name'],$storeFolder)) {
+				$ext = end((explode(".", $_FILES['file']['name'])));
+				audit_log("%%%%% $ext");
+				if ($storeFile=$this->loadFile($_FILES['file']['tmp_name'],$storeFolder,$ext)) {
 					audit_log("Message: caricata immagine $storeFile. (admin/upload)");
 					$uploadedFiles[]=$storeFile;
 				}else{
@@ -892,8 +887,8 @@ class Admin extends CI_Controller {
 		
 	}
 	
-	private function loadFile($tempFile,$storeFolder) { /* upload file con nome random; return nome */
-		$storeFile=random_string('alnum',8).".jpg";   
+	private function loadFile($tempFile,$storeFolder,$ext) { /* upload file con nome random; return nome */
+		$storeFile=random_string('alnum',8).".$ext";   
 		$targetFile=$storeFolder.$storeFile;
 		if (move_uploaded_file($tempFile,$targetFile)) return $storeFile;		
 		return false;

@@ -6,8 +6,9 @@
 			$this->load->database();
 		}
 		
-		public function getOfferte() {		
-			$query=$this->db->where('visible',1)
+		public function getOfferte($all=false) {		
+			if (!$all) $query=$this->db->where('visible',1);
+			$query=$this->db->order_by('nome')
 							->get('offerte');						
 			return $query->result();
 		}
@@ -23,6 +24,18 @@
 							->order_by('pic')
 							->get('offerte_pics');
 			return $query->result();
+		}
+		
+		public function createOfferta($record) {
+			$this->db->db_debug = FALSE; // mi serve l'eventuale messaggio errore
+
+			if ($query=$this->db->set($record)->insert('offerte')) return $this->db->insert_id();
+			return $this->db->error();
+		}
+		
+		public function createOffertaPics($pics) {
+			$query=$this->db->insert_batch('offerte_pics',$pics);
+			return $query;
 		}
 	
 	}

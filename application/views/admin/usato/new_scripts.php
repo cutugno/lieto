@@ -2,12 +2,6 @@
     
     <!-- custom scripts -->
     <script type="text/javascript">
-		
-		$(function(){
-			<?php if (isset($this->session->save)) : ?>
-			swal({title:"", text:"<?php echo $this->session->save ?>", timer:1500, showConfirmButton:false, type: "<?php echo $this->session->save_status ?>"});
-			<?php endif ?>
-		});
 	
 		var dzGallery = new Dropzone("#newgallery", { 
 			url: "<?php echo site_url('admin/upload'); ?>",
