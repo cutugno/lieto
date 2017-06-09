@@ -12,7 +12,10 @@ class Admin extends CI_Controller {
 	// LOGIN
 	public function login() { /* pagina form login */
 		
-		if ($this->session->user) redirect('admin');
+		if ($this->session->user) {
+			log_message("Warning: tentativo login con utente già loggato. (admin/login)");
+			redirect('admin');
+		}
 		
 		$this->load->view('admin/start');
 		$this->load->view('admin/login/index');
@@ -25,14 +28,14 @@ class Admin extends CI_Controller {
 	public function login_check() {
 			
 		if (!$this->input->post()) {
-			audit_log("Error: parametri post non impostati. (admin/login_check)");
+			audit_log("Error: tentativo di login senza paramtri. (admin/login_check)");
 			exit("Accesso non autorizzato");
 		}
 		
 		$post=$this->input->post();
 		
 		if ( (!isset($post['user'])) || (!isset($post['password'])) ) {
-			audit_log("Error: dati post login errati o incompleti: ".json_encode($post).". (login/checklogin)");
+			audit_log("Error: parametri login errati o incompleti: ".json_encode($post).". (login/checklogin)");
 			echo "Login errato";
 			exit();
 		}
@@ -60,7 +63,10 @@ class Admin extends CI_Controller {
 	// DASHBOARD
 	public function index() /* dashboard admin */ {
 		
-		if (!$this->session->user) redirect('admin/login');
+		if (!$this->session->user) {
+			log_message("Warning: tentativo accesso con utente non loggato. (admin/index)");
+			redirect('admin/login');
+		}
 		
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
@@ -74,7 +80,10 @@ class Admin extends CI_Controller {
 	// USATO
 	public function usato() { /* pagina lista usati */
 		
-		if (!$this->session->user) redirect('admin/login');
+		if (!$this->session->user) {
+			log_message("Warning: tentativo accesso con utente non loggato. (admin/usato)");
+			redirect('admin/login');
+		}
 		
 		$data['usati']=$this->usato_model->getUsati(true); // con true prendo anche quelli con visible==0
 		$this->load->view('admin/start');
@@ -88,7 +97,10 @@ class Admin extends CI_Controller {
 
 	public function usato_new() { /* pagina nuovo usato */	
 		
-		if (!$this->session->user) redirect('admin/login');
+		if (!$this->session->user) {
+			log_message("Warning: tentativo accesso con utente non loggato. (admin/usato_new)");
+			redirect('admin/login');
+		}
 			
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
@@ -99,10 +111,10 @@ class Admin extends CI_Controller {
 		
 	}
 	
-	public function usato_save() { /* salvataggio usato */		
+	public function usato_save() { /* REST salvataggio usato */		
 		
 		if (!$this->session->user) {
-			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
+			audit_log("Error: tentativo salvataggio usato con utente non loggato. (admin/usato_save)");
 			exit("Operazione non consentita");
 		}
 		
@@ -138,7 +150,8 @@ class Admin extends CI_Controller {
 			$record['url']=url_title($post['nome']);
 			$home_file=json_decode($post['home_file']);
 			$banner_file=json_decode($post['banner_file']);
-			$record['img_home']=isset($home_file[0]) ? $home_file[0] : "null.jpg";
+			// home_file e banner_file arrivano sempre come array
+			$record['img_home']=isset($home_file[0]) ? $home_file[0] : "null.jpg"; // se l'utente non carica immagine uso null.jpg in sostituzione
 			$record['img_banner']=isset($banner_file[0]) ? $banner_file[0] : "null.jpg";			
 			$record['visible']=isset($post['visible']) ? "1" : "0";
 			$record['tecniche']='{"it":"","en":""}';
@@ -155,7 +168,8 @@ class Admin extends CI_Controller {
 				$record['tecniche']=json_encode($cartec);
 			}
 			// salvo record usato
-			if (is_numeric($newid=$this->usato_model->createUsato($record))) {
+			if (is_numeric($newid=$this->usato_model->createUsato($record))) { 
+				// se il return della funzione non è numerico vuol dire che contiene un messaggio di errore
 				audit_log("Message: salvato record usato ".json_encode($record)." con ID $newid. (admin/usato_save)");
 				// ridimensiono e sposto immagini tmp in cartella usato
 				$gallery_files=json_decode($post['gallery_files']);
@@ -224,11 +238,11 @@ class Admin extends CI_Controller {
 				}
 				$this->session->set_flashdata('save','Salvataggio usato completato');
 				$this->session->set_flashdata('save_status','success');
-				audit_log("Message: salvataggio usato effettuato ".json_encode($post).". (admin/usato_save)");
+				audit_log("Message: salvataggio usato completato. (admin/usato_save)");
 				echo $newid;
 			}else{
 				audit_log("Error: salvataggio record usato ".json_encode($record).". Errore DB ".$newid['message'].". (admin/usato_save)");				
-				echo $newid['message'];
+				echo $newid['message']; // errore db query createUsato
 			}			
 		}else{
 			// validazione no
@@ -239,13 +253,17 @@ class Admin extends CI_Controller {
 	
 	public function usato_view($url) { /* pagina dettagli usato */
 		
-		if (!$this->session->user) redirect('admin/login');
+		if (!$this->session->user) {
+			audit_log("Error: tentativo accesso con utente non loggato. (admin/usato_view)");
+			redirect('admin/login');
+		}
 		
 		if (!isset($url)) show_404();
 		
 		// carico usato
 		if (!$usato=$this->usato_model->getUsatoByUrl($url)) show_404();
 		$usato->pics=$this->usato_model->getUsatoPics($usato->id);
+		// se immagini home e banner sono null.jpg passo json array vuoto 
 		$usato->home_file=$usato->img_home=="null.jpg" ? "[]" : json_encode(array($usato->img_home));
 		$usato->banner_file=$usato->img_banner=="null.jpg" ? "[]" :json_encode(array($usato->img_banner));
 		$usato->descr=json_decode($usato->descr);
@@ -264,12 +282,12 @@ class Admin extends CI_Controller {
 	public function usato_update($id) { /* REST aggiornamento usato */
 		
 		if (!$this->session->user) {
-			audit_log("Error: tentativo di update utente non loggato. (admin/usato_save)");
+			audit_log("Error: tentativo di update usato con utente non loggato. (admin/usato_update)");
 			exit("Operazione non consentita");
 		}
 			
 		if (!isset($id)) {
-			audit_log("Error: Tentativo di update usato senza parametro ID. (admin/usato_update)");
+			audit_log("Error: Tentativo di update usato senza parametri. (admin/usato_update)");
 			exit("Parametri non impostati");
 		}
 
@@ -297,8 +315,7 @@ class Admin extends CI_Controller {
 		// validazione ok
 		if ($this->form_validation->run() !== FALSE) {
 			$post=$this->input->post();	// post: {"nome":"nome","descr":{"it":"descr ita","en":"descr eng"},"cartec":{"1":{"it":"tecnica ita 1","en":"tecnica eng 1"},"2":{"it":"tecnica ita 2","en":"tecnica eng 2"}},"accessori":{"it":"accessori ita","en":"accessori eng"},"home_file":"[\"E8nKD5cL.jpg\"]","gallery_files":"[\"fqecdPEp.jpg\",\"SZlJIE6k.jpg\"]","banner_file":"[\"yScY6Bnz.jpg\"]","type":"usato"}				
-			// creo record usato
-						
+			// creo record usato						
 			$record=array();
 			$record['nome']=$post['nome'];
 			$record['descr']=json_encode($post['descr']);
@@ -306,6 +323,7 @@ class Admin extends CI_Controller {
 			$record['url']=url_title($post['nome']);
 			$home_file=json_decode($post['home_file']);
 			$banner_file=json_decode($post['banner_file']);
+			// se utente non carica immagine uso null.jpg in sostituzione
 			$record['img_home']=isset($home_file[0]) ? $home_file[0] : "null.jpg";
 			$record['img_banner']=isset($banner_file[0]) ? $banner_file[0] : "null.jpg";			
 			$record['visible']=isset($post['visible']) ? "1" : "0";
@@ -330,7 +348,7 @@ class Admin extends CI_Controller {
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
-				
+								
 				if (isset($banner_file[0])) {
 					// resize
 					$tmpFile=$tmpStoreFolder.$banner_file[0];
@@ -339,7 +357,7 @@ class Admin extends CI_Controller {
 					}else{
 						audit_log("Warning: ridimensionamento foto banner $tmpFile non riuscito. (admin/usato_save)");
 					}
-					// spostamento
+					// spostamento TOGLIERE CHIOCCIOLA
 					if (@rename ($tmpFile,$storeFolder.$banner_file[0])) {
 						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_save)");
 					}else{
@@ -354,11 +372,11 @@ class Admin extends CI_Controller {
 					}else{
 						audit_log("Warning: ridimensionamento foto home $tmpFile non riuscito. (admin/usato_save)");
 					}
-					// spostamento
+					// spostamento TOGLIERE CHIOCCIOLA
 					if (@rename ($tmpFile,$storeFolder.$home_file[0])) {
 						audit_log("Message: spostata foto home ".$home_file[0].". (admin/usato_save)");
 					}else{
-						audit_log("Warning: spostamento foto home ".$home_file[0].". (admin/usato_save)");
+						audit_log("Warning: spostamento foto home ".$home_file[0]." non riuscito. (admin/usato_save)");
 					}
 				}
 				if (isset($gallery_files[0])) {
@@ -370,11 +388,11 @@ class Admin extends CI_Controller {
 						}else{
 							audit_log("Warning: ridimensionamento foto gallery $tmpFile non riuscito. (admin/usato_save)");
 						}
-						// spostamento
+						// spostamento TOGLIERE CHIOCCIOLA
 						if (@rename ($tmpFile,$storeFolder.$file)) {
 							audit_log("Message: spostata foto gallery ".$file.". (admin/usato_save)");
 						}else{
-							audit_log("Warning: spostamento foto gallery ".$file.". (admin/usato_save)");
+							audit_log("Warning: spostamento foto gallery ".$file." non riuscito. (admin/usato_save)");
 						}
 					}
 				}
@@ -400,7 +418,7 @@ class Admin extends CI_Controller {
 				}
 				$this->session->set_flashdata('save','Aggiornamento usato completato');
 				$this->session->set_flashdata('save_status','success');
-				audit_log("Message: aggiornamento usato effettuato ".json_encode($post).". (admin/usato_update)");
+				audit_log("Message: aggiornamento usato completato. (admin/usato_update)");
 				echo "1";
 			}else{
 				audit_log("Error: aggiornamento record usato ".json_encode($record).". Errore DB ".$update['message'].". (admin/usato_update)");				
@@ -416,12 +434,12 @@ class Admin extends CI_Controller {
 	public function usato_delete() { /* REST cancellazione usato e relative foto */
 		
 		if (!$this->session->user) {
-			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
+			audit_log("Error: tentativo cancellazione usato con utente non loggato. (admin/usato_delete)");
 			exit("Operazione non consentita");
 		}
 		
 		if (!$this->input->post()) {
-			audit_log("Error: Tentativo di delete usato senza parametro ID. (admin/usato_delete)");
+			audit_log("Error: Tentativo di cancellazione usato senza parametri. (admin/usato_delete)");
 			exit("Parametri non impostati");
 		}
 		
@@ -447,9 +465,12 @@ class Admin extends CI_Controller {
 	// OFFERTE
 	public function offerte() { /* pagina lista offerte */
 		
-		if (!$this->session->user) redirect('admin/login');
+		if (!$this->session->user) {
+			log_message("Warning: tentativo accesso con utente non loggato. (admin/offerte)");
+			redirect('admin/login');
+		}
 		
-		$data['usati']=$this->usato_model->getUsati(true); // con true prendo anche quelli con visible==0
+		$data['usati']=$this->offerte_model->getUsati(true); // con true prendo anche quelli con visible==0
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
 		$this->load->view('admin/usato/list',$data);
@@ -461,7 +482,10 @@ class Admin extends CI_Controller {
 
 	public function offerte_new() { /* pagina nuova offerta */	
 		
-		if (!$this->session->user) redirect('admin/login');
+		if (!$this->session->user) {
+			log_message("Warning: tentativo accesso con utente non loggato. (admin/offerte_new)");
+			redirect('admin/login');
+		}
 			
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
@@ -472,10 +496,10 @@ class Admin extends CI_Controller {
 		
 	}
 	
-	public function offerte_save() { /* salvataggio offerta */		
+	public function offerte_save() { /* REST salvataggio offerta */		
 		
 		if (!$this->session->user) {
-			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
+			audit_log("Error: tentativo salvataggio offerta con utente non loggato. (admin/offerte_save)");
 			exit("Operazione non consentita");
 		}
 		
@@ -511,7 +535,8 @@ class Admin extends CI_Controller {
 			$record['url']=url_title($post['nome']);
 			$home_file=json_decode($post['home_file']);
 			$banner_file=json_decode($post['banner_file']);
-			$record['img_home']=isset($home_file[0]) ? $home_file[0] : "null.jpg";
+			// home_file e banner_file arrivano sempre come array
+			$record['img_home']=isset($home_file[0]) ? $home_file[0] : "null.jpg"; // se l'utente non carica immagine uso null.jpg in sostituzione
 			$record['img_banner']=isset($banner_file[0]) ? $banner_file[0] : "null.jpg";			
 			$record['visible']=isset($post['visible']) ? "1" : "0";
 			$record['tecniche']='{"it":"","en":""}';
@@ -528,55 +553,81 @@ class Admin extends CI_Controller {
 				$record['tecniche']=json_encode($cartec);
 			}
 			// salvo record usato
-			if (is_numeric($newid=$this->usato_model->createUsato($record))) {
-				audit_log("Message: salvato record usato ".json_encode($record)." con ID $newid. (admin/usato_save)");
-				// sposto immagini tmp in cartella usato
+			if (is_numeric($newid=$this->offerte_model->createUsato($record))) { 
+				// se il return della funzione non è numerico vuol dire che contiene un messaggio di errore
+				audit_log("Message: salvato record usato ".json_encode($record)." con ID $newid. (admin/offerte_save)");
+				// ridimensiono e sposto immagini tmp in cartella usato
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
+				
 				if (isset($banner_file[0])) {
-					if (rename ($tmpStoreFolder.$banner_file[0],$storeFolder.$banner_file[0])) {
-						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_save)");
+					// resize
+					$tmpFile=$tmpStoreFolder.$banner_file[0];
+					if ($this->common->resizeImage($tmpFile,1900,300)) {
+						audit_log("Message: ridimensionata foto banner $tmpFile. (admin/offerte_save)");
 					}else{
-						audit_log("Error: spostamento foto banner ".$banner_file[0].". (admin/usato_save)");
+						audit_log("Warning: ridimensionamento foto banner $tmpFile non riuscito. (admin/offerte_save)");
+					}
+					// spostamento
+					if (rename ($tmpFile,$storeFolder.$banner_file[0])) {
+						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/offerte_save)");
+					}else{
+						audit_log("Error: spostamento foto banner ".$banner_file[0].". (admin/offerte_save)");
 					}
 				}
 				if (isset($home_file[0])) {
-					if (rename ($tmpStoreFolder.$home_file[0],$storeFolder.$home_file[0])) {
-						audit_log("Message: spostata foto home ".$home_file[0].". (admin/usato_save)");
+					// resize
+					$tmpFile=$tmpStoreFolder.$home_file[0];
+					if ($this->common->resizeImage($tmpFile,300,190)) {
+						audit_log("Message: ridimensionata foto home $tmpFile. (admin/offerte_save)");
 					}else{
-						audit_log("Error: spostamento foto home ".$home_file[0].". (admin/usato_save)");
+						audit_log("Warning: ridimensionamento foto homr $tmpFile non riuscito. (admin/offerte_save)");
+					}
+					// spostamento
+					if (rename ($tmpFile,$storeFolder.$home_file[0])) {
+						audit_log("Message: spostata foto home ".$home_file[0].". (admin/offerte_save)");
+					}else{
+						audit_log("Error: spostamento foto home ".$home_file[0].". (admin/offerte_save)");
 					}
 				}
 				if (isset($gallery_files[0])) {
 					foreach ($gallery_files as $file) {
-						if (rename ($tmpStoreFolder.$file,$storeFolder.$file)) {
-							audit_log("Message: spostata foto gallery ".$file.". (admin/usato_save)");
+						// resize
+						$tmpFile=$tmpStoreFolder.$file;
+						if ($this->common->resizeImage($tmpFile,1000,635)) {
+							audit_log("Message: ridimensionata foto gallery $tmpFile. (admin/offerte_save)");
 						}else{
-							audit_log("Error: spostamento foto gallery ".$file.". (admin/usato_save)");
+							audit_log("Warning: ridimensionamento foto gallery $tmpFile non riuscito. (admin/offerte_save)");
+						}
+						// spostamento
+						if (rename ($tmpFile,$storeFolder.$file)) {
+							audit_log("Message: spostata foto gallery ".$file.". (admin/offerte_save)");
+						}else{
+							audit_log("Error: spostamento foto gallery ".$file.". (admin/offerte_save)");
 						}
 					}
 				}
-				// creo array usato_pics
+				// creo array offerte_pics
 				if (count($gallery_files) > 0){
 					$pics=array();
 					foreach ($gallery_files as $val) {
 						$pics[]=array("id_usato"=>$newid,"pic"=>$val);
 					}
-					// salvo batch usato_pics
-					if ($this->usato_model->createUsatoPics($pics)) {
-						audit_log("Message: create foto gallery usato ".json_encode($pics).". (admin/usato_save)");						
+					// salvo batch offerte_pics
+					if ($this->offerte_model->createUsatoPics($pics)) {
+						audit_log("Message: create foto gallery usato ".json_encode($pics).". (admin/offerte_save)");						
 					}else{
-						audit_log("Error: creazione foto gallery usato ".json_encode($pics).". (admin/usato_save)");						
+						audit_log("Error: creazione foto gallery usato ".json_encode($pics).". (admin/offerte_save)");						
 					}
 				}
 				$this->session->set_flashdata('save','Salvataggio usato completato');
 				$this->session->set_flashdata('save_status','success');
-				audit_log("Message: salvataggio usato effettuato ".json_encode($post).". (admin/usato_save)");
-				echo "1";
+				audit_log("Message: salvataggio usato completato. (admin/offerte_save)");
+				echo $newid;
 			}else{
-				audit_log("Error: salvataggio record usato ".json_encode($record).". Errore DB ".$newid['message'].". (admin/usato_save)");				
-				echo $newid['message'];
+				audit_log("Error: salvataggio record usato ".json_encode($record).". Errore DB ".$newid['message'].". (admin/offerte_save)");				
+				echo $newid['message']; // errore db query createUsato
 			}			
 		}else{
 			// validazione no
@@ -587,13 +638,17 @@ class Admin extends CI_Controller {
 	
 	public function offerte_view($url) { /* pagina dettagli offerta */
 		
-		if (!$this->session->user) redirect('admin/login');
+		if (!$this->session->user) {
+			audit_log("Error: tentativo accesso con utente non loggato. (admin/offerte_view)");
+			redirect('admin/login');
+		}
 		
 		if (!isset($url)) show_404();
 		
 		// carico usato
-		if (!$usato=$this->usato_model->getUsatoByUrl($url)) show_404();
-		$usato->pics=$this->usato_model->getUsatoPics($usato->id);
+		if (!$usato=$this->offerte_model->getUsatoByUrl($url)) show_404();
+		$usato->pics=$this->offerte_model->getUsatoPics($usato->id);
+		// se immagini home e banner sono null.jpg passo json array vuoto 
 		$usato->home_file=$usato->img_home=="null.jpg" ? "[]" : json_encode(array($usato->img_home));
 		$usato->banner_file=$usato->img_banner=="null.jpg" ? "[]" :json_encode(array($usato->img_banner));
 		$usato->descr=json_decode($usato->descr);
@@ -612,12 +667,12 @@ class Admin extends CI_Controller {
 	public function offerte_update($id) { /* REST aggiornamento offerta */
 		
 		if (!$this->session->user) {
-			audit_log("Error: tentativo di update utente non loggato. (admin/usato_save)");
+			audit_log("Error: tentativo di update offerta con utente non loggato. (admin/offerte_update)");
 			exit("Operazione non consentita");
 		}
 			
 		if (!isset($id)) {
-			audit_log("Error: Tentativo di update usato senza parametro ID. (admin/usato_update)");
+			audit_log("Error: Tentativo di update usato senza parametri. (admin/offerte_update)");
 			exit("Parametri non impostati");
 		}
 
@@ -645,7 +700,7 @@ class Admin extends CI_Controller {
 		// validazione ok
 		if ($this->form_validation->run() !== FALSE) {
 			$post=$this->input->post();	// post: {"nome":"nome","descr":{"it":"descr ita","en":"descr eng"},"cartec":{"1":{"it":"tecnica ita 1","en":"tecnica eng 1"},"2":{"it":"tecnica ita 2","en":"tecnica eng 2"}},"accessori":{"it":"accessori ita","en":"accessori eng"},"home_file":"[\"E8nKD5cL.jpg\"]","gallery_files":"[\"fqecdPEp.jpg\",\"SZlJIE6k.jpg\"]","banner_file":"[\"yScY6Bnz.jpg\"]","type":"usato"}				
-			// creo record usato
+			// creo record usato						
 			$record=array();
 			$record['nome']=$post['nome'];
 			$record['descr']=json_encode($post['descr']);
@@ -653,6 +708,7 @@ class Admin extends CI_Controller {
 			$record['url']=url_title($post['nome']);
 			$home_file=json_decode($post['home_file']);
 			$banner_file=json_decode($post['banner_file']);
+			// se utente non carica immagine uso null.jpg in sostituzione
 			$record['img_home']=isset($home_file[0]) ? $home_file[0] : "null.jpg";
 			$record['img_banner']=isset($banner_file[0]) ? $banner_file[0] : "null.jpg";			
 			$record['visible']=isset($post['visible']) ? "1" : "0";
@@ -669,63 +725,88 @@ class Admin extends CI_Controller {
 				$cartec->en=$cartec_en;				
 				$record['tecniche']=json_encode($cartec);
 			}
+
 			// aggiorno record usato
-			if ($update=$this->usato_model->updateUsato($record,$id)) { 
-				audit_log("Message: aggiornato record usato ".json_encode($record)." con ID $id. (admin/usato_update)");
+			if ($update=$this->offerte_model->updateUsato($record,$id)) { 
+				audit_log("Message: aggiornato record usato ".json_encode($record)." con ID $id. (admin/offerte_update)");
 				// sposto immagini tmp in cartella usato
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
+								
 				if (isset($banner_file[0])) {
-					// controllo se esiste il file &tmpStoreFolder.$banner_file[0]
-					if (rename ($tmpStoreFolder.$banner_file[0],$storeFolder.$banner_file[0])) {
-						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_update)");
+					// resize
+					$tmpFile=$tmpStoreFolder.$banner_file[0];
+					if ($this->common->resizeImage($tmpFile,1900,300)) {
+						audit_log("Message: ridimensionata foto banner $tmpFile. (admin/offerte_save)");
 					}else{
-						audit_log("Warning: spostamento foto banner ".$banner_file[0].". (admin/usato_update)");
+						audit_log("Warning: ridimensionamento foto banner $tmpFile non riuscito. (admin/offerte_save)");
+					}
+					// spostamento TOGLIERE CHIOCCIOLA
+					if (@rename ($tmpFile,$storeFolder.$banner_file[0])) {
+						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/offerte_save)");
+					}else{
+						audit_log("Warning: spostamento foto banner ".$banner_file[0].". (admin/offerte_save)");
 					}
 				}
 				if (isset($home_file[0])) {
-					if (rename ($tmpStoreFolder.$home_file[0],$storeFolder.$home_file[0])) {
-						audit_log("Message: spostata foto home ".$home_file[0].". (admin/usato_update)");
+					// resize
+					$tmpFile=$tmpStoreFolder.$home_file[0];
+					if ($this->common->resizeImage($tmpFile,300,190)) {
+						audit_log("Message: ridimensionata foto home $tmpFile. (admin/offerte_save)");
 					}else{
-						audit_log("Warning: spostamento foto home ".$home_file[0].". (admin/usato_update)");
+						audit_log("Warning: ridimensionamento foto home $tmpFile non riuscito. (admin/offerte_save)");
+					}
+					// spostamento TOGLIERE CHIOCCIOLA
+					if (@rename ($tmpFile,$storeFolder.$home_file[0])) {
+						audit_log("Message: spostata foto home ".$home_file[0].". (admin/offerte_save)");
+					}else{
+						audit_log("Warning: spostamento foto home ".$home_file[0]." non riuscito. (admin/offerte_save)");
 					}
 				}
 				if (isset($gallery_files[0])) {
 					foreach ($gallery_files as $file) {
-						if (rename ($tmpStoreFolder.$file,$storeFolder.$file)) {
-							audit_log("Message: spostata foto gallery ".$file.". (admin/usato_update)");
+						// resize
+						$tmpFile=$tmpStoreFolder.$file;
+						if ($this->common->resizeImage($tmpFile,1000,635)) {
+							audit_log("Message: ridimensionata foto gallery $tmpFile. (admin/offerte_save)");
 						}else{
-							audit_log("Error: spostamento foto gallery ".$file.". (admin/usato_update)");
+							audit_log("Warning: ridimensionamento foto gallery $tmpFile non riuscito. (admin/offerte_save)");
+						}
+						// spostamento TOGLIERE CHIOCCIOLA
+						if (@rename ($tmpFile,$storeFolder.$file)) {
+							audit_log("Message: spostata foto gallery ".$file.". (admin/offerte_save)");
+						}else{
+							audit_log("Warning: spostamento foto gallery ".$file." non riuscito. (admin/offerte_save)");
 						}
 					}
 				}
 				
-				// elimino usato_pics obsolete
+				// elimino offerte_pics obsolete
 				$orig_gallery=isset($post['orig_gallery']) ? $post['orig_gallery'] : array();
-				if ($elim=$this->usato_model->deleteUsatoPics($orig_gallery,$id) > 0) {
-					audit_log("Message: eliminate $elim foto gallery per usato con ID $id. (admin/usato_update)");
+				if ($elim=$this->offerte_model->deleteUsatoPics($orig_gallery,$id) > 0) {
+					audit_log("Message: eliminate $elim foto gallery per usato con ID $id. (admin/offerte_update)");
 				}
 
-				// creo array usato_pics
+				// creo array offerte_pics
 				if (count($gallery_files) > 0){
 					$pics=array();
 					foreach ($gallery_files as $val) {
 						$pics[]=array("id_usato"=>$id,"pic"=>$val);
 					}
-					// salvo batch usato_pics
-					if ($this->usato_model->createUsatoPics($pics)) {
-						audit_log("Message: create foto gallery usato ".json_encode($pics).". (admin/usato_update)");						
+					// salvo batch offerte_pics
+					if ($this->offerte_model->createUsatoPics($pics)) {
+						audit_log("Message: create foto gallery usato ".json_encode($pics).". (admin/offerte_update)");						
 					}else{
-						audit_log("Error: creazione foto gallery usato ".json_encode($pics).". (admin/usato_update)");						
+						audit_log("Error: creazione foto gallery usato ".json_encode($pics).". (admin/offerte_update)");						
 					}
 				}
 				$this->session->set_flashdata('save','Aggiornamento usato completato');
 				$this->session->set_flashdata('save_status','success');
-				audit_log("Message: aggiornamento usato effettuato ".json_encode($post).". (admin/usato_update)");
+				audit_log("Message: aggiornamento usato completato. (admin/offerte_update)");
 				echo "1";
 			}else{
-				audit_log("Error: aggiornamento record usato ".json_encode($record).". Errore DB ".$update['message'].". (admin/usato_update)");				
+				audit_log("Error: aggiornamento record usato ".json_encode($record).". Errore DB ".$update['message'].". (admin/offerte_update)");				
 				echo $update['message'];
 			}			
 		}else{
@@ -738,30 +819,30 @@ class Admin extends CI_Controller {
 	public function offerte_delete() { /* REST cancellazione offerta e relative foto */
 		
 		if (!$this->session->user) {
-			audit_log("Error: tentativo salvataggio utente non loggato. (admin/usato_save)");
+			audit_log("Error: tentativo cancellazione offerta con utente non loggato. (admin/offerte_delete)");
 			exit("Operazione non consentita");
 		}
 		
 		if (!$this->input->post()) {
-			audit_log("Error: Tentativo di delete usato senza parametro ID. (admin/usato_delete)");
+			audit_log("Error: Tentativo di cancellazione offerta senza parametri. (admin/offerte_delete)");
 			exit("Parametri non impostati");
 		}
 		
 		$id=$this->input->post('id_usato');
 		
 		// cancello record di usato
-		if ($this->usato_model->deleteUsato($id)) {
-			audit_log("Message: eliminato usato con ID $id. (admin/usato_delete)");
-			// cancello eventuali usato_pics
+		if ($this->offerte_model->deleteUsato($id)) {
+			audit_log("Message: eliminato usato con ID $id. (admin/offerte_delete)");
+			// cancello eventuali offerte_pics
 			$tokeep=array(''); // con array vuoto elimino tutte le foto per questo usato
-			if ($this->usato_model->deleteUsatoPics($tokeep,$id)) { 
-				audit_log("Message: eliminate foto gallery per usato con ID $id. (admin/usato_delete)");
+			if ($this->offerte_model->deleteUsatoPics($tokeep,$id)) { 
+				audit_log("Message: eliminate foto gallery per usato con ID $id. (admin/offerte_delete)");
 			}
 			$this->session->set_flashdata('delete','Cancellazione usato completata');
 			$this->session->set_flashdata('delete_status','success');
 			echo 1; // success
 		}else{
-			audit_log("Error: eliminazione usato con ID $id. (admin/usato_delete)");
+			audit_log("Error: eliminazione usato con ID $id. (admin/offerte_delete)");
 			echo 0;
 		}
 	}
