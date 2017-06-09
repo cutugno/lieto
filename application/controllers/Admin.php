@@ -530,26 +530,26 @@ class Admin extends CI_Controller {
 			$record['img_home']=isset($home_file[0]) ? $home_file[0] : "null.jpg"; // se l'utente non carica immagine uso null.jpg in sostituzione
 			$record['img_banner']=isset($banner_file[0]) ? $banner_file[0] : "null.jpg";			
 			$record['visible']=isset($post['visible']) ? "1" : "0";
-			$link=json_decode($post['link']);
-			$link_it=isset($link[0]) ? $link[0] : "";
-			$link_en=json_decode($post['link_en']);
-			$link_en=isset($link_en[0]) ? $link_en[0] : "";
+			$link_ita=json_decode($post['link']);
+			$link_eng=json_decode($post['link_en']);			
+			$linkit=isset($link_ita[0]) ? $link_ita[0] : "";
+			$linken=isset($link_eng[0]) ? $link_eng[0] : "";
 			$link=new stdClass();
-			$link->it=$link_it;
-			$link->en=$link_en;
-			$record['link']=json_encode($link);
+			$link->it=$this->config->item('public_folder').$linkit;
+			$link->en=$this->config->item('public_folder').$linken;
+			$record['link']=json_encode($link);			
 			$buttontext=$post['btn_txt'];
 			$btn_txt=new stdClass();
 			$btn_txt->it=$buttontext['it'];
 			$btn_txt->en=$buttontext['en'];				
 			$record['btn_txt']=json_encode($btn_txt);
+			//echo json_encode($record);exit();
 
 			// salvo record offerta
 			if (is_numeric($newid=$this->offerte_model->createOfferta($record))) { 
 				// se il return della funzione non è numerico vuol dire che contiene un messaggio di errore
 				audit_log("Message: salvato record offerta ".json_encode($record)." con ID $newid. (admin/offerte_save)");
-				// ridimensiono e sposto immagini tmp in cartella usato
-				$gallery_files=json_decode($post['gallery_files']);
+				// ridimensiono e sposto immagini tmp in cartella offerte				
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
 				
@@ -583,6 +583,7 @@ class Admin extends CI_Controller {
 						audit_log("Error: spostamento foto home ".$home_file[0].". (admin/offerte_save)");
 					}
 				}
+				$gallery_files=json_decode($post['gallery_files']);
 				if (isset($gallery_files[0])) {
 					foreach ($gallery_files as $file) {
 						// resize
@@ -600,6 +601,29 @@ class Admin extends CI_Controller {
 						}
 					}
 				}
+				// sposto allegati in directory public
+				$attachStoreFolder=$this->config->item('public_folder');
+				if (isset($link_ita[0])) {
+					$tmpFile=$tmpStoreFolder.$link_ita[0];
+					audit_log("$$$$$ $tmpFile");
+					// spostamento
+					if (rename ($tmpFile,$attachStoreFolder.$link_ita[0])) {
+						audit_log("Message: spostato allegato ita ".$link_ita[0].". (admin/offerte_save)");
+					}else{
+						audit_log("Error: spostamento allegato ita ".$link_ita[0].". (admin/offerte_save)");
+					}
+				}
+				if (isset($link_eng[0])) {
+					$tmpFile=$tmpStoreFolder.$link_eng[0];
+					audit_log("$$$$$ $tmpFile");
+					// spostamento
+					if (rename ($tmpFile,$attachStoreFolder.$link_eng[0])) {
+						audit_log("Message: spostato allegato eng ".$link_eng[0].". (admin/offerte_save)");
+					}else{
+						audit_log("Error: spostamento allegato eng ".$link_eng[0].". (admin/offerte_save)");
+					}
+				}
+				
 				// creo array offerte_pics
 				if (count($gallery_files) > 0){
 					$pics=array();
@@ -869,7 +893,6 @@ class Admin extends CI_Controller {
 			}else{
 				// upload singolo file (banner, home)
 				$ext = end((explode(".", $_FILES['file']['name'])));
-				audit_log("%%%%% $ext");
 				if ($storeFile=$this->loadFile($_FILES['file']['tmp_name'],$storeFolder,$ext)) {
 					audit_log("Message: caricata immagine $storeFile. (admin/upload)");
 					$uploadedFiles[]=$storeFile;

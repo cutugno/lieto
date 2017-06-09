@@ -54,8 +54,6 @@ class Offerte extends CI_Controller {
 		$btn_txt=json_decode($offerta->btn_txt);
 		$link=json_decode($offerta->link);
 		$offerta->descr=$descr->$jlang;
-		$offerta->tecniche=$tecniche->$jlang;
-		$offerta->accessori=$accessori->$jlang;
 		$offerta->btn_txt=$btn_txt->$jlang;
 		$offerta->link=$link->$jlang;
 		// immagini carosello 
