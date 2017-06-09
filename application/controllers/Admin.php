@@ -535,8 +535,8 @@ class Admin extends CI_Controller {
 			$linkit=isset($link_ita[0]) ? $link_ita[0] : "";
 			$linken=isset($link_eng[0]) ? $link_eng[0] : "";
 			$link=new stdClass();
-			$link->it=$this->config->item('public_folder').$linkit;
-			$link->en=$this->config->item('public_folder').$linken;
+			$link->it=$linkit;
+			$link->en=$linken;
 			$record['link']=json_encode($link);			
 			$buttontext=$post['btn_txt'];
 			$btn_txt=new stdClass();
@@ -605,7 +605,6 @@ class Admin extends CI_Controller {
 				$attachStoreFolder=$this->config->item('public_folder');
 				if (isset($link_ita[0])) {
 					$tmpFile=$tmpStoreFolder.$link_ita[0];
-					audit_log("$$$$$ $tmpFile");
 					// spostamento
 					if (rename ($tmpFile,$attachStoreFolder.$link_ita[0])) {
 						audit_log("Message: spostato allegato ita ".$link_ita[0].". (admin/offerte_save)");
@@ -615,7 +614,6 @@ class Admin extends CI_Controller {
 				}
 				if (isset($link_eng[0])) {
 					$tmpFile=$tmpStoreFolder.$link_eng[0];
-					audit_log("$$$$$ $tmpFile");
 					// spostamento
 					if (rename ($tmpFile,$attachStoreFolder.$link_eng[0])) {
 						audit_log("Message: spostato allegato eng ".$link_eng[0].". (admin/offerte_save)");
@@ -662,21 +660,23 @@ class Admin extends CI_Controller {
 		if (!isset($url)) show_404();
 		
 		// carico usato
-		if (!$usato=$this->offerte_model->getUsatoByUrl($url)) show_404();
-		$usato->pics=$this->offerte_model->getUsatoPics($usato->id);
+		if (!$offerta=$this->offerte_model->getOffertaByUrl($url)) show_404();
+		$offerta->pics=$this->offerte_model->getOffertaPics($offerta->id);
 		// se immagini home e banner sono null.jpg passo json array vuoto 
-		$usato->home_file=$usato->img_home=="null.jpg" ? "[]" : json_encode(array($usato->img_home));
-		$usato->banner_file=$usato->img_banner=="null.jpg" ? "[]" :json_encode(array($usato->img_banner));
-		$usato->descr=json_decode($usato->descr);
-		$usato->tecniche=json_decode($usato->tecniche);
-		$usato->accessori=json_decode($usato->accessori);
-		$data['usato']=$usato;
+		$offerta->home_file=$offerta->img_home=="null.jpg" ? "[]" : json_encode(array($offerta->img_home));
+		$offerta->banner_file=$offerta->img_banner=="null.jpg" ? "[]" :json_encode(array($offerta->img_banner));
+		$offerta->descr=json_decode($offerta->descr);
+		$offerta->btn_txt=json_decode($offerta->btn_txt);
+		$offerta->link=json_decode($offerta->link);
+		$offerta->link_ita=$offerta->link->it=="" ? "[]" : json_encode(array($offerta->link->it));
+		$offerta->link_eng=$offerta->link->en=="" ? "[]" : json_encode(array($offerta->link->en));
+		$data['offerta']=$offerta;
 		
 		$this->load->view('admin/start');
 		$this->load->view('admin/navigation');
-		$this->load->view('admin/usato/view',$data);
+		$this->load->view('admin/offerte/view',$data);
 		$this->load->view('admin/scripts');	
-		$this->load->view('admin/usato/view_scripts');	
+		$this->load->view('admin/offerte/view_scripts');	
 		$this->load->view('admin/close');
 	}
 	
@@ -703,24 +703,14 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('descr[en]', 'Descrizione ENG', 'required',
 				array('required' => '%s obbligatoria')
 		);
-		if ((null!=($this->input->post('cartec'))) && (is_array($this->input->post('cartec')))) {
-				foreach ($this->input->post('cartec') as $key => $value) {
-					$this->form_validation->set_rules('cartec['.$key.'][it]', 'Caratteristica tecnica ITA '.$key, 'required',
-						array('required' => '%s obbligatoria')
-					);
-					$this->form_validation->set_rules('cartec['.$key.'][en]', 'Caratteristica tecnica ENG '.$key, 'required',
-						array('required' => '%s obbligatoria')
-					);
-				}
-		}
 		// validazione ok
 		if ($this->form_validation->run() !== FALSE) {
-			$post=$this->input->post();	// post: {"nome":"nome","descr":{"it":"descr ita","en":"descr eng"},"cartec":{"1":{"it":"tecnica ita 1","en":"tecnica eng 1"},"2":{"it":"tecnica ita 2","en":"tecnica eng 2"}},"accessori":{"it":"accessori ita","en":"accessori eng"},"home_file":"[\"E8nKD5cL.jpg\"]","gallery_files":"[\"fqecdPEp.jpg\",\"SZlJIE6k.jpg\"]","banner_file":"[\"yScY6Bnz.jpg\"]","type":"usato"}				
+			$post=$this->input->post();	// post: {"nome":"ssssssss","descr":{"it":"adasdas","en":"adsasdas"},"home_file":"[]","gallery_files":"[]","banner_file":"[]","link":"[\"2rCiOLvm.doc\"]","link_en":"[\"d0Sk2XWw.docx\"]","btn_txt":{"it":"bottone","en":"button"},"visible":"1","type":"offerte"}			
+			
 			// creo record usato						
 			$record=array();
 			$record['nome']=$post['nome'];
 			$record['descr']=json_encode($post['descr']);
-			$record['accessori']=json_encode($post['accessori']);
 			$record['url']=url_title($post['nome']);
 			$home_file=json_decode($post['home_file']);
 			$banner_file=json_decode($post['banner_file']);
@@ -728,22 +718,22 @@ class Admin extends CI_Controller {
 			$record['img_home']=isset($home_file[0]) ? $home_file[0] : "null.jpg";
 			$record['img_banner']=isset($banner_file[0]) ? $banner_file[0] : "null.jpg";			
 			$record['visible']=isset($post['visible']) ? "1" : "0";
-			$record['tecniche']='{"it":"","en":""}';
-			if (isset($post['cartec'])) {
-				$cartec_it=array();
-				$cartec_en=array();
-				foreach ($post['cartec'] as $cartec) {
-					$cartec_it[]=$cartec['it'];
-					$cartec_en[]=$cartec['en'];
-				}
-				$cartec=new stdClass();
-				$cartec->it=$cartec_it;
-				$cartec->en=$cartec_en;				
-				$record['tecniche']=json_encode($cartec);
-			}
+			$link_ita=json_decode($post['link']);
+			$link_eng=json_decode($post['link_en']);			
+			$linkit=isset($link_ita[0]) ? $link_ita[0] : "";
+			$linken=isset($link_eng[0]) ? $link_eng[0] : "";
+			$link=new stdClass();
+			$link->it=$linkit;
+			$link->en=$linken;
+			$record['link']=json_encode($link);			
+			$buttontext=$post['btn_txt'];
+			$btn_txt=new stdClass();
+			$btn_txt->it=$buttontext['it'];
+			$btn_txt->en=$buttontext['en'];				
+			$record['btn_txt']=json_encode($btn_txt);
 
 			// aggiorno record usato
-			if ($update=$this->offerte_model->updateUsato($record,$id)) { 
+			if ($update=$this->offerte_model->updateOfferta($record,$id)) { 
 				audit_log("Message: aggiornato record usato ".json_encode($record)." con ID $id. (admin/offerte_update)");
 				// sposto immagini tmp in cartella usato
 				$gallery_files=json_decode($post['gallery_files']);
@@ -797,32 +787,52 @@ class Admin extends CI_Controller {
 						}
 					}
 				}
+				// sposto allegati in directory public
+				$attachStoreFolder=$this->config->item('public_folder');
+				if (isset($link_ita[0])) {
+					$tmpFile=$tmpStoreFolder.$link_ita[0];
+					// spostamento TOGLIERE CHIOCCIOLA
+					if (@rename ($tmpFile,$attachStoreFolder.$link_ita[0])) {
+						audit_log("Message: spostato allegato ita ".$link_ita[0].". (admin/offerte_save)");
+					}else{
+						audit_log("Warning: spostamento allegato ita ".$link_ita[0]." non riuscito. (admin/offerte_save)");
+					}
+				}
+				if (isset($link_eng[0])) {
+					$tmpFile=$tmpStoreFolder.$link_eng[0];
+					// spostamento TOGLIERE CHIOCCIOLA
+					if (@rename ($tmpFile,$attachStoreFolder.$link_eng[0])) {
+						audit_log("Message: spostato allegato eng ".$link_eng[0].". (admin/offerte_save)");
+					}else{
+						audit_log("Warning: spostamento allegato eng ".$link_eng[0]." non riuscito. (admin/offerte_save)");
+					}
+				}
 				
 				// elimino offerte_pics obsolete
 				$orig_gallery=isset($post['orig_gallery']) ? $post['orig_gallery'] : array();
-				if ($elim=$this->offerte_model->deleteUsatoPics($orig_gallery,$id) > 0) {
-					audit_log("Message: eliminate $elim foto gallery per usato con ID $id. (admin/offerte_update)");
+				if ($elim=$this->offerte_model->deleteOffertaPics($orig_gallery,$id) > 0) {
+					audit_log("Message: eliminate $elim foto gallery per offerta con ID $id. (admin/offerte_update)");
 				}
 
 				// creo array offerte_pics
 				if (count($gallery_files) > 0){
 					$pics=array();
 					foreach ($gallery_files as $val) {
-						$pics[]=array("id_usato"=>$id,"pic"=>$val);
+						$pics[]=array("id_offerta"=>$id,"pic"=>$val);
 					}
 					// salvo batch offerte_pics
-					if ($this->offerte_model->createUsatoPics($pics)) {
-						audit_log("Message: create foto gallery usato ".json_encode($pics).". (admin/offerte_update)");						
+					if ($this->offerte_model->createOffertaPics($pics)) {
+						audit_log("Message: create foto gallery offerta ".json_encode($pics).". (admin/offerte_update)");						
 					}else{
-						audit_log("Error: creazione foto gallery usato ".json_encode($pics).". (admin/offerte_update)");						
+						audit_log("Error: creazione foto gallery offerta ".json_encode($pics).". (admin/offerte_update)");						
 					}
 				}
-				$this->session->set_flashdata('save','Aggiornamento usato completato');
+				$this->session->set_flashdata('save','Aggiornamento offerta completato');
 				$this->session->set_flashdata('save_status','success');
-				audit_log("Message: aggiornamento usato completato. (admin/offerte_update)");
+				audit_log("Message: aggiornamento offerta completato. (admin/offerte_update)");
 				echo "1";
 			}else{
-				audit_log("Error: aggiornamento record usato ".json_encode($record).". Errore DB ".$update['message'].". (admin/offerte_update)");				
+				audit_log("Error: aggiornamento record offerta ".json_encode($record).". Errore DB ".$update['message'].". (admin/offerte_update)");				
 				echo $update['message'];
 			}			
 		}else{
@@ -844,14 +854,14 @@ class Admin extends CI_Controller {
 			exit("Parametri non impostati");
 		}
 		
-		$id=$this->input->post('id_usato');
+		$id=$this->input->post('id_offerta');
 		
 		// cancello record di usato
-		if ($this->offerte_model->deleteUsato($id)) {
+		if ($this->offerte_model->deleteOfferta($id)) {
 			audit_log("Message: eliminato usato con ID $id. (admin/offerte_delete)");
 			// cancello eventuali offerte_pics
 			$tokeep=array(''); // con array vuoto elimino tutte le foto per questo usato
-			if ($this->offerte_model->deleteUsatoPics($tokeep,$id)) { 
+			if ($this->offerte_model->deleteOffertaPics($tokeep,$id)) { 
 				audit_log("Message: eliminate foto gallery per usato con ID $id. (admin/offerte_delete)");
 			}
 			$this->session->set_flashdata('delete','Cancellazione usato completata');

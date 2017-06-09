@@ -37,6 +37,27 @@
 			$query=$this->db->insert_batch('offerte_pics',$pics);
 			return $query;
 		}
+		
+		public function updateOfferta($record,$id) {
+			$this->db->db_debug = FALSE; // mi serve l'eventuale messaggio errore
+
+			if ($query=$this->db->set($record)->where('id',$id)->update('offerte')) return $id;
+			return $this->db->error();
+		}
+		
+		public function deleteOfferta($id) {
+			$query=$this->db->where('id',$id)
+							->delete('offerte');
+			return $query;
+		}
+		
+		public function deleteOffertaPics($tokeep,$id_usato) {
+			// elimino tutte le foto dell'usato che non sono presenti in $tokeep
+			$query=$this->db->where('id_offerta',$id_usato)
+							->where_not_in('id',$tokeep)
+							->delete('offerte_pics');
+			return $this->db->affected_rows();
+		}
 	
 	}
 	

@@ -35,7 +35,7 @@
                     	<p><?php echo $offerta->descr ?></p>
                     </div>
                     <div class="margin-bottom-45"></div>
-                    <a href="<?php echo site_url($offerta->link) ?>" class="btn btn-sm ju-btn-default dark" target=<?php echo $offerta->target ?>><?php echo $offerta->btn_txt ?></a>
+                    <a href="<?php echo site_url("public/".$offerta->link) ?>" class="btn btn-sm ju-btn-default dark" target=<?php echo $offerta->target ?>><?php echo $offerta->btn_txt ?></a>
               
                     
                 </div>

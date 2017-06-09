@@ -2,10 +2,10 @@
 <div class="container pagecontainer">
 	<div class="row">
 		<div class="col-xs-6">
-			<h2>Dettagli usato</h2>
+			<h2>Dettagli offerta</h2>
 		</div>
 		<div class="col-xs-6 text-right">
-			<a href="<?php echo site_url('admin/usato') ?>"><button class="btn btn-default">Torna a elenco</button></a>
+			<a href="<?php echo site_url('admin/offerte') ?>"><button class="btn btn-default">Torna a elenco</button></a>
 		</div>
 	</div>
 	<?php
@@ -16,7 +16,7 @@
 		<div class="form-group col-xs-12">
 			<label>Nome</label>
 			<?php 
-				$attr=array('class'=>'form-control', 'name'=>'nome', 'value'=>$usato->nome);
+				$attr=array('class'=>'form-control', 'name'=>'nome', 'value'=>$offerta->nome);
 				echo form_input($attr);
 				echo form_error('nome');
 			?>								
@@ -26,7 +26,7 @@
 		<div class="form-group col-sm-6">
 			<label>Descrizione ITA</label>
 			<?php 
-				$attr=array('class'=>'form-control', 'name'=>'descr[it]', 'rows'=>'5', 'value'=>$usato->descr->it);
+				$attr=array('class'=>'form-control', 'name'=>'descr[it]', 'rows'=>'5', 'value'=>$offerta->descr->it);
 				echo form_textarea($attr);
 				echo form_error('descr[it]')
 			?>	
@@ -34,7 +34,7 @@
 		<div class="form-group col-sm-6">
 			<label>Descrizione ENG</label>
 			<?php 
-				$attr=array('class'=>'form-control', 'name'=>'descr[en]', 'rows'=>'5', 'value'=>$usato->descr->en);
+				$attr=array('class'=>'form-control', 'name'=>'descr[en]', 'rows'=>'5', 'value'=>$offerta->descr->en);
 				echo form_textarea($attr);
 				echo form_error('descr[en]');
 			?>	
@@ -42,80 +42,13 @@
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-12">
-			<label>Caratteristiche tecniche</label><br/>
-			<button type="button" class="btn btn-primary btn-xs" id="newcar">Nuova caratteristica</button>
-		</div>
-		<div id="cartec" class="col-xs-12">
-			<?php if ($usato->tecniche->it != "") : ?>
-			<?php $n=0;foreach ($usato->tecniche->it as $key=>$val) : ?>
-			<?php $n++ ?>
-			<div class="row row_cartec">
-				<div class="form-group col-xs-5">
-					<?php 
-						$attr=array('class'=>'form-control', 'name'=>'cartec['.$n.'][it]', 'placeholder'=>'ITA', 'value'=>$usato->tecniche->it[$key]);
-						echo form_input($attr);
-					?>	
-				</div>
-				<div class="form-group col-xs-5">
-					<?php 
-						$attr=array('class'=>'form-control', 'name'=>'cartec['.$n.'][en]', 'placeholder'=>'ENG', 'value'=>$usato->tecniche->en[$key]	);
-						echo form_input($attr);
-					?>	
-				</div>
-				<div class="col-xs-2">
-					<button type="button" class="btn btn-warning btn-xs btn_delcar">Elimina</button>
-				</div>
-			</div>
-			<?php endforeach ?>
-			<?php endif ?>
-			<!-- template row cartec -->
-			<div id="tpl_cartec" style="display:none">
-				<div class="row row_cartec">
-					<div class="form-group col-xs-5">
-						<?php 
-							$attr=array('class'=>'form-control', 'name'=>'cartec[%n%][it]', 'placeholder'=>'ITA');
-							echo form_input($attr);
-						?>	
-					</div>
-					<div class="form-group col-xs-5">
-						<?php 
-							$attr=array('class'=>'form-control', 'name'=>'cartec[%n%][en]', 'placeholder'=>'ENG');
-							echo form_input($attr);
-						?>	
-					</div>
-					<div class="col-xs-2">
-						<button type="button" class="btn btn-warning btn-xs btn_delcar">Elimina</button>
-					</div>
-				</div>
-			</div>
-			<!-- / template row cartec -->
-		</div>
-	</div>
-	<div class="row greyrow">
-		<div class="form-group col-sm-6">
-			<label>Accessori ITA</label>
-			<?php 
-				$attr=array('class'=>'form-control', 'name'=>'accessori[it]', 'rows'=>'5', 'value'=>$usato->accessori->it);
-				echo form_textarea($attr);
-			?>	
-		</div>
-		<div class="form-group col-sm-6">
-			<label>Accessori ENG</label>
-			<?php 
-				$attr=array('class'=>'form-control', 'name'=>'accessori[en]', 'rows'=>'5', 'value'=>$usato->accessori->en);
-				echo form_textarea($attr);
-			?>	
-		</div>
-	</div>
-	<div class="row">
-		<div class="form-group col-xs-12">
 			<label>Foto Home (300x190)</label><br>			
 			<button type="button" class="btn btn-primary btn-xs" id="newhome">Carica foto</button>
-			<input type="hidden" name="home_file" value='<?php echo $usato->home_file ?>'></input>
+			<input type="hidden" name="home_file" value='<?php echo $offerta->home_file ?>'></input>
 			<br><br>			
 			<div class="dz-preview dz-file-preview img-preview" id="img_home">
 			  <div class="dz-details">
-				<img style="height:120px" src="<?php echo site_url('assets/img/usato/'.$usato->img_home) ?>" />
+				<img style="height:120px" src="<?php echo site_url('assets/img/offerte/'.$offerta->img_home) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" id="remove_img_home" class="btn btn-info btn-xs" data-dz-remove>Cancella foto</button>
@@ -142,13 +75,13 @@
 			<input type="hidden" name="gallery_files" value="[]"></input>	
 			<br><br>
 					
-			<?php if (!empty($usato->pics)) : ?>
-			<?php foreach ($usato->pics as $pic) : ?>
+			<?php if (!empty($offerta->pics)) : ?>
+			<?php foreach ($offerta->pics as $pic) : ?>
 			<!-- loop immagini galleria -->				
 			<div class="dz-preview dz-file-preview img-preview img_gallery">
 			  <input type="hidden" name="orig_gallery[]" value="<?php echo $pic->id ?>">
 			  <div class="dz-details">
-				<img style="height:120px" src="<?php echo site_url('assets/img/usato/'.$pic->pic) ?>" />
+				<img style="height:120px" src="<?php echo site_url('assets/img/offerte/'.$pic->pic) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" class="btn btn-info btn-xs remove_img_gallery" data-dz-remove>Cancella foto</button>
@@ -175,11 +108,11 @@
 		<div class="form-group col-xs-12">
 			<label>Foto Banner (1900x300)</label><br>
 			<button type="button" class="btn btn-primary btn-xs" id="newbanner">Carica foto</button>
-			<input type="hidden" name="banner_file" value='<?php echo $usato->banner_file ?>'></input>	
+			<input type="hidden" name="banner_file" value='<?php echo $offerta->banner_file ?>'></input>	
 			<br><br>			
 			<div class="dz-preview dz-file-preview img-preview" id="img_banner">
 			  <div class="dz-details">
-				<img style="height:120px" src="<?php echo site_url('assets/img/usato/'.$usato->img_banner) ?>" />
+				<img style="height:120px" src="<?php echo site_url('assets/img/offerte/'.$offerta->img_banner) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" id="remove_img_banner" class="btn btn-info btn-xs" data-dz-remove>Cancella foto</button>
@@ -200,8 +133,96 @@
 		</div>
 	</div>
 	<div class="row greyrow">
+		<div class="col-xs-6">
+			<div class="row">
+				<div class="form-group col-xs-12">
+					<label>Allegato ITA (solo .pdf, .txt, .doc, .docx)</label><br>
+					<button type="button" class="btn btn-primary btn-xs" id="newlink">Carica file</button>
+					<input type="hidden" name="link" value='<?php echo $offerta->link_ita ?>'></input>
+					<?php if ($offerta->link_ita != "[]") : ?>
+					<br><br>
+					<div class="dz-preview dz-file-preview img-preview" id="link_it">
+						  <div class="dz-details">
+							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+						  </div>
+						  <div class="text-center">
+							<button type="button" class="btn btn-success btn-xs" data-name='<?php echo $offerta->link_ita ?>' id="link_preview_orig">Anteprima allegato</button>
+							<button type="button" class="btn btn-info btn-xs" id="remove_link_it">Cancella allegato</button>
+						  </div>
+					 </div>	
+					 <?php endif ?>
+				</div>
+				<div class="col-xs-12" id="file-preview-link"></div>
+				<!-- preview container link -->
+				<div id="preview-template-link" style="display:none">
+					  <div class="dz-preview dz-file-preview img-preview">
+						  <div class="dz-details">
+							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+						  </div>
+						  <div class="text-center">
+							<button type="button" class="btn btn-success btn-xs" id="link_preview">Anteprima allegato</button>
+							<button type="button" class="btn btn-info btn-xs" data-dz-remove>Cancella allegato</button>
+						  </div>
+					  </div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<div class="row">
+				<div class="form-group col-xs-12">
+					<label>Allegato ENG (solo .pdf, .txt, .doc, .docx)</label><br>
+					<button type="button" class="btn btn-primary btn-xs" id="newlink_en">Carica file</button>
+					<input type="hidden" name="link_en" value='<?php echo $offerta->link_eng ?>'></input>
+					<?php if ($offerta->link_eng != "[]") : ?>	
+					<br><br>
+					<div class="dz-preview dz-file-preview img-preview" id="link_en">
+						  <div class="dz-details">
+							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+						  </div>
+						  <div class="text-center">
+							<button type="button" class="btn btn-success btn-xs" data-name='<?php echo $offerta->link_eng ?>' id="link_preview_en_orig">Anteprima allegato</button>
+							<button type="button" class="btn btn-info btn-xs" id="remove_link_en">Cancella allegato</button>
+						  </div>
+					 </div>	
+					 <?php endif ?>
+				</div>
+				<div class="col-xs-12" id="file-preview-link-en"></div>
+				<!-- preview container link -->
+				<div id="preview-template-link-en" style="display:none">
+					  <div class="dz-preview dz-file-preview img-preview">
+						  <div class="dz-details">
+							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
+						  </div>
+						  <div class="text-center">
+							<button type="button" class="btn btn-success btn-xs" id="link_preview_en">Anteprima allegato</button>
+							<button type="button" class="btn btn-info btn-xs" data-dz-remove>Cancella allegato</button>
+						  </div>
+					  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-xs-6">
+			<label>Testo pulsante ITA</label>
+			<?php 
+				$attr=array('class'=>'form-control', 'name'=>'btn_txt[it]', 'value'=>$offerta->btn_txt->it);
+				echo form_input($attr);
+				echo form_error('btn_txt[it]');
+			?>	
+		</div>
+		<div class="form-group col-xs-6">
+			<label>Testo pulsante ENG</label>
+			<?php 
+				$attr=array('class'=>'form-control', 'name'=>'btn_txt[en]', 'value'=>$offerta->btn_txt->en);
+				echo form_input($attr);
+				echo form_error('btn_txt[en]');
+			?>	
+		</div>
+	</div>
+	<div class="row greyrow">
 		<div class="form-group col-xs-12">			
-			<?php echo form_checkbox("visible",1,$usato->visible==1) ?>
+			<?php echo form_checkbox("visible",1,true) ?>
 			<label>Visibile</label>
 		</div>
 	</div>
@@ -222,7 +243,7 @@
 					'type'          => 'button',
 					'class'  		=> 'btn btn-warning',
 					'content'       => 'CANCELLA',
-					'data-id'		=> $usato->id
+					'data-id'		=> $offerta->id
 			);
 			echo form_button($attr);
 		?>

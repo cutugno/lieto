@@ -23,6 +23,15 @@
 			$("#img_banner").remove();
 			$("input[name='banner_file']").val("[]");
 		});
+		// elimina allegati originali
+		$("#remove_link_it").click(function() {
+			$("#link_it").remove();
+			$("input[name='link']").val("[]");
+		});
+		$("#remove_link_en").click(function() {
+			$("#link_en").remove();
+			$("input[name='link_en']").val("[]");
+		});			
 		
 		var dzGallery = new Dropzone("#newgallery", { 
 			url: "<?php echo site_url('admin/upload'); ?>",
@@ -71,7 +80,7 @@
 		/* home processQueue (auto) */
 		dzHome.on('sending', function(file, xhr, formData){
 			dzHome.removeAllFiles();
-            formData.append('type', 'usato');
+            formData.append('type', 'offerte');
             formData.append('home_file', $("input[name='home_file']").val());
         });        
 		
@@ -104,7 +113,7 @@
 		/* banner processQueue (auto) */
 		dzBanner.on('sending', function(file, xhr, formData){
 			dzBanner.removeAllFiles();
-            formData.append('type', 'usato');
+            formData.append('type', 'offerte');
             formData.append('banner_file', $("input[name='banner_file']").val());
         });        
 		dzBanner.on("success", function(file,msg) {
@@ -119,19 +128,86 @@
 		dzBanner.on("removedfile",function(file) {
 			$("input[name='banner_file']").val("[]");
 		});
-				
-		// aggiungi caratteristica tecnica
-		var cartec=$("#tpl_cartec").html();
-		$("#newcar").click(function() {
-			var n=$(".row_cartec").length; 
-			new_cartec=cartec.replace("%n%",n); // per it
-			new_cartec=new_cartec.replace("%n%",n); // per en
-			$("#cartec").append(new_cartec);
+		var dzLink = new Dropzone("#newlink", { 
+			url: "<?php echo site_url('admin/upload'); ?>",
+			maxFilesize: 1, // MB
+			acceptedFiles: ".pdf,.txt,.doc,.docx",
+			dictFileTooBig: "Dimensioni file: {{filesize}}MB. Dimensioni massime: {{maxFilesize}}MB",
+			dictInvalidFileType: "Tipo file errato. Estensioni consentite: .pdf, .txt, .doc, .docx",
+			previewsContainer: "#file-preview-link",
+			previewTemplate: document.getElementById('preview-template-link').innerHTML
 		});
 		
-		// rimuovi caratteristica tecnica
-		$("body").on("click",".btn_delcar",function() {
-			$(this).closest(".row_cartec").remove();
+		/* link processQueue (auto) */
+		dzLink.on('sending', function(file, xhr, formData){
+			dzLink.removeAllFiles();
+            formData.append('type', 'offerte');
+            formData.append('link', $("input[name='link']").val());
+        });        
+		dzLink.on("success", function(file,msg) {
+			$("#link_it").remove();
+			$("input[name='link']").val(msg);	
+			$("#link_preview").attr("data-name",msg);	
+		});
+		dzLink.on("error", function(file,msg) {
+			console.log("dzLink error: "+msg);
+		});	
+		/* end link processQueue */
+		
+		dzLink.on("removedfile",function(file) {
+			$("input[name='link']").val("[]");
+		});
+		
+		var dzLinkEn = new Dropzone("#newlink_en", { 
+			url: "<?php echo site_url('admin/upload'); ?>",
+			maxFilesize: 1, // MB
+			acceptedFiles: ".pdf,.txt,.doc,.docx",
+			dictFileTooBig: "Dimensioni file: {{filesize}}MB. Dimensioni massime: {{maxFilesize}}MB",
+			dictInvalidFileType: "Tipo file errato. Estensioni consentite: .pdf, .txt, .doc, .docx",
+			previewsContainer: "#file-preview-link-en",
+			previewTemplate: document.getElementById('preview-template-link-en').innerHTML
+		});
+		
+		/* link_en processQueue (auto) */
+		dzLinkEn.on('sending', function(file, xhr, formData){
+			dzLinkEn.removeAllFiles();
+            formData.append('type', 'offerte');
+            formData.append('link_en', $("input[name='link_en']").val());
+        });        
+		dzLinkEn.on("success", function(file,msg) {
+			$("#link_en").remove();
+			$("input[name='link_en']").val(msg);	
+			$("#link_preview_en").attr("data-name",msg);	
+		});
+		dzLinkEn.on("error", function(file,msg) {
+			console.log("dzLinkEn error: "+msg);
+		});	
+		/* end link_en processQueue */
+		
+		dzLinkEn.on("removedfile",function(file) {
+			$("input[name='link_en']").val("[]");
+		});
+		
+		// anteprima allegato
+		$("body").on("click","#link_preview",function() {
+			var filename=JSON.parse($(this).attr("data-name"));
+			filename="<?php echo site_url($this->config->item('tmp_store_folder')) ?>"+filename[0];
+			window.open(filename);
+		});
+		$("body").on("click","#link_preview_en",function() {
+			var filename=JSON.parse($(this).attr("data-name"));
+			filename="<?php echo site_url($this->config->item('tmp_store_folder')) ?>"+filename[0];
+			window.open(filename);
+		});
+		$("body").on("click","#link_preview_orig",function() {
+			var filename=JSON.parse($(this).attr("data-name"));
+			filename="<?php echo site_url($this->config->item('public_folder')) ?>"+filename[0];
+			window.open(filename);
+		});
+		$("body").on("click","#link_preview_en_orig",function() {
+			var filename=JSON.parse($(this).attr("data-name"));
+			filename="<?php echo site_url($this->config->item('public_folder')) ?>"+filename[0];
+			window.open(filename);
 		});
 		
 		// upload foto o direttamente submit form se non ho foto
@@ -149,8 +225,8 @@
 		function do_save() {		
 			$("#tpl_cartec input").prop("disabled",true);	
 			var dati=$("#form").serialize();
-			dati+="&type=usato";
-			var url="<?php echo site_url('admin/usato/update/'.$usato->id) ?>";
+			dati+="&type=offerte";
+			var url="<?php echo site_url('admin/offerte/update/'.$offerta->id) ?>";
 			$.post(url,dati,function(resp) {
 				if (resp==1) {
 					location.reload();
@@ -162,9 +238,9 @@
 			})
 		}
 		
-		// elimina usato
+		// elimina offerta
 		$("#btn_delete").click(function() {
-			var id_usato=$(this).attr("data-id");
+			var id_offerta=$(this).attr("data-id");
 			swal({
 			  title: '',
 			  text: 'Attenzione! La cancellazione è irreversibile. Continuare?',
@@ -177,12 +253,12 @@
 			  closeOnConfirm: false
 			},
 			function(){
-				var dati="id_usato="+id_usato;
-				var url="<?php echo site_url('admin/usato/delete') ?>";
+				var dati="id_offerta="+id_offerta;
+				var url="<?php echo site_url('admin/offerte/delete') ?>";
 				$.post(url,dati,function(resp){
 					//console.log(resp);exit();
 					if (resp==1) {
-						location.href="<?php echo site_url('admin/usato') ?>";
+						location.href="<?php echo site_url('admin/offerte') ?>";
 					}else{
 						swal("","Errore durante la cancellazione. Riprova","error");
 					}

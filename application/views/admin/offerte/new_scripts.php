@@ -56,7 +56,7 @@
 		/* home processQueue (auto) */
 		dzHome.on('sending', function(file, xhr, formData){
 			dzHome.removeAllFiles();
-            formData.append('type', 'usato');
+            formData.append('type', 'offerte');
             formData.append('home_file', $("input[name='home_file']").val());
         });        
 		
@@ -88,7 +88,7 @@
 		/* banner processQueue (auto) */
 		dzBanner.on('sending', function(file, xhr, formData){
 			dzBanner.removeAllFiles();
-            formData.append('type', 'usato');
+            formData.append('type', 'offerte');
             formData.append('banner_file', $("input[name='banner_file']").val());
         });        
 		dzBanner.on("success", function(file,msg) {
@@ -167,21 +167,12 @@
 			filename="<?php echo site_url($this->config->item('tmp_store_folder')) ?>"+filename[0];
 			window.open(filename);
 		});
-				
-		// aggiungi caratteristica tecnica
-		var cartec=$("#tpl_cartec").html();
-		$("#newcar").click(function() {
-			var n=$(".row_cartec").length; 
-			new_cartec=cartec.replace("%n%",n); // per it
-			new_cartec=new_cartec.replace("%n%",n); // per en
-			$("#cartec").append(new_cartec);
+		$("body").on("click","#link_preview_en",function() {
+			var filename=JSON.parse($(this).attr("data-name"));
+			filename="<?php echo site_url($this->config->item('tmp_store_folder')) ?>"+filename[0];
+			window.open(filename);
 		});
-		
-		// rimuovi caratteristica tecnica
-		$("body").on("click",".btn_delcar",function() {
-			$(this).closest(".row_cartec").remove();
-		});
-		
+	
 		// upload foto o direttamente submit form se non ho foto
 		$("#btn_save").click(function() {
 			$(".loadmsg").hide();

@@ -103,8 +103,6 @@
 				<div id="preview-template-link" style="display:none">
 					  <div class="dz-preview dz-file-preview img-preview">
 						  <div class="dz-details">
-							  <div class="dz-filename"><span data-dz-name></span></div>
-							  <div class="dz-size" data-dz-size></div>
 							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
 						  </div>
 						  <div class="text-center">
@@ -127,8 +125,6 @@
 				<div id="preview-template-link-en" style="display:none">
 					  <div class="dz-preview dz-file-preview img-preview">
 						  <div class="dz-details">
-							  <div class="dz-filename"><span data-dz-name></span></div>
-							  <div class="dz-size" data-dz-size></div>
 							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
 						  </div>
 						  <div class="text-center">
@@ -146,7 +142,7 @@
 			<?php 
 				$attr=array('class'=>'form-control', 'name'=>'btn_txt[it]');
 				echo form_input($attr);
-				echo form_error('btn_txt');
+				echo form_error('btn_txt[it]');
 			?>	
 		</div>
 		<div class="form-group col-xs-6">
@@ -154,7 +150,7 @@
 			<?php 
 				$attr=array('class'=>'form-control', 'name'=>'btn_txt[en]');
 				echo form_input($attr);
-				echo form_error('btn_txt');
+				echo form_error('btn_txt[en]');
 			?>	
 		</div>
 	</div>
