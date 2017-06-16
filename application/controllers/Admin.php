@@ -45,8 +45,9 @@ class Admin extends CI_Controller {
 		if ($user=$this->users_model->checkLogin($post)) {
 			$this->session->user=$user;
 			$this->users_model->setLastLogin($user->id);
-			// cancello immagini inutili da assets/tmp e da assets/img/usato e /offerte
 			audit_log("Message: login effettuato. Dati utente: ".json_encode($user).". (admin/login_check)");
+			// cancello immagini inutili da public, assets/tmp, assets/img/usato e /offerte
+			$this->common->cleanObsoleteFiles();
 			echo "1";
 		}else{
 			audit_log("Error: login errato. Dati login: ".json_encode($post)." (admin/login_check)");
