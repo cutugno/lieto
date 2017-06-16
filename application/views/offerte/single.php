@@ -34,9 +34,10 @@
                     <div class="description margin-bottom-45">
                     	<p><?php echo $offerta->descr ?></p>
                     </div>
+                    <?php if (null!=$offerta->link) : ?>
                     <div class="margin-bottom-45"></div>
                     <a href="<?php echo site_url("public/".$offerta->link) ?>" class="btn btn-sm ju-btn-default dark" target=<?php echo $offerta->target ?>><?php echo $offerta->btn_txt ?></a>
-              
+					<?php endif ?>
                     
                 </div>
                 
