@@ -13,7 +13,7 @@ class Admin extends CI_Controller {
 	public function login() { /* pagina form login */
 		
 		if ($this->session->user) {
-			log_message("Warning: tentativo login con utente già loggato. (admin/login)");
+			audit_log("Warning: tentativo login con utente già loggato. (admin/login)");
 			redirect('admin');
 		}
 		
@@ -45,6 +45,7 @@ class Admin extends CI_Controller {
 		if ($user=$this->users_model->checkLogin($post)) {
 			$this->session->user=$user;
 			$this->users_model->setLastLogin($user->id);
+			// cancello immagini inutili da assets/tmp e da assets/img/usato e /offerte
 			audit_log("Message: login effettuato. Dati utente: ".json_encode($user).". (admin/login_check)");
 			echo "1";
 		}else{
@@ -64,7 +65,7 @@ class Admin extends CI_Controller {
 	public function index() /* dashboard admin */ {
 		
 		if (!$this->session->user) {
-			log_message("Warning: tentativo accesso con utente non loggato. (admin/index)");
+			audit_log("Warning: tentativo accesso con utente non loggato. (admin/index)");
 			redirect('admin/login');
 		}
 		
@@ -81,7 +82,7 @@ class Admin extends CI_Controller {
 	public function usato() { /* pagina lista usati */
 		
 		if (!$this->session->user) {
-			log_message("Warning: tentativo accesso con utente non loggato. (admin/usato)");
+			audit_log("Warning: tentativo accesso con utente non loggato. (admin/usato)");
 			redirect('admin/login');
 		}
 		
@@ -98,7 +99,7 @@ class Admin extends CI_Controller {
 	public function usato_new() { /* pagina nuovo usato */	
 		
 		if (!$this->session->user) {
-			log_message("Warning: tentativo accesso con utente non loggato. (admin/usato_new)");
+			audit_log("Warning: tentativo accesso con utente non loggato. (admin/usato_new)");
 			redirect('admin/login');
 		}
 			
@@ -466,7 +467,7 @@ class Admin extends CI_Controller {
 	public function offerte() { /* pagina lista offerte */
 		
 		if (!$this->session->user) {
-			log_message("Warning: tentativo accesso con utente non loggato. (admin/offerte)");
+			audit_log("Warning: tentativo accesso con utente non loggato. (admin/offerte)");
 			redirect('admin/login');
 		}
 		
@@ -483,7 +484,7 @@ class Admin extends CI_Controller {
 	public function offerte_new() { /* pagina nuova offerta */	
 		
 		if (!$this->session->user) {
-			log_message("Warning: tentativo accesso con utente non loggato. (admin/offerte_new)");
+			audit_log("Warning: tentativo accesso con utente non loggato. (admin/offerte_new)");
 			redirect('admin/login');
 		}
 			
