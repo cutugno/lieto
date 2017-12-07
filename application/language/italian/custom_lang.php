@@ -131,3 +131,5 @@ $lang['custom_cookies_02'] = 'Questo sito utilizza i cookie per garantirti un\'e
 $lang['custom_cookies_03'] = 'Accetta cookie';
 $lang['custom_cookies_04'] = 'Leggi informativa';
 
+$lang['og_assistenza_title']="Assistenza";
+$lang['og_assistenza_description']="Descrizione assistenza";

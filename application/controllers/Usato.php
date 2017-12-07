@@ -62,9 +62,10 @@ class Usato extends CI_Controller {
 		}
 	
 		$dati['usato']=$usato;
+		$dati['banner']=site_url('assets/img/usato/'.$usato->img_banner);
 		
-		$this->load->view('templates/start');
-		$this->load->view('templates/menu', $dati);
+		$this->load->view('templates/start',$dati);
+		$this->load->view('templates/menu');
 		$this->load->view('usato/single');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');

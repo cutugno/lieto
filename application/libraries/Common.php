@@ -168,4 +168,14 @@ Class Common {
 		});
 		return $files;
 	}
+	
+	public function getOgData($page) {
+		$CI =& get_instance();
+		
+		// carico dati seo OpenGraph da file lingua -> array("title","description")
+		$title=$CI->lang->line('og_'.$page.'_title');
+		$description=$CI->lang->line('og_'.$page.'_description');
+		return array("title"=>$title,"description"=>$description);
+	}
+		
 }

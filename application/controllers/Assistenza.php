@@ -23,12 +23,15 @@ class Assistenza extends CI_Controller {
 		
 		/* COMMON */
 		
+		// dati SEO
+		$dati['og']=$this->common->getOgData(uri_string());
+		
 		// dati menu prodotti
 		$dati['menuprod']=$this->common->buildProductsMenu();
 		
-		$this->load->view('templates/start');
-		$this->load->view('templates/menu', $dati);
-		$this->load->view('assistenza', $dati);
+		$this->load->view('templates/start',$dati);
+		$this->load->view('templates/menu');
+		$this->load->view('assistenza');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');
 		$this->load->view('scripts/assistenza');
