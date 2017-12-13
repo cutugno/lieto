@@ -11,7 +11,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	
 	<!-- FB Open Graph -->
-	<meta property="og:image" content="<?= isset($banner) ? $banner : "" ?>" /> 
+	<meta property="og:image" content="<?= isset($og['image']) ? $og['image'] : "" ?>" /> 
 	<meta property="og:title" content="<?= isset($og['title']) ? $og['title'] : "" ?>" /> 
 	<meta property="og:description" content="<?= isset($og['description']) ? $og['description'] : "" ?>" /> 
 	

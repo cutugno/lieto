@@ -12,9 +12,6 @@ class Offerte extends CI_Controller {
 		
 		/* LISTA OFFERTE */
 		
-		// dati menu prodotti
-		$dati['menuprod']=$this->common->buildProductsMenu();
-		
 		// offerte
 		if ($offerte=$this->offerte_model->getOfferte()) {			
 			$dati['offerte']=$offerte;
@@ -22,8 +19,20 @@ class Offerte extends CI_Controller {
 			$dati['offerte']="";
 		}
 		
-		$this->load->view('templates/start');
-		$this->load->view('templates/menu', $dati);
+		// banner
+		$dati['banner']=site_url('assets/img/banner/offerte.jpg');
+		
+		/* COMMON */
+		
+		// dati SEO
+		$dati['og']=$this->common->getOgData(uri_string());
+		$dati['og']['image']=$dati['banner'];
+		
+		// dati menu prodotti
+		$dati['menuprod']=$this->common->buildProductsMenu();
+		
+		$this->load->view('templates/start',$dati);
+		$this->load->view('templates/menu');
 		$this->load->view('offerte/list');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');
@@ -42,9 +51,6 @@ class Offerte extends CI_Controller {
 		$jlang=$this->session->jlang ? $this->session->jlang : "it";	
 		$this->lang->load('custom',$lang);
 		$this->session->set_userdata('next','offerte/'.$offerta);
-		
-		// dati menu prodotti
-		$dati['menuprod']=$this->common->buildProductsMenu();
 		
 		// dati singola offerta
 		if (!$offerta=$this->offerte_model->getOffertabyUrl($offerta)) show_404();	
@@ -66,8 +72,22 @@ class Offerte extends CI_Controller {
 	
 		$dati['offerta']=$offerta;
 		
-		$this->load->view('templates/start');
-		$this->load->view('templates/menu', $dati);
+		// banner
+		$dati['banner']=site_url('assets/img/offerte/'.$offerta->img_banner);
+		
+		// dati SEO
+		$seo=json_decode($offerta->seo);
+		$dati['og']['title']=$seo->og_title->$jlang;
+		$dati['og']['description']=$seo->og_description->$jlang;
+		$dati['og']['image']=site_url('assets/img/offerte/'.$offerta->img_home);
+		
+		/* COMMON */
+		
+		// dati menu prodotti
+		$dati['menuprod']=$this->common->buildProductsMenu();
+		
+		$this->load->view('templates/start',$dati);
+		$this->load->view('templates/menu');
 		$this->load->view('offerte/single');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');

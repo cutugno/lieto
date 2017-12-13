@@ -15,15 +15,23 @@ class Prodotti extends CI_Controller {
 		$descr=json_decode($prodotto->descr);
 		$prodotto->descr=$descr->$jlang;
 		$dati['prodotto']=$prodotto;
+		
+		// banner
+		$dati['banner']=site_url('assets/img/prodotti/banner/'.$prodotto->img_banner);
 				
 		/* COMMON */
+		
+		// dati SEO
+		//var_dump (implode("_",explode("/",uri_string())));
+		$dati['og']=$this->common->getOgData(implode("_",explode("/",uri_string())));
+		$dati['og']['image']=$dati['banner'];
 	
 		// dati menu prodotti
 		$dati['menuprod']=$this->common->buildProductsMenu();
 		
-		$this->load->view('templates/start');
-		$this->load->view('templates/menu', $dati);
-		$this->load->view('prodotti', $dati);
+		$this->load->view('templates/start',$dati);
+		$this->load->view('templates/menu');
+		$this->load->view('prodotti');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');
 		// custom scripts

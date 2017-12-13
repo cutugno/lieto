@@ -11,19 +11,27 @@ class Usato extends CI_Controller {
 		$this->session->set_userdata('next','usato');
 
 		/* LISTA USATI */
-		
-		// dati menu prodotti
-		$dati['menuprod']=$this->common->buildProductsMenu();
-		
-		// usati
+
 		if ($usati=$this->usato_model->getUsati()) {
 			$dati['usati']=$usati;
 		}else{
 			$dati['usati']="";
 		}
 		
-		$this->load->view('templates/start');
-		$this->load->view('templates/menu', $dati);
+		// banner
+		$dati['banner']=site_url('assets/img/banner/usato.jpg');
+		
+		/* COMMON */
+		
+		// dati SEO
+		$dati['og']=$this->common->getOgData(uri_string());
+		$dati['og']['image']=$dati['banner'];
+		
+		// dati menu prodotti
+		$dati['menuprod']=$this->common->buildProductsMenu();
+		
+		$this->load->view('templates/start',$dati);
+		$this->load->view('templates/menu');
 		$this->load->view('usato/list');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');
@@ -42,9 +50,6 @@ class Usato extends CI_Controller {
 		$this->lang->load('custom',$lang);
 		$this->session->set_userdata('next','usato/'.$usato);
 		
-		// dati menu prodotti
-		$dati['menuprod']=$this->common->buildProductsMenu();
-		
 		// dati singolo usato 
 		if (!$usato=$this->usato_model->getUsatobyUrl($usato)) show_404();	
 		$descr=json_decode($usato->descr);
@@ -62,7 +67,20 @@ class Usato extends CI_Controller {
 		}
 	
 		$dati['usato']=$usato;
+		
+		// banner
 		$dati['banner']=site_url('assets/img/usato/'.$usato->img_banner);
+		
+		// dati SEO
+		$seo=json_decode($usato->seo);
+		$dati['og']['title']=$seo->og_title->$jlang;
+		$dati['og']['description']=$seo->og_description->$jlang;
+		$dati['og']['image']=site_url('assets/img/usato/'.$usato->img_home);
+		
+		/* COMMON */
+		
+		// dati menu prodotti
+		$dati['menuprod']=$this->common->buildProductsMenu();
 		
 		$this->load->view('templates/start',$dati);
 		$this->load->view('templates/menu');

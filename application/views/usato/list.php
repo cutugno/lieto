@@ -1,4 +1,4 @@
-  <section class="content section-parallax parallax-slider" style="background-image: url(assets/img/banner/usato.jpg);">
+  <section class="content section-parallax parallax-slider" style="background-image: url(<?= $banner ?>);">
     	<div class="layer-dark"></div>
     	<div class="container white-content">
         	<div class="row">

@@ -58,13 +58,20 @@ class Preventivo extends CI_Controller {
 			redirect(current_url());			
 		};
 		
+		// banner
+		$dati['banner']=site_url('assets/img/banner/preventivo.jpg');
+		
 		/* COMMON */
+		
+		// dati SEO
+		$dati['og']=$this->common->getOgData(uri_string());
+		$dati['og']['image']=$dati['banner'];
 	
 		// dati menu prodotti
 		$dati['menuprod']=$this->common->buildProductsMenu();
 		
-		$this->load->view('templates/start');
-		$this->load->view('templates/menu', $dati);
+		$this->load->view('templates/start', $dati);
+		$this->load->view('templates/menu');
 		$this->load->view('preventivo');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');

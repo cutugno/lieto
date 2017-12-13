@@ -25,6 +25,7 @@ class Assistenza extends CI_Controller {
 		
 		// dati SEO
 		$dati['og']=$this->common->getOgData(uri_string());
+		$dati['og']['image']=$dati['banner'];
 		
 		// dati menu prodotti
 		$dati['menuprod']=$this->common->buildProductsMenu();

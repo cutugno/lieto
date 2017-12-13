@@ -161,6 +161,38 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="form-group col-sm-6">
+			<label>OG:title ITA</label>
+			<?php 
+				$attr=array('class'=>'form-control', 'name'=>'og_title[it]');
+				echo form_input($attr);
+			?>	
+		</div>
+		<div class="form-group col-sm-6">
+			<label>OG:title ENG</label>
+			<?php 
+				$attr=array('class'=>'form-control', 'name'=>'og_title[en]');
+				echo form_input($attr);
+			?>	
+		</div>
+	</div>
+	<div class="row greyrow">
+		<div class="form-group col-sm-6">
+			<label>OG:description ITA</label>
+			<?php 
+				$attr=array('class'=>'form-control', 'name'=>'og_description[it]');
+				echo form_input($attr);
+			?>	
+		</div>
+		<div class="form-group col-sm-6">
+			<label>OG:description ENG</label>
+			<?php 
+				$attr=array('class'=>'form-control', 'name'=>'og_description[en]');
+				echo form_input($attr);
+			?>	
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-xs-12">
 		<?php
 			$attr=array(

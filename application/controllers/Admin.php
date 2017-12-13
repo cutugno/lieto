@@ -169,6 +169,20 @@ class Admin extends CI_Controller {
 				$cartec->en=$cartec_en;				
 				$record['tecniche']=json_encode($cartec);
 			}
+			// seo usato
+			$seo=new stdClass();
+			$seo->og_title=new stdClass();
+			$seo->og_description=new stdClass();
+			$og_title=$post['og_title'];
+			$og_description=$post['og_description'];
+			$seo->og_title->it=$og_title['it'];
+			$seo->og_title->en=$og_title['en'];
+			$seo->og_description->it=$og_description['it'];
+			$seo->og_description->en=$og_description['en'];
+			$record['seo']=json_encode($seo);
+			unset($post['og_title']);
+			unset($post['og_description']);
+
 			// salvo record usato
 			if (is_numeric($newid=$this->usato_model->createUsato($record))) { 
 				// se il return della funzione non è numerico vuol dire che contiene un messaggio di errore
@@ -271,6 +285,7 @@ class Admin extends CI_Controller {
 		$usato->descr=json_decode($usato->descr);
 		$usato->tecniche=json_decode($usato->tecniche);
 		$usato->accessori=json_decode($usato->accessori);
+		$usato->seo=json_decode($usato->seo);
 		$data['usato']=$usato;
 		
 		$this->load->view('admin/start');
@@ -342,6 +357,19 @@ class Admin extends CI_Controller {
 				$cartec->en=$cartec_en;				
 				$record['tecniche']=json_encode($cartec);
 			}
+			// seo usato
+			$seo=new stdClass();
+			$seo->og_title=new stdClass();
+			$seo->og_description=new stdClass();
+			$og_title=$post['og_title'];
+			$og_description=$post['og_description'];
+			$seo->og_title->it=$og_title['it'];
+			$seo->og_title->en=$og_title['en'];
+			$seo->og_description->it=$og_description['it'];
+			$seo->og_description->en=$og_description['en'];
+			$record['seo']=json_encode($seo);
+			unset($post['og_title']);
+			unset($post['og_description']);
 
 			// aggiorno record usato
 			if ($update=$this->usato_model->updateUsato($record,$id)) { 
@@ -545,7 +573,19 @@ class Admin extends CI_Controller {
 			$btn_txt->it=$buttontext['it'];
 			$btn_txt->en=$buttontext['en'];				
 			$record['btn_txt']=json_encode($btn_txt);
-			//echo json_encode($record);exit();
+			// seo offerta
+			$seo=new stdClass();
+			$seo->og_title=new stdClass();
+			$seo->og_description=new stdClass();
+			$og_title=$post['og_title'];
+			$og_description=$post['og_description'];
+			$seo->og_title->it=$og_title['it'];
+			$seo->og_title->en=$og_title['en'];
+			$seo->og_description->it=$og_description['it'];
+			$seo->og_description->en=$og_description['en'];
+			$record['seo']=json_encode($seo);
+			unset($post['og_title']);
+			unset($post['og_description']);
 
 			// salvo record offerta
 			if (is_numeric($newid=$this->offerte_model->createOfferta($record))) { 
@@ -672,6 +712,7 @@ class Admin extends CI_Controller {
 		$offerta->link=json_decode($offerta->link);
 		$offerta->link_ita=$offerta->link->it=="" ? "[]" : json_encode(array($offerta->link->it));
 		$offerta->link_eng=$offerta->link->en=="" ? "[]" : json_encode(array($offerta->link->en));
+		$offerta->seo=json_decode($offerta->seo);
 		$data['offerta']=$offerta;
 		
 		$this->load->view('admin/start');
@@ -733,6 +774,19 @@ class Admin extends CI_Controller {
 			$btn_txt->it=$buttontext['it'];
 			$btn_txt->en=$buttontext['en'];				
 			$record['btn_txt']=json_encode($btn_txt);
+			// seo offerta
+			$seo=new stdClass();
+			$seo->og_title=new stdClass();
+			$seo->og_description=new stdClass();
+			$og_title=$post['og_title'];
+			$og_description=$post['og_description'];
+			$seo->og_title->it=$og_title['it'];
+			$seo->og_title->en=$og_title['en'];
+			$seo->og_description->it=$og_description['it'];
+			$seo->og_description->en=$og_description['en'];
+			$record['seo']=json_encode($seo);
+			unset($post['og_title']);
+			unset($post['og_description']);
 
 			// aggiorno record usato
 			if ($update=$this->offerte_model->updateOfferta($record,$id)) { 

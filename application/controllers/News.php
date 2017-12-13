@@ -12,9 +12,6 @@ class News extends CI_Controller {
 
 		/* LISTA NEWS */
 		
-		// dati menu prodotti
-		$dati['menuprod']=$this->common->buildProductsMenu();
-		
 		// news
 		if ($news=$this->news_model->getNews()) {
 			foreach ($news as $key=>$val) {
@@ -29,8 +26,20 @@ class News extends CI_Controller {
 			$dati['news']="";
 		}
 		
-		$this->load->view('templates/start');
-		$this->load->view('templates/menu', $dati);
+		// banner
+		$dati['banner']=site_url('assets/img/banner/news.jpg');
+		
+		/* COMMON */
+		
+		// dati SEO
+		$dati['og']=$this->common->getOgData(uri_string());
+		$dati['og']['image']=$dati['banner'];
+		
+		// dati menu prodotti
+		$dati['menuprod']=$this->common->buildProductsMenu();
+		
+		$this->load->view('templates/start',$dati);
+		$this->load->view('templates/menu');
 		$this->load->view('news/list');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');
@@ -60,8 +69,18 @@ class News extends CI_Controller {
 	
 		$dati['news']=$news;
 		
-		$this->load->view('templates/start');
-		$this->load->view('templates/menu', $dati);
+		// banner
+		$dati['banner']=site_url('assets/img/banner/news.jpg');
+		
+		/* COMMON */
+		
+		// dati SEO
+		//var_dump (implode("_",explode("/",uri_string())));
+		$dati['og']=$this->common->getOgData(implode("_",explode("/",uri_string())));
+		$dati['og']['image']=$dati['banner'];
+		
+		$this->load->view('templates/start',$dati);
+		$this->load->view('templates/menu');
 		$this->load->view('news/single');
 		$this->load->view('templates/footer');
 		$this->load->view('templates/scripts');
