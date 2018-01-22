@@ -80,7 +80,7 @@
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-12">
-			<label>Foto Home (300x190)</label><br>
+			<label>Foto Home (450x285)</label><br>
 			<button type="button" class="btn btn-primary btn-xs" id="newhome">Carica foto</button>
 			<input type="hidden" name="home_file" value="[]"></input>			
 		</div>

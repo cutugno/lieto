@@ -12,6 +12,8 @@
 	
 	<!-- FB Open Graph -->
 	<meta property="og:image" content="<?= isset($og['image']) ? $og['image'] : "" ?>" /> 
+	<meta property="og:image:width" content="<?= isset($og['image_width']) ? $og['image_width'] : "" ?>" /> 
+	<meta property="og:image:height" content="<?= isset($og['image_height']) ? $og['image_height'] : "" ?>" /> 
 	<meta property="og:title" content="<?= isset($og['title']) ? $og['title'] : "" ?>" /> 
 	<meta property="og:description" content="<?= isset($og['description']) ? $og['description'] : "" ?>" /> 
 	
