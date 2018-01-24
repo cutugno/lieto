@@ -106,7 +106,6 @@
 							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
 						  </div>
 						  <div class="text-center">
-							<button type="button" class="btn btn-success btn-xs" id="link_preview">Anteprima allegato</button>
 							<button type="button" class="btn btn-info btn-xs" data-dz-remove>Cancella allegato</button>
 						  </div>
 					  </div>
@@ -128,7 +127,6 @@
 							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
 						  </div>
 						  <div class="text-center">
-							<button type="button" class="btn btn-success btn-xs" id="link_preview_en">Anteprima allegato</button>
 							<button type="button" class="btn btn-info btn-xs" data-dz-remove>Cancella allegato</button>
 						  </div>
 					  </div>

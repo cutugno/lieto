@@ -46,7 +46,7 @@ class Admin extends CI_Controller {
 			$this->session->user=$user;
 			$this->users_model->setLastLogin($user->id);
 			audit_log("Message: login effettuato. Dati utente: ".json_encode($user).". (admin/login_check)");
-			// cancello immagini inutili da public, assets/tmp, assets/img/usato e /offerte
+			// cancello immagini inutili da public, assets/tmp, public/img/usato e /offerte
 			$this->common->cleanObsoleteFiles();
 			echo "1";
 		}else{
@@ -203,6 +203,7 @@ class Admin extends CI_Controller {
 					// spostamento
 					if (rename ($tmpFile,$storeFolder.$banner_file[0])) {
 						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_save)");
+						chmod($storeFolder.$banner_file[0],0644);
 					}else{
 						audit_log("Error: spostamento foto banner ".$banner_file[0].". (admin/usato_save)");
 					}
@@ -218,6 +219,7 @@ class Admin extends CI_Controller {
 					// spostamento
 					if (rename ($tmpFile,$storeFolder.$home_file[0])) {
 						audit_log("Message: spostata foto home ".$home_file[0].". (admin/usato_save)");
+						chmod($storeFolder.$home_file[0],0644);
 					}else{
 						audit_log("Error: spostamento foto home ".$home_file[0].". (admin/usato_save)");
 					}
@@ -234,6 +236,7 @@ class Admin extends CI_Controller {
 						// spostamento
 						if (rename ($tmpFile,$storeFolder.$file)) {
 							audit_log("Message: spostata foto gallery ".$file.". (admin/usato_save)");
+							chmod($storeFolder.$file,0644);
 						}else{
 							audit_log("Error: spostamento foto gallery ".$file.". (admin/usato_save)");
 						}
@@ -385,26 +388,28 @@ class Admin extends CI_Controller {
 					if ($this->common->resizeImage($tmpFile,1900,300)) {
 						audit_log("Message: ridimensionata foto banner $tmpFile. (admin/usato_save)");
 					}else{
-						audit_log("Warning: ridimensionamento foto banner $tmpFile non riuscito. (admin/usato_save)");
+						audit_log("Warning: ridimensionamento foto banner $tmpFile non riuscito. (admin/usato_update)");
 					}
 					// spostamento TOGLIERE CHIOCCIOLA
-					if (@rename ($tmpFile,$storeFolder.$banner_file[0])) {
-						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_save)");
+					if (rename ($tmpFile,$storeFolder.$banner_file[0])) {
+						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/usato_update)");
+						chmod($storeFolder.$banner_file[0],0644);
 					}else{
-						audit_log("Warning: spostamento foto banner ".$banner_file[0].". (admin/usato_save)");
+						audit_log("Warning: spostamento foto banner ".$tmpfile." ".$storeFolder." ".$banner_file[0].". (admin/usato_update)");
 					}
 				}
 				if (isset($home_file[0])) {
 					// resize
 					$tmpFile=$tmpStoreFolder.$home_file[0];
-					if ($this->common->resizeImage($tmpFile,300,190)) {
+					if ($this->common->resizeImage($tmpFile,450,285)) {
 						audit_log("Message: ridimensionata foto home $tmpFile. (admin/usato_save)");
 					}else{
 						audit_log("Warning: ridimensionamento foto home $tmpFile non riuscito. (admin/usato_save)");
 					}
 					// spostamento TOGLIERE CHIOCCIOLA
-					if (@rename ($tmpFile,$storeFolder.$home_file[0])) {
+					if (rename ($tmpFile,$storeFolder.$home_file[0])) {
 						audit_log("Message: spostata foto home ".$home_file[0].". (admin/usato_save)");
+						chmod($storeFolder.$home_file[0],0644);
 					}else{
 						audit_log("Warning: spostamento foto home ".$home_file[0]." non riuscito. (admin/usato_save)");
 					}
@@ -419,8 +424,9 @@ class Admin extends CI_Controller {
 							audit_log("Warning: ridimensionamento foto gallery $tmpFile non riuscito. (admin/usato_save)");
 						}
 						// spostamento TOGLIERE CHIOCCIOLA
-						if (@rename ($tmpFile,$storeFolder.$file)) {
+						if (rename ($tmpFile,$storeFolder.$file)) {
 							audit_log("Message: spostata foto gallery ".$file.". (admin/usato_save)");
+							chmod($storeFolder.$file,0644);
 						}else{
 							audit_log("Warning: spostamento foto gallery ".$file." non riuscito. (admin/usato_save)");
 						}
@@ -606,6 +612,7 @@ class Admin extends CI_Controller {
 					// spostamento
 					if (rename ($tmpFile,$storeFolder.$banner_file[0])) {
 						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/offerte_save)");
+						chmod($storeFolder.$banner_file[0],0644);
 					}else{
 						audit_log("Error: spostamento foto banner ".$banner_file[0].". (admin/offerte_save)");
 					}
@@ -621,6 +628,7 @@ class Admin extends CI_Controller {
 					// spostamento
 					if (rename ($tmpFile,$storeFolder.$home_file[0])) {
 						audit_log("Message: spostata foto home ".$home_file[0].". (admin/offerte_save)");
+						chmod($storeFolder.$home_file[0],0644);
 					}else{
 						audit_log("Error: spostamento foto home ".$home_file[0].". (admin/offerte_save)");
 					}
@@ -638,6 +646,7 @@ class Admin extends CI_Controller {
 						// spostamento
 						if (rename ($tmpFile,$storeFolder.$file)) {
 							audit_log("Message: spostata foto gallery ".$file.". (admin/offerte_save)");
+							chmod($storeFolder.$file,0644);
 						}else{
 							audit_log("Error: spostamento foto gallery ".$file.". (admin/offerte_save)");
 						}
@@ -650,6 +659,7 @@ class Admin extends CI_Controller {
 					// spostamento
 					if (rename ($tmpFile,$attachStoreFolder.$link_ita[0])) {
 						audit_log("Message: spostato allegato ita ".$link_ita[0].". (admin/offerte_save)");
+						chmod($attachStoreFolder.$link_ita[0],0644);
 					}else{
 						audit_log("Error: spostamento allegato ita ".$link_ita[0].". (admin/offerte_save)");
 					}
@@ -659,6 +669,7 @@ class Admin extends CI_Controller {
 					// spostamento
 					if (rename ($tmpFile,$attachStoreFolder.$link_eng[0])) {
 						audit_log("Message: spostato allegato eng ".$link_eng[0].". (admin/offerte_save)");
+						chmod($attachStoreFolder.$link_eng[0],0644);
 					}else{
 						audit_log("Error: spostamento allegato eng ".$link_eng[0].". (admin/offerte_save)");
 					}
@@ -750,12 +761,12 @@ class Admin extends CI_Controller {
 		if ($this->form_validation->run() !== FALSE) {
 			$post=$this->input->post();	// post: {"nome":"ssssssss","descr":{"it":"adasdas","en":"adsasdas"},"home_file":"[]","gallery_files":"[]","banner_file":"[]","link":"[\"2rCiOLvm.doc\"]","link_en":"[\"d0Sk2XWw.docx\"]","btn_txt":{"it":"bottone","en":"button"},"visible":"1","type":"offerte"}			
 			
-			// creo record usato						
+			// creo record offerta						
 			$record=array();
 			$record['nome']=$post['nome'];
 			$record['descr']=json_encode($post['descr']);
 			$record['url']=url_title($post['nome']);
-			$home_file=json_decode($post['home_file']);
+			$home_file=json_decode($post['home_file']); 
 			$banner_file=json_decode($post['banner_file']);
 			// se utente non carica immagine uso null.jpg in sostituzione
 			$record['img_home']=isset($home_file[0]) ? $home_file[0] : "null.jpg";
@@ -788,10 +799,10 @@ class Admin extends CI_Controller {
 			unset($post['og_title']);
 			unset($post['og_description']);
 
-			// aggiorno record usato
+			// aggiorno record offerte
 			if ($update=$this->offerte_model->updateOfferta($record,$id)) { 
 				audit_log("Message: aggiornato record usato ".json_encode($record)." con ID $id. (admin/offerte_update)");
-				// sposto immagini tmp in cartella usato
+				// sposto immagini tmp in cartella offerte
 				$gallery_files=json_decode($post['gallery_files']);
 				$tmpStoreFolder=$this->config->item('tmp_store_folder'); 
 				$storeFolder=str_replace("%type%",$post['type'],$this->config->item('store_folder')); 
@@ -800,30 +811,33 @@ class Admin extends CI_Controller {
 					// resize
 					$tmpFile=$tmpStoreFolder.$banner_file[0];
 					if ($this->common->resizeImage($tmpFile,1900,300)) {
-						audit_log("Message: ridimensionata foto banner $tmpFile. (admin/offerte_save)");
+						audit_log("Message: ridimensionata foto banner $tmpFile. (admin/offerte_update)");
 					}else{
-						audit_log("Warning: ridimensionamento foto banner $tmpFile non riuscito. (admin/offerte_save)");
+						audit_log("Warning: ridimensionamento foto banner $tmpFile non riuscito. (admin/offerte_update)");
 					}
 					// spostamento TOGLIERE CHIOCCIOLA
-					if (@rename ($tmpFile,$storeFolder.$banner_file[0])) {
-						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/offerte_save)");
+					if (rename ($tmpFile,$storeFolder.$banner_file[0])) {
+						audit_log("Message: spostata foto banner ".$banner_file[0].". (admin/offerte_update)");
+						chmod($storeFolder.$banner_file[0],0644);
 					}else{
-						audit_log("Warning: spostamento foto banner ".$banner_file[0].". (admin/offerte_save)");
+						audit_log("Warning: spostamento foto banner ".$banner_file[0].". (admin/offerte_update)");
 					}
 				}
 				if (isset($home_file[0])) {
 					// resize
 					$tmpFile=$tmpStoreFolder.$home_file[0];
-					if ($this->common->resizeImage($tmpFile,300,190)) {
-						audit_log("Message: ridimensionata foto home $tmpFile. (admin/offerte_save)");
+					if ($this->common->resizeImage($tmpFile,450,285)) {
+						audit_log("Message: ridimensionata foto home $tmpFile. (admin/offerte_update)");
 					}else{
-						audit_log("Warning: ridimensionamento foto home $tmpFile non riuscito. (admin/offerte_save)");
+						audit_log("Warning: ridimensionamento foto home $tmpFile non riuscito. (admin/offerte_update)");
 					}
 					// spostamento TOGLIERE CHIOCCIOLA
-					if (@rename ($tmpFile,$storeFolder.$home_file[0])) {
-						audit_log("Message: spostata foto home ".$home_file[0].". (admin/offerte_save)");
+					audit_log($tmpFile. " ".$storeFolder.$home_file[0]);
+					if (rename ($tmpFile,$storeFolder.$home_file[0])) {
+						audit_log("Message: spostata foto home ".$home_file[0].". (admin/offerte_update)");
+						chmod($storeFolder.$home_file[0],0644);
 					}else{
-						audit_log("Warning: spostamento foto home ".$home_file[0]." non riuscito. (admin/offerte_save)");
+						audit_log("Warning: spostamento foto home ".$home_file[0]." non riuscito. (admin/offerte_update)");
 					}
 				}
 				if (isset($gallery_files[0])) {
@@ -831,15 +845,16 @@ class Admin extends CI_Controller {
 						// resize
 						$tmpFile=$tmpStoreFolder.$file;
 						if ($this->common->resizeImage($tmpFile,1000,635)) {
-							audit_log("Message: ridimensionata foto gallery $tmpFile. (admin/offerte_save)");
+							audit_log("Message: ridimensionata foto gallery $tmpFile. (admin/offerte_update)");
 						}else{
-							audit_log("Warning: ridimensionamento foto gallery $tmpFile non riuscito. (admin/offerte_save)");
+							audit_log("Warning: ridimensionamento foto gallery $tmpFile non riuscito. (admin/offerte_update)");
 						}
 						// spostamento TOGLIERE CHIOCCIOLA
-						if (@rename ($tmpFile,$storeFolder.$file)) {
-							audit_log("Message: spostata foto gallery ".$file.". (admin/offerte_save)");
+						if (rename ($tmpFile,$storeFolder.$file)) {
+							audit_log("Message: spostata foto gallery ".$file.". (admin/offerte_update)");
+							chmod($storeFolder.$file,0644);
 						}else{
-							audit_log("Warning: spostamento foto gallery ".$file." non riuscito. (admin/offerte_save)");
+							audit_log("Warning: spostamento foto gallery ".$file." non riuscito. (admin/offerte_update)");
 						}
 					}
 				}
@@ -848,19 +863,21 @@ class Admin extends CI_Controller {
 				if (isset($link_ita[0])) {
 					$tmpFile=$tmpStoreFolder.$link_ita[0];
 					// spostamento TOGLIERE CHIOCCIOLA
-					if (@rename ($tmpFile,$attachStoreFolder.$link_ita[0])) {
-						audit_log("Message: spostato allegato ita ".$link_ita[0].". (admin/offerte_save)");
+					if (rename ($tmpFile,$attachStoreFolder.$link_ita[0])) {
+						audit_log("Message: spostato allegato ita ".$link_ita[0].". (admin/offerte_update)");
+						chmod($attachStoreFolder.$link_ita[0],0644);
 					}else{
-						audit_log("Warning: spostamento allegato ita ".$link_ita[0]." non riuscito. (admin/offerte_save)");
+						audit_log("Warning: spostamento allegato ita ".$link_ita[0]." non riuscito. (admin/offerte_update)");
 					}
 				}
 				if (isset($link_eng[0])) {
 					$tmpFile=$tmpStoreFolder.$link_eng[0];
 					// spostamento TOGLIERE CHIOCCIOLA
-					if (@rename ($tmpFile,$attachStoreFolder.$link_eng[0])) {
-						audit_log("Message: spostato allegato eng ".$link_eng[0].". (admin/offerte_save)");
+					if (rename ($tmpFile,$attachStoreFolder.$link_eng[0])) {
+						audit_log("Message: spostato allegato eng ".$link_eng[0].". (admin/offerte_update)");
+						chmod($attachStoreFolder.$link_eng[0],0644);
 					}else{
-						audit_log("Warning: spostamento allegato eng ".$link_eng[0]." non riuscito. (admin/offerte_save)");
+						audit_log("Warning: spostamento allegato eng ".$link_eng[0]." non riuscito. (admin/offerte_update)");
 					}
 				}
 				
@@ -979,7 +996,10 @@ class Admin extends CI_Controller {
 	private function loadFile($tempFile,$storeFolder,$ext) { /* upload file con nome random; return nome */
 		$storeFile=random_string('alnum',8).".$ext";   
 		$targetFile=$storeFolder.$storeFile;
-		if (move_uploaded_file($tempFile,$targetFile)) return $storeFile;		
+		if (move_uploaded_file($tempFile,$targetFile)) {
+			chmod($targetFile, 777);
+			return $storeFile;		
+		}
 		return false;
 		
 	}

@@ -14,7 +14,7 @@
 		<tbody>
 		<?php foreach ($offerte as $offerta) : ?>
 			<tr>
-				<td><img class="listimg" src="<?php echo site_url('assets/img/offerte/'.$offerta->img_home) ?>" /></td>
+				<td><img class="listimg" src="<?php echo site_url('public/img/offerte/'.$offerta->img_home) ?>" /></td>
 				<td><?php echo $offerta->nome ?></td>
 				<td class="text-center"><i class="fa fa-circle text-<?php echo $offerta->visible==1 ? "success" : "danger" ?>" aria-hidden="true"></i></td>
 				<td><a href="<?php echo site_url('admin/offerte/view/'.$offerta->url) ?>"><button class="btn btn-sm btn-info">Dettagli</button></a></td>

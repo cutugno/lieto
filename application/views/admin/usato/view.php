@@ -115,7 +115,7 @@
 			<br><br>			
 			<div class="dz-preview dz-file-preview img-preview" id="img_home">
 			  <div class="dz-details">
-				<img style="height:120px" src="<?php echo site_url('assets/img/usato/'.$usato->img_home) ?>" />
+				<img style="height:120px" src="<?php echo site_url('public/img/usato/'.$usato->img_home) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" id="remove_img_home" class="btn btn-info btn-xs" data-dz-remove>Cancella foto</button>
@@ -148,7 +148,7 @@
 			<div class="dz-preview dz-file-preview img-preview img_gallery">
 			  <input type="hidden" name="orig_gallery[]" value="<?php echo $pic->id ?>">
 			  <div class="dz-details">
-				<img style="height:120px" src="<?php echo site_url('assets/img/usato/'.$pic->pic) ?>" />
+				<img style="height:120px" src="<?php echo site_url('public/img/usato/'.$pic->pic) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" class="btn btn-info btn-xs remove_img_gallery" data-dz-remove>Cancella foto</button>
@@ -179,7 +179,7 @@
 			<br><br>			
 			<div class="dz-preview dz-file-preview img-preview" id="img_banner">
 			  <div class="dz-details">
-				<img style="height:120px" src="<?php echo site_url('assets/img/usato/'.$usato->img_banner) ?>" />
+				<img style="height:120px" src="<?php echo site_url('public/img/usato/'.$usato->img_banner) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" id="remove_img_banner" class="btn btn-info btn-xs" data-dz-remove>Cancella foto</button>

@@ -114,7 +114,7 @@ Class Common {
 		
 		$deletedFiles=0; // contatore
 		
-		// devo controllare per ogni file di assets/img/offerte, assets/img/usato e public se è presente anche in $files: se non cancello
+		// devo controllare per ogni file di public/img/offerte, public/img/usato e public se è presente anche in $files: se non cancello
 		$storeDir=$CI->config->item('store_folder');
 		$offerteDir=str_replace("%type%","offerte",$storeDir);
 		$usatoDir=str_replace("%type%","usato",$storeDir);

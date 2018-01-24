@@ -48,7 +48,7 @@
 			<br><br>			
 			<div class="dz-preview dz-file-preview img-preview" id="img_home">
 			  <div class="dz-details">
-				<img style="height:120px" src="<?php echo site_url('assets/img/offerte/'.$offerta->img_home) ?>" />
+				<img style="height:120px" src="<?php echo site_url('public/img/offerte/'.$offerta->img_home) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" id="remove_img_home" class="btn btn-info btn-xs" data-dz-remove>Cancella foto</button>
@@ -81,7 +81,7 @@
 			<div class="dz-preview dz-file-preview img-preview img_gallery">
 			  <input type="hidden" name="orig_gallery[]" value="<?php echo $pic->id ?>">
 			  <div class="dz-details">
-				<img style="height:120px" src="<?php echo site_url('assets/img/offerte/'.$pic->pic) ?>" />
+				<img style="height:120px" src="<?php echo site_url('public/img/offerte/'.$pic->pic) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" class="btn btn-info btn-xs remove_img_gallery" data-dz-remove>Cancella foto</button>
@@ -112,7 +112,7 @@
 			<br><br>			
 			<div class="dz-preview dz-file-preview img-preview" id="img_banner">
 			  <div class="dz-details">
-				<img style="height:120px" src="<?php echo site_url('assets/img/offerte/'.$offerta->img_banner) ?>" />
+				<img style="height:120px" src="<?php echo site_url('public/img/offerte/'.$offerta->img_banner) ?>" />
 			  </div>
 			  <div class="text-center">	
 				<button type="button" id="remove_img_banner" class="btn btn-info btn-xs" data-dz-remove>Cancella foto</button>
@@ -146,7 +146,6 @@
 							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
 						  </div>
 						  <div class="text-center">
-							<button type="button" class="btn btn-success btn-xs" data-name='<?php echo $offerta->link_ita ?>' id="link_preview_orig">Anteprima allegato</button>
 							<button type="button" class="btn btn-info btn-xs" id="remove_link_it">Cancella allegato</button>
 						  </div>
 					 </div>	
@@ -160,7 +159,6 @@
 							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
 						  </div>
 						  <div class="text-center">
-							<button type="button" class="btn btn-success btn-xs" id="link_preview">Anteprima allegato</button>
 							<button type="button" class="btn btn-info btn-xs" data-dz-remove>Cancella allegato</button>
 						  </div>
 					  </div>
@@ -180,7 +178,6 @@
 							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
 						  </div>
 						  <div class="text-center">
-							<button type="button" class="btn btn-success btn-xs" data-name='<?php echo $offerta->link_eng ?>' id="link_preview_en_orig">Anteprima allegato</button>
 							<button type="button" class="btn btn-info btn-xs" id="remove_link_en">Cancella allegato</button>
 						  </div>
 					 </div>	
@@ -193,8 +190,7 @@
 						  <div class="dz-details">
 							  <i class="fa fa-file-text-o fa-3x" aria-hidden="true"></i>
 						  </div>
-						  <div class="text-center">
-							<button type="button" class="btn btn-success btn-xs" id="link_preview_en">Anteprima allegato</button>
+						  <div class="text-center">							
 							<button type="button" class="btn btn-info btn-xs" data-dz-remove>Cancella allegato</button>
 						  </div>
 					  </div>

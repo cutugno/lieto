@@ -5,7 +5,7 @@
 		
 		$(function(){
 			<?php if (isset($this->session->save)) : ?>
-			swal({title:"", text:"<?php echo $this->session->save ?>", timer:1500, showConfirmButton:false, type: "<?php echo $this->session->save_status ?>"});
+			swal({title:"", text:"<?php echo $this->session->save ?>", type: "<?php echo $this->session->save_status ?>"});
 			<?php endif ?>
 		});
 		
