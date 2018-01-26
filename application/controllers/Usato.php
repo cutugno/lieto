@@ -19,7 +19,7 @@ class Usato extends CI_Controller {
 		}
 		
 		// banner
-		$dati['banner']=site_url('public/img/banner/usato.jpg');
+		$dati['banner']=site_url('assets/img/banner/usato.jpg');
 		
 		/* COMMON */
 		

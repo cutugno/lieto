@@ -20,7 +20,7 @@ class Offerte extends CI_Controller {
 		}
 		
 		// banner
-		$dati['banner']=site_url('public/img/banner/offerte.jpg');
+		$dati['banner']=site_url('assets/img/banner/offerte.jpg');
 		
 		/* COMMON */
 		
