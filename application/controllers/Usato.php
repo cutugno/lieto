@@ -19,7 +19,7 @@ class Usato extends CI_Controller {
 		}
 		
 		// banner
-		$dati['banner']=site_url('assets/img/banner/usato.jpg');
+		$dati['banner']=site_url('public/img/banner/usato.jpg');
 		
 		/* COMMON */
 		
@@ -62,20 +62,20 @@ class Usato extends CI_Controller {
 		$usato->images=array();
 		if ($images=$this->usato_model->getUsatoPics($usato->id)) {
 			foreach ($images as $val) {
-				$usato->images[]=site_url('assets/img/usato/'.$val->pic);
+				$usato->images[]=site_url('public/img/usato/'.$val->pic);
 			}
 		}
 	
 		$dati['usato']=$usato;
 		
 		// banner
-		$dati['banner']=site_url('assets/img/usato/'.$usato->img_banner);
+		$dati['banner']=site_url('public/img/usato/'.$usato->img_banner);
 		
 		// dati SEO
 		$seo=json_decode($usato->seo);
 		$dati['og']['title']=$seo->og_title->$jlang;
 		$dati['og']['description']=$seo->og_description->$jlang;
-		$dati['og']['image']=site_url('assets/img/usato/'.$usato->img_home);
+		$dati['og']['image']=site_url('public/img/usato/'.$usato->img_home);
 		
 		/* COMMON */
 		

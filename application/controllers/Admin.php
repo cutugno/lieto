@@ -628,7 +628,8 @@ class Admin extends CI_Controller {
 					// spostamento
 					if (rename ($tmpFile,$storeFolder.$home_file[0])) {
 						audit_log("Message: spostata foto home ".$home_file[0].". (admin/offerte_save)");
-						chmod($storeFolder.$home_file[0],0644);
+						//chmod($storeFolder.$home_file[0],0644);
+						if (chmod($storeFolder.$home_file[0],0644)) audit_log("Message: modificati permessi foto home ".$storeFolder.$home_file[0].". (admin/offerte_save)");
 					}else{
 						audit_log("Error: spostamento foto home ".$home_file[0].". (admin/offerte_save)");
 					}

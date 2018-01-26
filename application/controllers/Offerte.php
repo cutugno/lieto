@@ -20,7 +20,7 @@ class Offerte extends CI_Controller {
 		}
 		
 		// banner
-		$dati['banner']=site_url('assets/img/banner/offerte.jpg');
+		$dati['banner']=site_url('public/img/banner/offerte.jpg');
 		
 		/* COMMON */
 		
@@ -66,20 +66,20 @@ class Offerte extends CI_Controller {
 		$offerta->images=array();
 		if ($images=$this->offerte_model->getOffertaPics($offerta->id)) {
 			foreach ($images as $val) {
-				$offerta->images[]=site_url('assets/img/offerte/'.$val->pic);
+				$offerta->images[]=site_url('public/img/offerte/'.$val->pic);
 			}
 		}
 	
 		$dati['offerta']=$offerta;
 		
 		// banner
-		$dati['banner']=site_url('assets/img/offerte/'.$offerta->img_banner);
+		$dati['banner']=site_url('public/img/offerte/'.$offerta->img_banner);
 		
 		// dati SEO
 		$seo=json_decode($offerta->seo);
 		$dati['og']['title']=$seo->og_title->$jlang;
 		$dati['og']['description']=$seo->og_description->$jlang;
-		$dati['og']['image']=site_url('assets/img/offerte/'.$offerta->img_home);
+		$dati['og']['image']=site_url('public/img/offerte/'.$offerta->img_home);
 		$dati['og']['image_width']="450";
 		$dati['og']['image_height']="285";
 		

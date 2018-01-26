@@ -24,7 +24,7 @@
                             <li class="cbp-item">
                                 <div class="cbp-caption">
                                     <div class="cbp-caption-defaultWrap">
-                                        <img src="<?php echo site_url('assets/img/usato/'.$usato->img_home) ?>" alt="<?php echo $usato->nome ?>">
+                                        <img src="<?php echo site_url('public/img/usato/'.$usato->img_home) ?>" alt="<?php echo $usato->nome ?>">
                                     </div>
                                     <div class="cbp-caption-activeWrap">
                                         <div class="cbp-l-caption-alignCenter">

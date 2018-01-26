@@ -24,7 +24,7 @@
                             <li class="cbp-item">
                                 <div class="cbp-caption">
                                     <div class="cbp-caption-defaultWrap">
-                                        <img src="<?php echo site_url('assets/img/offerte/'.$offerta->img_home) ?>" alt="<?php echo $offerta->nome ?>">
+                                        <img src="<?php echo site_url('public/img/offerte/'.$offerta->img_home) ?>" alt="<?php echo $offerta->nome ?>">
                                     </div>
                                     <div class="cbp-caption-activeWrap">
                                         <div class="cbp-l-caption-alignCenter">
