@@ -76,6 +76,8 @@ class Usato extends CI_Controller {
 		$dati['og']['title']=$seo->og_title->$jlang;
 		$dati['og']['description']=$seo->og_description->$jlang;
 		$dati['og']['image']=site_url('public/img/usato/'.$usato->img_home);
+		$dati['og']['image_width']="450";
+		$dati['og']['image_height']="285";
 		
 		/* COMMON */
 		
